@@ -11,4 +11,7 @@ public interface ControllerConstant {
 	static final String M14_MODEL = "m14Model";
 	static final String M14_EMPHAKENCREATE = "M14_emp_haken_create";
 	
+	//M05_EmployeeListSearch
+	static final String MG005_EMPLOYEE_LIST_SEARCH = "MG005-employee-list";
+	
 }
