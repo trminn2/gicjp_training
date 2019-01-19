@@ -23,8 +23,8 @@ public class MG004ServiceImpl implements MG004Service {
 		emp.setFirstNameKana(model.getFirstNameKana());
 		emp.setLastName(model.getLastName());
 		emp.setLastNameKana(model.getLastNameKana());
-		emp.setGender(model.getGender());
-		emp.setEmail(model.getEmail());
+//		emp.setGender(model.getGender());
+//		emp.setEmail(model.getEmail());
 		empDao.save(emp);
 	}
 
