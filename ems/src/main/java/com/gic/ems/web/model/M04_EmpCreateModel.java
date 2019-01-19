@@ -1,116 +1,74 @@
 package com.gic.ems.web.model;
 
-import java.io.Serializable;
+import com.gic.ems.common.type.Gender;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
-@Table(name = "employee")
-public class M04_EmpCreateModel implements Serializable {
+/**
+ * The Class EmployeeCreateModel.
+ *
+ * @author KYIMINHAN Jan 5, 2019 <BR>
+ *         The Class EmployeeCreateModel.
+ */
+@Getter
+@Setter
 
+/**
+ * Instantiates a new employee create model.
+ */
+@NoArgsConstructor
+public class M04_EmpCreateModel extends BaseModel {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+	/** The employee id. */
 	private String employeeId;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+
+	/** The first name. */
 	private String firstName;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
-	private String lastName;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+
+	/** The first name kana. */
 	private String firstNameKana;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+
+	/** The last name. */
+	private String lastName;
+
+	/** The last name kana. */
 	private String lastNameKana;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
-	private String gender;
-	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+
+	/** The gender. */
+	private Gender gender;
+
+	/** The email. */
 	private String email;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(String employeeId) {
+	/**
+	 * Instantiates a new m 04 emp create model.
+	 *
+	 * @param id            the id
+	 * @param uuid          the uuid
+	 * @param employeeId    the employee id
+	 * @param firstName     the first name
+	 * @param firstNameKana the first name kana
+	 * @param lastName      the last name
+	 * @param lastNameKana  the last name kana
+	 * @param gender        the gender
+	 * @param email         the email
+	 */
+	@Builder
+	public M04_EmpCreateModel(Long id, String uuid, String employeeId, String firstName, String firstNameKana,
+			String lastName, String lastNameKana, Gender gender, String email) {
+		super(id, uuid);
 		this.employeeId = employeeId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFirstNameKana() {
-		return firstNameKana;
-	}
-
-	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
-	}
-
-	public String getLastNameKana() {
-		return lastNameKana;
-	}
-
-	public void setLastNameKana(String lastNameKana) {
+		this.lastName = lastName;
 		this.lastNameKana = lastNameKana;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
 		this.email = email;
 	}
 }

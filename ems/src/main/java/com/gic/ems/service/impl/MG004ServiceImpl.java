@@ -1,31 +1,59 @@
 package com.gic.ems.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import com.gic.ems.common.constant.Constant;
+import com.gic.ems.common.type.Role;
 import com.gic.ems.dao.EmployeeDao;
+import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.Employee;
+import com.gic.ems.entity.User;
 import com.gic.ems.service.MG004Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
 @Service
 public class MG004ServiceImpl implements MG004Service {
 
+	/** The employee dao. */
 	@Autowired
-	private EmployeeDao empDao;
+	private EmployeeDao employeeDao;
 
-	@Transactional
+	/** The user dao. */
+	@Autowired
+	private UserDao userDao;
+
+	@Autowired
+	private PasswordEncoder encoder;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M04_EmpCreateService#save(com.gic.ems.web.model.
+	 * M04_EmpCreateModel)
+	 */
 	@Override
 	public void save(M04_EmpCreateModel model) {
-		Employee emp = new Employee();
-		emp.setEmployeeId(model.getEmployeeId());
-		emp.setFirstName(model.getFirstName());
-		emp.setFirstNameKana(model.getFirstNameKana());
-		emp.setLastName(model.getLastName());
-		emp.setLastNameKana(model.getLastNameKana());
-//		emp.setGender(model.getGender());
-//		emp.setEmail(model.getEmail());
-		empDao.save(emp);
+		Employee emp = Employee.builder().employeeId(model.getEmployeeId()).firstName(model.getFirstName())
+				.firstNameKana(model.getFirstNameKana()).lastName(model.getLastName())
+				.lastNameKana(model.getLastNameKana()).gender(model.getGender()).build();
+		User user = User.builder().email(model.getEmail()).employee(emp)
+				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
+		emp.setUser(user);
+		this.employeeDao.save(emp);
+		this.userDao.save(user);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M04_EmpCreateService#hasAccount(java.lang.String)
+	 */
+	@Override
+	public boolean hasAccount(String email) {
+		boolean flag = userDao.existsByEmail(email);
+		return flag;
+	}
 }

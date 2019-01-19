@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.gic.ems.common.type.Role;
-import com.gic.ems.entity.User;
-import com.gic.ems.service.M01_Service;
+import com.gic.ems.common.type.Gender;
+import com.gic.ems.service.impl.MG004ServiceImpl;
+import com.gic.ems.web.model.M04_EmpCreateModel;
 
 @SpringBootApplication
 public class EmsApplication implements CommandLineRunner {
@@ -19,16 +18,15 @@ public class EmsApplication implements CommandLineRunner {
 
 	// TODO to delete after developing phase
 	@Autowired
-	private M01_Service service;
-
-	@Autowired
-	private PasswordEncoder encoder;
+	private MG004ServiceImpl service;
 
 	@Override
 	public void run(String... args) throws Exception {
-		if (null == this.service.findByEmail("admin@gmail.com")) {
-			this.service.save(User.builder().email("admin@gmail.com").password(this.encoder.encode("admin"))
-					.role(Role.ADMIN).build());
+		String email = "admin@gmail.com";
+		if (!service.hasAccount(email)) {
+			M04_EmpCreateModel empCreateModel = M04_EmpCreateModel.builder().email(email).firstName("KyiMin")
+					.lastName("Han").firstNameKana("チミン").lastNameKana("ハン").gender(Gender.MALE).build();
+			service.save(empCreateModel);
 		}
 	}
 }

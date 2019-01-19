@@ -9,4 +9,5 @@ import com.gic.ems.entity.User;
 public interface UserDao extends JpaRepository<User, Long> {
 	Optional<User> findById(Long id);
 	Optional<User> findByEmail(String email);
+	boolean existsByEmail(String email);
 }
