@@ -26,7 +26,7 @@ public class EmsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		if (null == this.service.findByEmail("admin@gamil.com")) {
+		if (null == this.service.findByEmail("admin@gmail.com")) {
 			User user = new User();
 			user.setEmail("admin@gmail.com");
 			user.setPassword(this.encoder.encode("admin"));

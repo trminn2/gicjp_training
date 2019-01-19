@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	private static final String[] PERMIT_ALL = { "/js/**", "/css/**", "/img/**" };
+	private static final String[] PERMIT_ALL = { "/static/**" };
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -42,5 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setPasswordEncoder(this.getPasswordEncoder());
 		provider.setUserDetailsService(this.service);
+		auth.authenticationProvider(provider);
 	}
 }

@@ -6,7 +6,7 @@
   説明　：　ログイン画面
  -->
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -71,8 +71,9 @@
 					</div>
 					<div class="col-sm">
 						<div class="form-group">
-							<input type="email" class="form-control form-control-sm"
-								id="exampleInputEmail1" aria-describedby="emailHelp">
+							<input type="text" name="email"
+								class="form-control form-control-sm" id="exampleInputEmail1"
+								aria-describedby="emailHelp">
 						</div>
 					</div>
 				</div>
@@ -88,8 +89,9 @@
 
 					<div class="col-sm">
 						<div class="form-group">
-							<input type="email" class="form-control form-control-sm"
-								id="exampleInputEmail1" aria-describedby="emailHelp">
+							<input type="password" name="password"
+								class="form-control form-control-sm" id="exampleInputEmail1"
+								aria-describedby="emailHelp">
 						</div>
 					</div>
 				</div>
