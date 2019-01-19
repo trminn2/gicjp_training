@@ -1,6 +1,7 @@
 package com.gic.ems.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gic.ems.common.utility.UserUtility;
@@ -16,13 +17,16 @@ public class M02ServiceImpl implements M02Service {
 	private UserDao userDao;
 	@Autowired
 	private UserUtility userUtility;
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Override
 	public boolean update(M02_PasswordUpdateModel m02Model) {
-		User user = this.userDao.findById(userUtility.getLoginUserId()).orElse(null);
+		User user = this.userDao.findByEmail(userUtility.getLoginUserName()).orElse(null);
 		if (null != user) {
 			// TODO
-			// user.setPassword(m02Model.getNewPassword());
+			user.setPassword(this.encoder.encode(m02Model.getNewPassword()));
+			userDao.save(user);
 			return true;
 		} else {
 			return false;
