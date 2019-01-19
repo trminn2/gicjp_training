@@ -16,21 +16,21 @@ import com.gic.ems.common.type.Role;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
-
-	@Column
-	private String password;
-
 	@Column
 	private String email;
-
+	@Column
+	private String password;
 	@Enumerated(EnumType.STRING)
 	@Column
 	private Role role;
+
+	public User() {
+		super();
+	}
 
 	public Long getId() {
 		return id;

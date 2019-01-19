@@ -9,5 +9,7 @@ import com.gic.ems.entity.User;
 
 @Repository
 public interface UserDao extends JpaRepository<User, Long> {
+
 	Optional<User> findById(Long id);
+	Optional<User> findByEmail(String email);
 }
