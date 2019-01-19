@@ -1,66 +1,73 @@
 package com.gic.ems.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import com.gic.ems.common.type.Role;
 
-@Entity
-public class User implements Serializable {
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+/**
+ * The Class User.
+ *
+ * @author KYIMINHAN Jan 5, 2019 <BR>
+ *         The Class User.
+ */
+@Getter
+@Setter
+@ToString
+/**
+ * Instantiates a new user.
+ */
+@NoArgsConstructor
+@Entity
+public class User extends BaseEntity {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
-	private Long id;
-	@Column
-	private String email;
+
+	/** The employee. */
+	@OneToOne(fetch = FetchType.EAGER, targetEntity = Employee.class, optional = true)
+	@MapsId
+	private Employee employee;
+
+	/** The password. */
 	@Column
 	private String password;
+
+	/** The email. */
+	@Column(unique = true, nullable = false)
+	private String email;
+
+	/** The role. */
 	@Enumerated(EnumType.STRING)
 	@Column
 	private Role role;
 
-	public User() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
+	/**
+	 * Instantiates a new user.
+	 *
+	 * @param id       the id
+	 * @param employee the employee
+	 * @param password the password
+	 * @param email    the email
+	 * @param role     the role
+	 */
+	@Builder
+	public User(Long id, Employee employee, String password, String email, Role role) {
+		super(id);
+		this.employee = employee;
 		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
 		this.role = role;
 	}
 }
