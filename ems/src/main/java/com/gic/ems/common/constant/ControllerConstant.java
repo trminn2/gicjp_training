@@ -7,4 +7,8 @@ public interface ControllerConstant {
 	static final String M02_MODEL = "m02Model";
 	static final String M02_PASSWORDUPDATE = "M02-PasswordUpdate";
 	
+	//M14_EmpHakenCreate
+	static final String M14_MODEL = "m14Model";
+	static final String M14_EMPHAKENCREATE = "M14_emp_haken_create";
+	
 }
