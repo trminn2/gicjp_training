@@ -28,14 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	private final String[] PERMIT_ALL = { "/js/**", "/css/**", "/img/**" };
+	private static final String[] PERMIT_ALL = { "/js/**", "/css/**", "/img/**" };
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(PERMIT_ALL).permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/login").failureUrl("/login?error").usernameParameter("email").passwordParameter("password")
-				.and().logout().logoutSuccessUrl("/login?logout").and().exceptionHandling()
-				.accessDeniedPage("/accessDenied").and().csrf();
+		http.authorizeRequests().antMatchers(PERMIT_ALL).permitAll().anyRequest().authenticated();
+		http.formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/home")
+				.usernameParameter("email").passwordParameter("password").permitAll();
 	}
 
 	@Override

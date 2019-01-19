@@ -13,15 +13,16 @@ import com.gic.ems.service.M01_Service;
 @SpringBootApplication
 public class EmsApplication implements CommandLineRunner {
 
+	public static void main(String[] args) {
+		SpringApplication.run(EmsApplication.class, args);
+	}
+
+	// TODO to delete after developing phase
 	@Autowired
 	private M01_Service service;
 
 	@Autowired
 	private PasswordEncoder encoder;
-
-	public static void main(String[] args) {
-		SpringApplication.run(EmsApplication.class, args);
-	}
 
 	@Override
 	public void run(String... args) throws Exception {
