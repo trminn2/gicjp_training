@@ -5,9 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.gic.ems.entity.Employee;
 
 @Repository
-public interface EmployeeDao extends JpaRepository<Employee, Long>{
-
-	@SuppressWarnings("unchecked")
-	public Employee save(Employee theEmployee);
+public interface EmployeeDao extends JpaRepository<Employee, Long> {
 	
 }
