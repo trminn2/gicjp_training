@@ -40,7 +40,7 @@ public class MG004ServiceImpl implements MG004Service {
 				.firstNameKana(model.getFirstNameKana()).lastName(model.getLastName())
 				.lastNameKana(model.getLastNameKana()).gender(model.getGender()).build();
 		User user = User.builder().email(model.getEmail()).employee(emp)
-				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
+				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.ADMIN).build();
 		emp.setUser(user);
 		this.employeeDao.save(emp);
 		this.userDao.save(user);

@@ -16,11 +16,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
+
+import org.springframework.stereotype.Component;
 
 import com.gic.ems.common.type.DeleteFlag;
+import com.gic.ems.common.utility.UserUtility;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
@@ -40,11 +43,7 @@ import lombok.experimental.SuperBuilder;
  * @return B
  */
 @SuperBuilder
-
-/**
- * Instantiates a new base entity.
- */
-@NoArgsConstructor
+@Component
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
@@ -81,6 +80,17 @@ public abstract class BaseEntity implements Serializable {
 	@Column
 	private DeleteFlag deleteFlag;
 
+	@Transient
+	private UserUtility userUtility;
+
+	/**
+	 * Instantiates a new base entity.
+	 */
+	public BaseEntity() {
+		super();
+		this.init();
+	}
+
 	/**
 	 * Instantiates a new base entity.
 	 *
@@ -88,17 +98,29 @@ public abstract class BaseEntity implements Serializable {
 	 */
 	public BaseEntity(Long id) {
 		super();
-		if (null == id) {
-			// TODO
-			this.createUserId = "CreateUser";
-			this.createDate = LocalDateTime.now();
-		} else if (null != id && 0 < id.longValue()) {
+		if (null != id && 0 < id.longValue()) {
 			this.id = id;
 		}
-		this.uuid = UUID.randomUUID().toString().replace("-", "");
-		// TODO
-		this.updateUserId = "UpdateUser";
-		this.updateDate = LocalDateTime.now();
+		this.init();
+	}
+
+	/**
+	 * Initialize the default setting.
+	 */
+	public void init() {
 		this.deleteFlag = DeleteFlag.ACTIVE;
+		this.createUserId = (null != userUtility) ? userUtility.getLoginUserName() : "SYSTEM";
+		this.createDate = LocalDateTime.now();
+		this.uuid = UUID.randomUUID().toString().replace("-", "");
+		this.updateUserId = (null != userUtility) ? userUtility.getLoginUserName() : "SYSTEM";
+		this.updateDate = LocalDateTime.now();
+	}
+
+	/**
+	 * Removes the object.
+	 */
+	public void remove() {
+		this.init();
+		this.deleteFlag = DeleteFlag.DELETED;
 	}
 }
