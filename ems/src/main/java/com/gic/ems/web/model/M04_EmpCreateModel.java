@@ -1,7 +1,6 @@
 package com.gic.ems.web.model;
 
 import com.gic.ems.common.type.Gender;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
