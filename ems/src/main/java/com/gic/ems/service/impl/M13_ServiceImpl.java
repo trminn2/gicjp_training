@@ -19,4 +19,11 @@ public class M13_ServiceImpl implements M13_Service {
 				.contactPersonFirstName(custCreateModel.getContactPersonFirstName()).address(custCreateModel.getAddress()).contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana()).contactPersonLastName(custCreateModel.getContactPersonLastName()).contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana()).postalCode(custCreateModel.getPostalCode()).contactPhone(custCreateModel.getContactPhone()).build();
 		this.companyDao.save(company);
 	}
+	@Override
+	public void edit(M13_CustCreateModel custCreateModel) {
+		// TODO Auto-generated method stub
+		Company company = Company.builder().companyId(custCreateModel.getCompanyId()).companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
+				.contactPersonFirstName(custCreateModel.getContactPersonFirstName()).address(custCreateModel.getAddress()).contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana()).contactPersonLastName(custCreateModel.getContactPersonLastName()).contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana()).postalCode(custCreateModel.getPostalCode()).contactPhone(custCreateModel.getContactPhone()).build();
+		this.companyDao.save(company);
+	}
 }

@@ -33,7 +33,7 @@ public class M05_EmpListController {
 		return ControllerConstant.MG005_EMPLOYEE_LIST_SEARCH;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@GetMapping("/empList")
 	public String searchEmp(@ModelAttribute M05_EmpListModel m05_Search, Model model) {
 		service.search(m05_Search);
 		return ControllerConstant.MG005_EMPLOYEE_LIST_SEARCH;
