@@ -15,7 +15,7 @@ import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
 /**
- * The Class M04_EmpCreateController.
+ * The Class M04_EmpCreateController
  *
  * @author MOEPWINTPHYU Jan 26, 2019 <BR>
  *         The Class M04_EmpCreateController.
