@@ -14,14 +14,25 @@ import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
+/**
+ * The Class M04_EmpCreateController.
+ *
+ * @author MOEPWINTPHYU Jan 26, 2019 <BR>
+ *         The Class M04_EmpCreateController.
+ */
 @Controller
 public class M04_EmpCreateController {
 	
 	@Autowired
-	M04_Service service;
+	private M04_Service service;
 	@Autowired
 	private MessageSource messageSource;
 
+	/**
+	 * @param model
+	 * @param locale
+	 * @return
+	 */
 	@GetMapping("/create-employee")
 	public String init(Model model, Locale locale) {
 		String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
