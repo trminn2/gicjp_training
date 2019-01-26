@@ -40,7 +40,14 @@ public class M13_CustCreateController {
 	@PostMapping("/createCustomer")
 	public String createCustomer(@Valid @ModelAttribute M13_CustCreateModel customerModel,
 			BindingResult bindingResult, Model model) {
-
+		if(bindingResult.hasErrors()) {
+			String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
+			model.addAttribute("message", msg04);
+			model.addAttribute("companyName", customerModel.getCompanyName());
+			model.addAttribute("m13Model", customerModel);
+		} else {
+			service.save(customerModel);
+		}
 		return ControllerConstant.M13_CUSTOMER_REGISTER;
 	}
 	
