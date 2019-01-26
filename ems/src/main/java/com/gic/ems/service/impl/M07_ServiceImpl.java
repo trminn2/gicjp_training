@@ -9,12 +9,16 @@ import com.gic.ems.entity.Employee;
 import com.gic.ems.service.M07_Service;
 import com.gic.ems.web.model.M07_EmpInfoCreateModel;
 
+/**
+ * The Class M07_ServiceImpl.
+ *
+ * @author ThetThetKhine Jan 26, 2019 <BR>
+ *         The Class M07_ServiceImpl.
+ */
 @Service
 public class M07_ServiceImpl implements M07_Service {
 
-	/**
-	 * 
-	 */
+	/** The employee dao. */
 	private EmployeeDao employeeDao;
 
 	/**
