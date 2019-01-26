@@ -71,8 +71,7 @@ public class M04_EmpCreateController {
 	 * @return String
 	 */
 	@PostMapping("/emp-create")
-	public String createEmployee(@Valid @ModelAttribute M04_EmpCreateModel empModel, BindingResult bindingResult,
-			Model model) {
+	public String create(@Valid @ModelAttribute M04_EmpCreateModel empModel, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
 			model.addAttribute("message", msg04);

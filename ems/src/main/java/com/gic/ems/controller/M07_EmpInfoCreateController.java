@@ -44,7 +44,7 @@ public class M07_EmpInfoCreateController {
 	 * @return String
 	 */
 	@GetMapping("/emp-info-create")
-	public String hakenCreate(Model model, Locale locale) {
+	public String init(Model model, Locale locale) {
 		return ControllerConstant.M07_EMP_INFO_CREATE;
 	}
 
