@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gic.ems.common.constant.ControllerConstant;
-import com.gic.ems.service.M02Service;
+import com.gic.ems.service.M02_Service;
 import com.gic.ems.web.model.M02_PasswordUpdateModel;
 
 @Controller
 public class M02_PasswordUpdateController {
 
 	@Autowired
-	private M02Service userservice;
+	private M02_Service userservice;
 
 	@GetMapping(value = { "/passwordupdate" })
 	public String init(Model model) {

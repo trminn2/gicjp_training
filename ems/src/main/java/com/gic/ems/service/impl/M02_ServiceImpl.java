@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import com.gic.ems.common.utility.UserUtility;
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.User;
-import com.gic.ems.service.M02Service;
+import com.gic.ems.service.M02_Service;
 import com.gic.ems.web.model.M02_PasswordUpdateModel;
 
 @Service
-public class M02ServiceImpl implements M02Service {
+public class M02_ServiceImpl implements M02_Service {
 	@Autowired
 	private UserDao userDao;
 	@Autowired
