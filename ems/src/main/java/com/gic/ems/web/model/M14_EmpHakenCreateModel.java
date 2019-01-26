@@ -1,76 +1,83 @@
 package com.gic.ems.web.model;
 
-import java.io.Serializable;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class M14_EmpHakenCreateModel implements Serializable{
+/**
+ * The Class M14_EmpHakenCreateModel.
+ *
+ * @author KYIMINHAN Jan 26, 2019 <BR>
+ *         The Class M14_EmpHakenCreateModel.
+ */
+@Getter
+@Setter
 
+/**
+ * Instantiates a new m 14 emp haken create model.
+ */
+@NoArgsConstructor
+public class M14_EmpHakenCreateModel extends BaseModel {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private Long id;
+
+	/** The company id. */
 	private String companyId;
+
+	/** The employee id. */
 	private String employeeId;
+
+	/** The employee name. */
 	private String employeeName;
+
+	/** The group id. */
 	private String groupId;
+
+	/** The dispatch dept. */
 	private String dispatchDept;
+
+	/** The dispatch start date. */
 	private String dispatchStartDate;
+
+	/** The dispatch end date. */
 	private String dispatchEndDate;
+
+	/** The income. */
 	private String income;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public String getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(String companyId) {
+
+	/**
+	 * Instantiates a new m 14 emp haken create model.
+	 *
+	 * @param id                the id
+	 * @param uuid              the uuid
+	 * @param companyId         the company id
+	 * @param employeeId        the employee id
+	 * @param employeeName      the employee name
+	 * @param groupId           the group id
+	 * @param dispatchDept      the dispatch dept
+	 * @param dispatchStartDate the dispatch start date
+	 * @param dispatchEndDate   the dispatch end date
+	 * @param income            the income
+	 */
+
+	/**
+	 * Builds the.
+	 *
+	 * @return M14_EmpHakenCreateModel
+	 */
+	@Builder
+	public M14_EmpHakenCreateModel(Long id, String uuid, String companyId, String employeeId, String employeeName,
+			String groupId, String dispatchDept, String dispatchStartDate, String dispatchEndDate, String income) {
+		super(id, uuid);
 		this.companyId = companyId;
-	}
-	public String getEmployeeId() {
-		return employeeId;
-	}
-	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
-	}
-	public String getGroupId() {
-		return groupId;
-	}
-	public void setGroupId(String groupId) {
+		this.employeeName = employeeName;
 		this.groupId = groupId;
-	}
-	public String getDispatchDept() {
-		return dispatchDept;
-	}
-	public void setDispatchDept(String dispatchDept) {
 		this.dispatchDept = dispatchDept;
-	}
-	public String getDispatchStartDate() {
-		return dispatchStartDate;
-	}
-	public void setDispatchStartDate(String dispatchStartDate) {
 		this.dispatchStartDate = dispatchStartDate;
-	}
-	public String getDispatchEndDate() {
-		return dispatchEndDate;
-	}
-	public void setDispatchEndDate(String dispatchEndDate) {
 		this.dispatchEndDate = dispatchEndDate;
-	}
-	public String getIncome() {
-		return income;
-	}
-	public void setIncome(String income) {
 		this.income = income;
 	}
-	public String getEmployeeName() {
-		return employeeName;
-	}
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
-	}
-	
-	
-	
-	
 }
