@@ -8,15 +8,24 @@ package com.gic.ems.common.constant;
  */
 public interface ControllerConstant {
 
+	/** The Constant HOME. */
+	static final String HOME = "M00-home";
+
+	/** The Constant ACCESSDENIED. */
+	static final String ACCESSDENIED = "accessDenied";
+
+	/** The Constant M01_LOGIN. */
+	static final String M01_LOGIN = "M01-login";
+
 	/** The Constant M02_MODEL. */
 	static final String M02_MODEL = "m02Model";
 
 	/** The Constant M05_MODEL. */
 	static final String M05_MODEL = "m05Model";
-	
+
 	/** The Constant M10_MODEL. */
 	static final String M10_MODEL = "m10Model";
-	
+
 	/** The Constant M07_MODEL. */
 	static final String M07_MODEL = "m07Model";
 
