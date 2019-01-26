@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.gic.ems.common.type.Gender;
-import com.gic.ems.service.impl.MG004ServiceImpl;
+import com.gic.ems.service.impl.M04_ServiceImpl;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
 @SpringBootApplication
@@ -18,7 +18,7 @@ public class EmsApplication implements CommandLineRunner {
 
 	// TODO to delete after developing phase
 	@Autowired
-	private MG004ServiceImpl service;
+	private M04_ServiceImpl service;
 
 	@Override
 	public void run(String... args) throws Exception {
