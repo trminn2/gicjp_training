@@ -22,13 +22,13 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
  */
 @Controller
 public class M04_EmpCreateController {
-	
+
 	/** The service. */
 	private M04_Service service;
-	
+
 	/** The message source. */
 	private MessageSource messageSource;
-	
+
 	/**
 	 * Sets the service.
 	 *
@@ -45,10 +45,6 @@ public class M04_EmpCreateController {
 	 * @return the message source
 	 */
 	@Autowired
-	public MessageSource getMessageSource() {
-		return messageSource;
-	}
-
 	public void setMessageSource(MessageSource messageSource) {
 		this.messageSource = messageSource;
 	}
@@ -66,9 +62,17 @@ public class M04_EmpCreateController {
 		return ControllerConstant.M04_EMPLOYEE_INTIAL_INFO;
 	}
 
+	/**
+	 * Creates the employee.
+	 *
+	 * @param empModel      the emp model
+	 * @param bindingResult the binding result
+	 * @param model         the model
+	 * @return String
+	 */
 	@PostMapping("/create-employee")
-	public String createEmployee(@Valid @ModelAttribute M04_EmpCreateModel empModel,
-			BindingResult bindingResult, Model model) {
+	public String createEmployee(@Valid @ModelAttribute M04_EmpCreateModel empModel, BindingResult bindingResult,
+			Model model) {
 		if (bindingResult.hasErrors()) {
 			String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
 			model.addAttribute("message", msg04);
