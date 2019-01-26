@@ -49,7 +49,7 @@ public class M13_CustCreateController {
 			model.addAttribute("companyName", customerModel.getCompanyName());
 			model.addAttribute(ControllerConstant.M13_MODEL, customerModel);
 		} else {
-			service.save(customerModel);
+			this.service.save(customerModel);
 		}
 		return ControllerConstant.M13_CUSTOMER_CREATE;
 	}

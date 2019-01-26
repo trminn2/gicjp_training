@@ -61,7 +61,7 @@ public abstract class BaseEntity implements Serializable {
 
 	/** The create user. */
 	@Column(insertable = true, nullable = false, updatable = false)
-	private String createUserId;
+	private String createUser;
 
 	/** The create date. */
 	@Column(insertable = true, nullable = false, updatable = false)
@@ -69,7 +69,7 @@ public abstract class BaseEntity implements Serializable {
 
 	/** The update user. */
 	@Column(insertable = true, nullable = false, updatable = true)
-	private String updateUserId;
+	private String updateUser;
 
 	/** The update date. */
 	@Column(insertable = true, nullable = false, updatable = true)
@@ -108,8 +108,8 @@ public abstract class BaseEntity implements Serializable {
 		this.deleteFlag = DeleteFlag.ACTIVE;
 		this.createDate = LocalDateTime.now();
 		this.updateDate = LocalDateTime.now();
-		this.createUserId = UserUtility.getLoginUserName();
-		this.updateUserId = UserUtility.getLoginUserName();
+		this.createUser = UserUtility.getLoginUserName();
+		this.updateUser = UserUtility.getLoginUserName();
 		this.uuid = UUID.randomUUID().toString().replace(Constant.HYPHEN, Constant.EMPTY_STRING);
 	}
 

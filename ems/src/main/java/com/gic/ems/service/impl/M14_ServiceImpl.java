@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gic.ems.dao.DispatchDao;
 import com.gic.ems.entity.Dispatch;
-import com.gic.ems.service.M14Service;
+import com.gic.ems.service.M14_Service;
 import com.gic.ems.web.model.M14_EmpHakenModel;
 
 /**
@@ -16,11 +16,20 @@ import com.gic.ems.web.model.M14_EmpHakenModel;
  *         The Class M14ServiceImpl.
  */
 @Service
-public class M14ServiceImpl implements M14Service {
+public class M14_ServiceImpl implements M14_Service {
 
 	/** The dispatch dao. */
-	@Autowired
 	private DispatchDao dispatchDao;
+
+	/**
+	 * Sets the dispatch dao.
+	 *
+	 * @param dispatchDao the new dispatch dao
+	 */
+	@Autowired
+	public void setDispatchDao(DispatchDao dispatchDao) {
+		this.dispatchDao = dispatchDao;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -46,5 +55,11 @@ public class M14ServiceImpl implements M14Service {
 	public void eidt(M14_EmpHakenModel m14Model) {
 		// TODO Auto-generated method stub
 		this.dispatchDao.save(Dispatch.builder().build());
+	}
+
+	@Override
+	public M14_EmpHakenModel findById(Long id) {
+		// TODO Auto-generated method stub
+		return M14_EmpHakenModel.builder().build();
 	}
 }

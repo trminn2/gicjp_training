@@ -16,23 +16,39 @@ import com.gic.ems.service.M05_Service;
 import com.gic.ems.web.model.M05_EmpListModel;
 
 /**
- * @author thaemyatnoelwin
+ * The Class M05_ServiceImpl.
  *
+ * @author ThaeMyatNoeLwin Jan 27, 2019 <BR>
+ *         The Class M05_ServiceImpl.
  */
 @Service
 public class M05_ServiceImpl implements M05_Service {
 
-	/**
-	 * 
-	 */
-	@Autowired
+	/** The group dao. */
 	private GroupDao groupDao;
 
+	/** The employee dao. */
+	private EmployeeDao employeeDao;
+
 	/**
-	 * 
+	 * Sets the group dao.
+	 *
+	 * @param groupDao the new group dao
 	 */
 	@Autowired
-	private EmployeeDao employeeDao;
+	public void setGroupDao(GroupDao groupDao) {
+		this.groupDao = groupDao;
+	}
+
+	/**
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
+	 */
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
 
 	/*
 	 * (non-Javadoc)

@@ -8,7 +8,7 @@ import com.gic.ems.web.model.M14_EmpHakenModel;
  * @author KYIMINHAN Jan 26, 2019 <BR>
  *         The Interface M14Service.
  */
-public interface M14Service {
+public interface M14_Service {
 
 	/**
 	 * Save.
@@ -23,4 +23,12 @@ public interface M14Service {
 	 * @param m14Model the m 14 model
 	 */
 	void eidt(M14_EmpHakenModel m14Model);
+
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return M14_EmpHakenModel
+	 */
+	M14_EmpHakenModel findById(Long id);
 }

@@ -16,12 +16,29 @@ import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.User;
 import com.gic.ems.service.M01_Service;
 
+/**
+ * The Class M01_ServiceImpl.
+ *
+ * @author KYIMINHAN Jan 27, 2019 <BR>
+ *         The Class M01_ServiceImpl.
+ */
 @Service("m01_ServiceImpl")
 public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 
-	@Autowired
+	/** The user dao. */
 	private UserDao userDao;
 
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#
+	 * loadUserByUsername(java.lang.String)
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = this.findByEmail(email);
@@ -32,17 +49,33 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 				true, true, getAutority(user));
 	}
 
+	/**
+	 * Gets the autority.
+	 *
+	 * @param user the user
+	 * @return the autority
+	 */
 	private Collection<? extends GrantedAuthority> getAutority(User user) {
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(user.getRole().toString()));
 		return authorities;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M01_Service#findByEmail(java.lang.String)
+	 */
 	@Override
 	public User findByEmail(String email) {
 		return this.userDao.findByEmail(email).orElse(null);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M01_Service#save(com.gic.ems.entity.User)
+	 */
 	// TODO delete this function after developing
 	@Transactional
 	@Override

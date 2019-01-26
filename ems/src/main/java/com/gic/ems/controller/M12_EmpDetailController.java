@@ -52,7 +52,7 @@ public class M12_EmpDetailController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/emp-detail")
-	public String init(@PathVariable String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") String id, Model model, Locale locale) {
 		String msg12 = messageSource.getMessage("msg12", null, null);
 		model.addAttribute("message", msg12);
 		Optional<Employee> emp_info = service.findById((long) 1);

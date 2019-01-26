@@ -16,16 +16,44 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
 @Service
 public class M04_ServiceImpl implements M04_Service {
 
-	/** The employee dao. */
-	@Autowired
-	private EmployeeDao employeeDao;
-
 	/** The user dao. */
-	@Autowired
 	private UserDao userDao;
 
-	@Autowired
+	/** The employee dao. */
+	private EmployeeDao employeeDao;
+
+	/** The encoder. */
 	private PasswordEncoder encoder;
+
+	/**
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
+	 */
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
+	/**
+	 * Sets the user dao.
+	 *
+	 * @param userDao the new user dao
+	 */
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	/**
+	 * Sets the encoder.
+	 *
+	 * @param encoder the new encoder
+	 */
+	@Autowired
+	public void setEncoder(PasswordEncoder encoder) {
+		this.encoder = encoder;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -43,7 +71,6 @@ public class M04_ServiceImpl implements M04_Service {
 				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
 		emp.setUser(user);
 		this.employeeDao.save(emp);
-		this.userDao.save(user);
 	}
 
 	/*
@@ -53,7 +80,6 @@ public class M04_ServiceImpl implements M04_Service {
 	 */
 	@Override
 	public boolean hasAccount(String email) {
-		boolean flag = userDao.existsByEmail(email);
-		return flag;
+		return userDao.existsByEmail(email);
 	}
 }

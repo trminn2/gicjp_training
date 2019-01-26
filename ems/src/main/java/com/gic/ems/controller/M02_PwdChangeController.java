@@ -23,9 +23,18 @@ import com.gic.ems.web.model.M02_PasswordUpdateModel;
 @Controller
 public class M02_PwdChangeController {
 
-	/** The userservice. */
+	/** The service. */
+	private M02_Service service;
+
+	/**
+	 * Sets the service.
+	 *
+	 * @param service the new service
+	 */
 	@Autowired
-	private M02_Service userservice;
+	public void setService(M02_Service service) {
+		this.service = service;
+	}
 
 	/**
 	 * Inits the.
@@ -48,13 +57,13 @@ public class M02_PwdChangeController {
 	 * @return String
 	 */
 	@PostMapping("/password-change")
-	public String change(@ModelAttribute M02_PasswordUpdateModel m02Model, Model model, BindingResult result,
+	public String change(@ModelAttribute M02_PasswordUpdateModel m02Model, Model model, BindingResult bindingResult,
 			Locale locale) {
 
-		if (result.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("erros", "Error Messages");
 		} else {
-			this.userservice.update(m02Model);
+			this.service.update(m02Model);
 		}
 		return ControllerConstant.M02_PASSWORD_CHANGE;
 	}

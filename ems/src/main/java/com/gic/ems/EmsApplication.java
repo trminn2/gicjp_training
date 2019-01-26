@@ -12,7 +12,7 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
 /**
  * The Class EmsApplication.
  *
- * @author GIC-JP Jan 5, 2019 <BR>
+ * @author KYIMINHAN Jan 5, 2019 <BR>
  *         The Class EmsApplication.
  */
 @SpringBootApplication
@@ -23,15 +23,28 @@ public class EmsApplication implements CommandLineRunner {
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String[] args) {
+	public static void main(String... args) {
 		SpringApplication.run(EmsApplication.class, args);
 	}
 
 	/** The service. */
-	// TODO to delete after developing phase
-	@Autowired
 	private M04_ServiceImpl service;
 
+	/**
+	 * Sets the service.
+	 *
+	 * @param service the new service
+	 */
+	@Autowired
+	public void setService(M04_ServiceImpl service) {
+		this.service = service;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[])
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 		String email = "admin@gmail.com";
