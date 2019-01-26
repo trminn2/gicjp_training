@@ -49,9 +49,9 @@ public class M10_HakenInfoSearchController {
 			model.addAttribute(ControllerConstant.M10_MODEL, M10_HakenInfoSearchModel.builder().build());
 			model.addAttribute(ControllerConstant.M10_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);
 		} else {
-
+			model.addAttribute(ControllerConstant.M10_MODEL, searchModel);
+			model.addAttribute(ControllerConstant.M10_MODEL_LIST, this.service.findAll(searchModel));
 		}
-		this.service.search(searchModel);
 		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
 	}
 }

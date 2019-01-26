@@ -23,7 +23,7 @@ public class M10_ServiceImpl implements M10_Service {
 	 * M10_HakenInfoSearchModel)
 	 */
 	@Override
-	public Collection<M10_HakenInfoSearchModel> search(M10_HakenInfoSearchModel model) {
+	public Collection<M10_HakenInfoSearchModel> findAll(M10_HakenInfoSearchModel model) {
 		// TODO Auto-generated method stub
 		return null;
 	}

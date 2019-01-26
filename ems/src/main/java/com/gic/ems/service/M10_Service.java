@@ -18,5 +18,5 @@ public interface M10_Service {
 	 * @param model the model
 	 * @return Collection
 	 */
-	Collection<M10_HakenInfoSearchModel> search(M10_HakenInfoSearchModel model);
+	Collection<M10_HakenInfoSearchModel> findAll(M10_HakenInfoSearchModel model);
 }
