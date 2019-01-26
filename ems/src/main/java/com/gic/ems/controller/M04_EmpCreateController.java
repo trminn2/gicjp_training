@@ -16,13 +16,14 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
 
 @Controller
 public class M04_EmpCreateController {
+	
 	@Autowired
 	M04_Service service;
 	@Autowired
 	private MessageSource messageSource;
 
-	@GetMapping("/emp-intial-regist")
-	public String init(Model model) {
+	@GetMapping("/create-employee")
+	public String init(Model model, Locale locale) {
 		String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
 		model.addAttribute("message", msg04);
 		model.addAttribute("m04Model", new M04_EmpCreateModel());
