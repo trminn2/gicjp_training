@@ -1,13 +1,11 @@
 package com.gic.ems.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-
-import javax.transaction.Transactional;
-
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gic.ems.dao.EmployeeDao;
 import com.gic.ems.dao.GroupDao;
 import com.gic.ems.entity.EmpGroup;
@@ -15,61 +13,47 @@ import com.gic.ems.entity.Employee;
 import com.gic.ems.service.M05_Service;
 import com.gic.ems.web.model.M05_EmpListModel;
 
+/**
+ * @author thaemyatnoelwin
+ *
+ */
 @Service
 public class M05_ServiceImpl implements M05_Service {
 
+	/**
+	 * 
+	 */
+	@Autowired
+	private GroupDao groupDao;
+
+	/**
+	 * 
+	 */
 	@Autowired
 	private EmployeeDao employeeDao;
 
-	@Autowired
-	private GroupDao groupDao;
-	
-	@Transactional
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M05_Service#findAll(com.gic.ems.web.model.
+	 * M05_EmpListModel)
+	 */
 	@Override
-	public List<M05_EmpListModel> findAll() {
-		// TODO
-		List<Employee> empList = employeeDao.findAll();
+	public Collection<M05_EmpListModel> findAll(M05_EmpListModel searchModel) {
 
-		List<M05_EmpListModel> models = new ArrayList<>();
-
-		System.out.println("list " + empList.size());
+		List<M05_EmpListModel> list = new ArrayList<>();
+		
+		List<Employee> empList = this.employeeDao.findAll();
+		
 		for (Employee emp : empList) {
-			M05_EmpListModel model = new M05_EmpListModel();
-		    model.setEmployeeId(emp.getEmployeeId());
-			model.setFirstName(emp.getFirstName());
-			model.setLastName(emp.getLastName());
-			model.setEmail(emp.getUser().getEmail());
-			model.setGender(emp.getGender());
-			models.add(model);
-			
-			EmpGroup g = groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
-		if (null != g) {
-				model.setGroupName(g.getName());
-			}else {
-				model.setGroupName("");
-			}
-			models.add(model);
+			EmpGroup empGroup = groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
+			//TODO delete after developing
+			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : StringUtils.EMPTY;
+			list.add(M05_EmpListModel.builder().employeeId(emp.getEmployeeId()).firstName(emp.getFirstName())
+					.lastName(emp.getLastName()).email(email).gender(emp.getGender())
+					.groupName((null != empGroup) ? empGroup.getName() : StringUtils.EMPTY).build());
 		}
-		return models;
+		
+		return list;
 	}
-
-/*	@Override
-	public List<M05_EmpListModel> findAll(M05_EmpListSearch m05_EmpListSearch) {
-		// TODO
-		// List<Employee> employees = employeeDao.findAll();
-
-		List<M05_EmpListModel> models = new ArrayList<>();
-
-		return models;
-	}*/
-	
-	@Transactional
-	@Override
-	public void search(M05_EmpListModel model) {
-		/*System.out.println("Search Datas " + model.getEmployeeId());
-		System.out.println("Search Datas " + model.getFirstName());
-		System.out.println("Search Datas " + model.getGroupName());
-		System.out.println("Search Datas " + model.getEmail());*/
-	}
-
 }
