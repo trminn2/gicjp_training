@@ -56,7 +56,7 @@ public class M13_ServiceImpl implements M13_Service {
 	 * M13_CustCreateModel)
 	 */
 	@Override
-	public void edit(M13_CustCreateModel custCreateModel) {
+	public void update(M13_CustCreateModel custCreateModel) {
 		// TODO Auto-generated method stub
 		Company company = Company.builder().companyId(custCreateModel.getCompanyId())
 				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())

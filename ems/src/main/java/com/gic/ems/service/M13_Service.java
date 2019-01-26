@@ -17,13 +17,12 @@ public interface M13_Service {
 	 *
 	 * @param custCreateModel the cust create model
 	 */
-	void save(M13_CustCreateModel custCreateModel);
+	void save(@NonNull M13_CustCreateModel custCreateModel);
 
 	/**
 	 * Edit.
 	 *
 	 * @param custCreateModel the cust create model
 	 */
-	void edit(@NonNull M13_CustCreateModel custCreateModel);
-
+	void update(@NonNull M13_CustCreateModel custCreateModel);
 }

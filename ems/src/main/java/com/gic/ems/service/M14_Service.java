@@ -24,7 +24,7 @@ public interface M14_Service {
 	 *
 	 * @param m14Model the m 14 model
 	 */
-	void eidt(@NonNull M14_EmpHakenModel m14Model);
+	void update(@NonNull M14_EmpHakenModel m14Model);
 
 	/**
 	 * Find by id.

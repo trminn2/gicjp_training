@@ -52,7 +52,7 @@ public class M14_ServiceImpl implements M14_Service {
 	 */
 	@Override
 	@Transactional(noRollbackFor = Exception.class)
-	public void eidt(M14_EmpHakenModel m14Model) {
+	public void update(M14_EmpHakenModel m14Model) {
 		// TODO Auto-generated method stub
 		this.dispatchDao.save(Dispatch.builder().build());
 	}

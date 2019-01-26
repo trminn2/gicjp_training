@@ -64,7 +64,7 @@ public class M14_EmpHakenEditController {
 	@PostMapping("/{id}/emp-haken-edit")
 	public String edit(@PathVariable("id") @NonNull String id, @ModelAttribute M14_EmpHakenModel m14Model, Model model,
 			BindingResult bindingResult, Locale locale) {
-		this.service.eidt(m14Model);
+		this.service.update(m14Model);
 		return ControllerConstant.M14_EMPLOYEE_HAKE_EDIT;
 	}
 }
