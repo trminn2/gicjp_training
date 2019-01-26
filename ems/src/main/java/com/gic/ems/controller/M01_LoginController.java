@@ -23,6 +23,12 @@ public class M01_LoginController {
 	public String login(Model model) {
 		return "M01-login";
 	}
+	
+	@GetMapping("/homeMenu")
+	public String homeMenu(Model model) {
+		System.out.println("*********home***");
+		return "M11-menu";
+	}
 
 	/**
 	 * Access denied.
