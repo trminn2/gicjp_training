@@ -108,8 +108,8 @@ public abstract class BaseEntity implements Serializable {
 		this.deleteFlag = DeleteFlag.ACTIVE;
 		this.createDate = LocalDateTime.now();
 		this.updateDate = LocalDateTime.now();
-		this.createUser = UserUtility.getLoginUserName();
-		this.updateUser = UserUtility.getLoginUserName();
+		this.createUser = UserUtility.getInstance().getLoginUserName();
+		this.updateUser = UserUtility.getInstance().getLoginUserName();
 		this.uuid = UUID.randomUUID().toString().replace(Constant.HYPHEN, Constant.EMPTY_STRING);
 	}
 

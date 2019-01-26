@@ -52,7 +52,7 @@ public class M02_ServiceImpl implements M02_Service {
 	 */
 	@Override
 	public boolean update(M02_PasswordUpdateModel m02Model) {
-		User user = this.userDao.findByEmail(UserUtility.getLoginUserName()).orElse(null);
+		User user = this.userDao.findByEmail(UserUtility.getInstance().getLoginUserName()).orElse(null);
 		if (null != user) {
 			// TODO
 			user.setPassword(this.encoder.encode(m02Model.getNewPassword()));

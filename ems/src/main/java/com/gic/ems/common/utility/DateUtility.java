@@ -3,6 +3,8 @@ package com.gic.ems.common.utility;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import lombok.NonNull;
+
 /**
  * The Class DateUtils.
  *
@@ -21,6 +23,11 @@ public class DateUtility {
 		super();
 	}
 
+	/**
+	 * Gets the single instance of DateUtility.
+	 *
+	 * @return single instance of DateUtility
+	 */
 	public static DateUtility getInstance() {
 		if (null == dateUtils) {
 			synchronized (DateUtility.class) {
@@ -37,7 +44,7 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertStringToLocaleDate(final String stringDate, final String dateFormat) {
+	public LocalDate convertStringToLocaleDate(@NonNull final String stringDate, @NonNull final String dateFormat) {
 		return null;
 	}
 
@@ -48,7 +55,7 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertLocaleDateToString(final LocalDate date, final String dateFormat) {
+	public LocalDate convertLocaleDateToString(@NonNull final LocalDate date, @NonNull final String dateFormat) {
 		return null;
 	}
 
@@ -59,7 +66,7 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertStringToLocaleDateTime(final String stringDate, final String dateFormat) {
+	public LocalDate convertStringToLocaleDateTime(@NonNull final String stringDate, @NonNull final String dateFormat) {
 		return null;
 	}
 
@@ -70,7 +77,8 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertLocaleDateTimeToString(final LocalDateTime date, final String dateFormat) {
+	public LocalDate convertLocaleDateTimeToString(@NonNull final LocalDateTime date,
+			@NonNull final String dateFormat) {
 		return null;
 	}
 }
