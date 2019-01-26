@@ -23,9 +23,9 @@ import com.gic.ems.web.model.M13_CustCreateModel;
 public class M13_CustCreateController {
 	
 	@Autowired
-	M13_Service service;
+	private M13_Service service;
 	
-	@GetMapping("/cust-register")
+	@GetMapping("/create-customer")
 	public String init(Model model,Locale locale) {
 		model.addAttribute(ControllerConstant.M13_MODEL, M13_CustCreateModel.builder().build());
 		return ControllerConstant.M13_CUSTOMER_CREATE;
@@ -42,13 +42,4 @@ public class M13_CustCreateController {
 		}
 		return ControllerConstant.M13_CUSTOMER_CREATE;
 	}
-	
-	
-	@PostMapping("/updateCustomer")
-	public String updateCustomer(@Valid @ModelAttribute M13_CustCreateModel customerModel,
-			BindingResult bindingResult, Model model) {
-		
-		return ControllerConstant.M13_CUSTOMER_CREATE;
-	}
-	
 }
