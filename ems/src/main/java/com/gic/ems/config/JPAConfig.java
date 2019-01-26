@@ -46,15 +46,13 @@ public class JPAConfig {
 	 */
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-		em.setDataSource(dataSource());
-		em.setPackagesToScan(new String[] { env.getProperty("hibernate.entity") });
-
+		LocalContainerEntityManagerFactoryBean lcemf = new LocalContainerEntityManagerFactoryBean();
+		lcemf.setDataSource(dataSource());
+		lcemf.setPackagesToScan(new String[] { this.env.getProperty("hibernate.entity") });
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		em.setJpaVendorAdapter(vendorAdapter);
-		em.setJpaProperties(additionalProperties());
-
-		return em;
+		lcemf.setJpaVendorAdapter(vendorAdapter);
+		lcemf.setJpaProperties(additionalProperties());
+		return lcemf;
 	}
 
 	/**
@@ -65,10 +63,10 @@ public class JPAConfig {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("mysql.driver"));
-		dataSource.setUrl(env.getProperty("mysql.jdbcUrl"));
-		dataSource.setUsername(env.getProperty("mysql.username"));
-		dataSource.setPassword(env.getProperty("mysql.password"));
+		dataSource.setDriverClassName(this.env.getProperty("mysql.driver"));
+		dataSource.setUrl(this.env.getProperty("mysql.jdbcUrl"));
+		dataSource.setUsername(this.env.getProperty("mysql.username"));
+		dataSource.setPassword(this.env.getProperty("mysql.password"));
 		return dataSource;
 	}
 
@@ -82,7 +80,6 @@ public class JPAConfig {
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
-
 		return transactionManager;
 	}
 
@@ -103,11 +100,11 @@ public class JPAConfig {
 	 */
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.put(AvailableSettings.DIALECT, env.getProperty("hibernate.dialet"));
-		properties.put(AvailableSettings.SHOW_SQL, env.getProperty("hibernate.show_sql"));
-		properties.put(AvailableSettings.HBM2DDL_AUTO, env.getProperty("hibernate.hbm2ddl.auto"));
+		properties.put(AvailableSettings.DIALECT, this.env.getProperty("hibernate.dialet"));
+		properties.put(AvailableSettings.SHOW_SQL, this.env.getProperty("hibernate.show_sql"));
+		properties.put(AvailableSettings.HBM2DDL_AUTO, this.env.getProperty("hibernate.hbm2ddl.auto"));
 		properties.put(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS,
-				env.getProperty("hibernate.enable_lazy_load_no_trans"));
+				this.env.getProperty("hibernate.enable_lazy_load_no_trans"));
 		return properties;
 	}
 }

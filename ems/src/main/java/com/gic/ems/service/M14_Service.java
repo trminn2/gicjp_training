@@ -2,6 +2,8 @@ package com.gic.ems.service;
 
 import com.gic.ems.web.model.M14_EmpHakenModel;
 
+import lombok.NonNull;
+
 /**
  * The Interface M14Service.
  *
@@ -15,14 +17,14 @@ public interface M14_Service {
 	 *
 	 * @param m14Model the m 14 model
 	 */
-	void save(M14_EmpHakenModel m14Model);
+	void save(@NonNull M14_EmpHakenModel m14Model);
 
 	/**
 	 * Eidt.
 	 *
 	 * @param m14Model the m 14 model
 	 */
-	void eidt(M14_EmpHakenModel m14Model);
+	void eidt(@NonNull M14_EmpHakenModel m14Model);
 
 	/**
 	 * Find by id.
@@ -30,5 +32,5 @@ public interface M14_Service {
 	 * @param id the id
 	 * @return M14_EmpHakenModel
 	 */
-	M14_EmpHakenModel findById(Long id);
+	M14_EmpHakenModel findById(@NonNull Long id);
 }

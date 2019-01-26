@@ -11,7 +11,7 @@ import com.gic.ems.service.M12_Service;
 /**
  * The Class M12_ServiceImpl.
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
+ * @author MOEPWINTPHYU Jan 26, 2019 <BR>
  *         The Class M12_ServiceImpl.
  */
 @Service

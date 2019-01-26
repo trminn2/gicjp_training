@@ -11,7 +11,7 @@ import lombok.NonNull;
  * @author KYIMINHAN Jan 26, 2019 <BR>
  *         The Class DateUtils.
  */
-public class DateUtility {
+public final class DateUtility {
 
 	/** The date utils. */
 	private volatile static DateUtility dateUtils;
@@ -28,7 +28,7 @@ public class DateUtility {
 	 *
 	 * @return single instance of DateUtility
 	 */
-	public static DateUtility getInstance() {
+	public static final DateUtility getInstance() {
 		if (null == dateUtils) {
 			synchronized (DateUtility.class) {
 				dateUtils = new DateUtility();
@@ -44,7 +44,8 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertStringToLocaleDate(@NonNull final String stringDate, @NonNull final String dateFormat) {
+	public final LocalDate convertStringToLocaleDate(@NonNull final String stringDate,
+			@NonNull final String dateFormat) {
 		return null;
 	}
 
@@ -55,7 +56,7 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertLocaleDateToString(@NonNull final LocalDate date, @NonNull final String dateFormat) {
+	public final LocalDate convertLocaleDateToString(@NonNull final LocalDate date, @NonNull final String dateFormat) {
 		return null;
 	}
 
@@ -66,7 +67,8 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertStringToLocaleDateTime(@NonNull final String stringDate, @NonNull final String dateFormat) {
+	public final LocalDate convertStringToLocaleDateTime(@NonNull final String stringDate,
+			@NonNull final String dateFormat) {
 		return null;
 	}
 
@@ -77,7 +79,7 @@ public class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public LocalDate convertLocaleDateTimeToString(@NonNull final LocalDateTime date,
+	public final LocalDate convertLocaleDateTimeToString(@NonNull final LocalDateTime date,
 			@NonNull final String dateFormat) {
 		return null;
 	}

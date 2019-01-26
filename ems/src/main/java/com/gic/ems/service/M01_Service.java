@@ -2,9 +2,21 @@ package com.gic.ems.service;
 
 import com.gic.ems.entity.User;
 
-public interface M01_Service {
-	User findByEmail(String email);
+import lombok.NonNull;
 
-	// TODO delete this function after developing
-	void save(User user);
+/**
+ * The Interface M01_Service.
+ *
+ * @author KYIMINHAN Jan 27, 2019 <BR>
+ *         The Interface M01_Service.
+ */
+public interface M01_Service {
+
+	/**
+	 * Find by email.
+	 *
+	 * @param email the email
+	 * @return User
+	 */
+	User findByEmail(@NonNull String email);
 }

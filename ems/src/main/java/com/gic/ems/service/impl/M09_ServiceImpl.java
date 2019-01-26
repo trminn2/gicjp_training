@@ -9,6 +9,12 @@ import com.gic.ems.entity.DispatchDepartment;
 import com.gic.ems.service.M09_Service;
 import com.gic.ems.web.model.M09_HakenCreateModel;
 
+/**
+ * The Class M09_ServiceImpl.
+ *
+ * @author ThetThetKhine Jan 27, 2019 <BR>
+ *         The Class M09_ServiceImpl.
+ */
 @Service
 public class M09_ServiceImpl implements M09_Service {
 

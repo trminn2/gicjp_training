@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M13_Service;
 
+import lombok.NonNull;
+
 /**
  * The Class M15_CustEditController.
  *
@@ -43,7 +45,7 @@ public class M13_CustEditController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/cust-edit")
-	public String init(@PathVariable("id") String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
 		return ControllerConstant.M13_CUSTOMER_EDIT;
 	}
 
@@ -56,7 +58,7 @@ public class M13_CustEditController {
 	 * @return String
 	 */
 	@PostMapping("/{id}/cust-edit")
-	public String edit(@PathVariable("id") String id, Model model, Locale locale) {
+	public String edit(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
 		return ControllerConstant.M13_CUSTOMER_EDIT;
 	}
 }

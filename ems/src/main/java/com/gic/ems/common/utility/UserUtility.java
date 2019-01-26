@@ -12,7 +12,7 @@ import com.gic.ems.common.constant.Constant;
  * @author KYIMINHAN Jan 26, 2019 <BR>
  *         The Class UserUtility.
  */
-public class UserUtility {
+public final class UserUtility {
 
 	/** The user utility. */
 	private volatile static UserUtility userUtility;
@@ -29,7 +29,7 @@ public class UserUtility {
 	 *
 	 * @return single instance of UserUtility
 	 */
-	public static UserUtility getInstance() {
+	public static final UserUtility getInstance() {
 		if (null == userUtility) {
 			synchronized (UserUtility.class) {
 				userUtility = new UserUtility();
@@ -43,7 +43,7 @@ public class UserUtility {
 	 *
 	 * @return the login user
 	 */
-	public User getLoginUser() {
+	public final User getLoginUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User userDetail = null;
 		if (null != auth) {
@@ -59,7 +59,7 @@ public class UserUtility {
 	 *
 	 * @return the login user name
 	 */
-	public String getLoginUserName() {
+	public final String getLoginUserName() {
 		return (null != getLoginUser()) ? getLoginUser().getUsername() : Constant.SYSTEM;
 	}
 
@@ -68,7 +68,7 @@ public class UserUtility {
 	 *
 	 * @return the login use role
 	 */
-	public String getLoginUseRole() {
+	public final String getLoginUseRole() {
 		return null;
 	}
 }

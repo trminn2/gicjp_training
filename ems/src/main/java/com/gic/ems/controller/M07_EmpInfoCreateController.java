@@ -1,8 +1,3 @@
-/*
-   * 作成日 : 2019/01/26
-   * 作成者 : テッ　テッ　カイン
-   * 画面名 : M07_個人情報登録画面
- */
 package com.gic.ems.controller;
 
 import java.util.Locale;

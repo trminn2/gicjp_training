@@ -10,11 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.User;
 import com.gic.ems.service.M01_Service;
+
+import lombok.NonNull;
 
 /**
  * The Class M01_ServiceImpl.
@@ -28,6 +29,11 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 	/** The user dao. */
 	private UserDao userDao;
 
+	/**
+	 * Sets the user dao.
+	 *
+	 * @param userDao the new user dao
+	 */
 	@Autowired
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
@@ -40,7 +46,7 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 	 * loadUserByUsername(java.lang.String)
 	 */
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(@NonNull String email) throws UsernameNotFoundException {
 		User user = this.findByEmail(email);
 		if (null == user) {
 			throw new UsernameNotFoundException("User not found");
@@ -55,7 +61,7 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 	 * @param user the user
 	 * @return the autority
 	 */
-	private Collection<? extends GrantedAuthority> getAutority(User user) {
+	private Collection<? extends GrantedAuthority> getAutority(@NonNull User user) {
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(user.getRole().toString()));
 		return authorities;
@@ -69,17 +75,5 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 	@Override
 	public User findByEmail(String email) {
 		return this.userDao.findByEmail(email).orElse(null);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.gic.ems.service.M01_Service#save(com.gic.ems.entity.User)
-	 */
-	// TODO delete this function after developing
-	@Transactional
-	@Override
-	public void save(User user) {
-		this.userDao.save(user);
 	}
 }

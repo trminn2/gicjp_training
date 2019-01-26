@@ -13,6 +13,12 @@ import com.gic.ems.entity.User;
 import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
+/**
+ * The Class M04_ServiceImpl.
+ *
+ * @author MOEPWINTPHYU Jan 27, 2019 <BR>
+ *         The Class M04_ServiceImpl.
+ */
 @Service
 public class M04_ServiceImpl implements M04_Service {
 

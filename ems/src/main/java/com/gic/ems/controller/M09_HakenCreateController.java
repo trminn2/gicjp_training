@@ -1,9 +1,3 @@
-/*
-   * 作成日 : 2019/01/19
-   * 作成者 : テッ　テッ　カイン
-   * 画面名 : M09_派遣先情報登録画面
- */
-
 package com.gic.ems.controller;
 
 import java.util.Locale;
@@ -25,7 +19,7 @@ import com.gic.ems.web.model.M09_HakenCreateModel;
 /**
  * The Class M09_HakenCreateController.
  *
- * @author KYIMINHAN Jan 27, 2019 <BR>
+ * @author ThetThetKhine Jan 27, 2019 <BR>
  *         The Class M09_HakenCreateController.
  */
 @Controller

@@ -14,6 +14,14 @@ import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.entity.Employee;
 import com.gic.ems.service.M12_Service;
 
+import lombok.NonNull;
+
+/**
+ * The Class M12_EmpDetailController.
+ *
+ * @author MoePwintPhyu Jan 27, 2019 <BR>
+ *         The Class M12_EmpDetailController.
+ */
 @Controller
 public class M12_EmpDetailController {
 
@@ -52,7 +60,7 @@ public class M12_EmpDetailController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/emp-detail")
-	public String init(@PathVariable("id") String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
 		String msg12 = messageSource.getMessage("msg12", null, null);
 		model.addAttribute("message", msg12);
 		Optional<Employee> emp_info = service.findById((long) 1);

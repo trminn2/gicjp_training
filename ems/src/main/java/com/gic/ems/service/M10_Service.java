@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import com.gic.ems.web.model.M10_HakenInfoSearchModel;
 
+import lombok.NonNull;
+
 /**
  * The Interface M10_Service.
  *
@@ -18,5 +20,5 @@ public interface M10_Service {
 	 * @param model the model
 	 * @return Collection
 	 */
-	Collection<M10_HakenInfoSearchModel> findAll(M10_HakenInfoSearchModel model);
+	Collection<M10_HakenInfoSearchModel> findAll(@NonNull M10_HakenInfoSearchModel model);
 }

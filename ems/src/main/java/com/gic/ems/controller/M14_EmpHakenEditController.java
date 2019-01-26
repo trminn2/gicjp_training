@@ -15,6 +15,8 @@ import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M14_Service;
 import com.gic.ems.web.model.M14_EmpHakenModel;
 
+import lombok.NonNull;
+
 /**
  * The Class M14_EmployeeHakenEditController.
  *
@@ -46,7 +48,7 @@ public class M14_EmpHakenEditController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/emp-haken-edit")
-	public String init(@PathVariable("id") String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
 		model.addAttribute(ControllerConstant.M14_MODEL, this.service.findById(Long.valueOf(id)));
 		return ControllerConstant.M14_EMPLOYEE_HAKE_EDIT;
 	}
@@ -60,7 +62,7 @@ public class M14_EmpHakenEditController {
 	 * @return String
 	 */
 	@PostMapping("/{id}/emp-haken-edit")
-	public String edit(@PathVariable("id") String id, @ModelAttribute M14_EmpHakenModel m14Model, Model model,
+	public String edit(@PathVariable("id") @NonNull String id, @ModelAttribute M14_EmpHakenModel m14Model, Model model,
 			BindingResult bindingResult, Locale locale) {
 		this.service.eidt(m14Model);
 		return ControllerConstant.M14_EMPLOYEE_HAKE_EDIT;

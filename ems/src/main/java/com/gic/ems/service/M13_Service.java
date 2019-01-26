@@ -2,6 +2,8 @@ package com.gic.ems.service;
 
 import com.gic.ems.web.model.M13_CustCreateModel;
 
+import lombok.NonNull;
+
 /**
  * The Interface M13Service.
  *
@@ -16,12 +18,12 @@ public interface M13_Service {
 	 * @param custCreateModel the cust create model
 	 */
 	void save(M13_CustCreateModel custCreateModel);
-	
+
 	/**
 	 * Edit.
 	 *
 	 * @param custCreateModel the cust create model
 	 */
-	void edit(M13_CustCreateModel custCreateModel);
+	void edit(@NonNull M13_CustCreateModel custCreateModel);
 
 }
