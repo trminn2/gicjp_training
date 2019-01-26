@@ -18,7 +18,7 @@ import lombok.Setter;
  * Instantiates a new m 14 emp haken create model.
  */
 @NoArgsConstructor
-public class M14_EmpHakenCreateModel extends BaseModel {
+public class M14_EmpHakenModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -68,7 +68,7 @@ public class M14_EmpHakenCreateModel extends BaseModel {
 	 * @return M14_EmpHakenCreateModel
 	 */
 	@Builder
-	public M14_EmpHakenCreateModel(Long id, String uuid, String companyId, String employeeId, String employeeName,
+	public M14_EmpHakenModel(Long id, String uuid, String companyId, String employeeId, String employeeName,
 			String groupId, String dispatchDept, String dispatchStartDate, String dispatchEndDate, String income) {
 		super(id, uuid);
 		this.companyId = companyId;

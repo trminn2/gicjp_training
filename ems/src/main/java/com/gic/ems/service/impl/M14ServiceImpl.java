@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gic.ems.dao.DispatchDao;
 import com.gic.ems.entity.Dispatch;
 import com.gic.ems.service.M14Service;
-import com.gic.ems.web.model.M14_EmpHakenCreateModel;
+import com.gic.ems.web.model.M14_EmpHakenModel;
 
 /**
  * The Class M14ServiceImpl.
@@ -30,7 +30,7 @@ public class M14ServiceImpl implements M14Service {
 	 */
 	@Override
 	@Transactional(noRollbackFor = Exception.class)
-	public void save(M14_EmpHakenCreateModel m14Model) {
+	public void save(M14_EmpHakenModel m14Model) {
 		// TODO Auto-generated method stub
 		this.dispatchDao.save(Dispatch.builder().build());
 	}
@@ -43,7 +43,7 @@ public class M14ServiceImpl implements M14Service {
 	 */
 	@Override
 	@Transactional(noRollbackFor = Exception.class)
-	public void eidt(M14_EmpHakenCreateModel m14Model) {
+	public void eidt(M14_EmpHakenModel m14Model) {
 		// TODO Auto-generated method stub
 		this.dispatchDao.save(Dispatch.builder().build());
 	}
