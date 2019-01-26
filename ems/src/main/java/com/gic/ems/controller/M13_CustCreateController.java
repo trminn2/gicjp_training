@@ -1,6 +1,5 @@
 package com.gic.ems.controller;
 
-
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -23,7 +22,7 @@ import com.gic.ems.web.model.M13_CustCreateModel;
  */
 @Controller
 public class M13_CustCreateController {
-	
+
 	/** The service. */
 	private M13_Service service;
 
@@ -36,17 +35,17 @@ public class M13_CustCreateController {
 	public void setService(M13_Service service) {
 		this.service = service;
 	}
-	
-	@GetMapping("/create-customer")
-	public String init(Model model,Locale locale) {
+
+	@GetMapping("/cust-create")
+	public String init(Model model, Locale locale) {
 		model.addAttribute(ControllerConstant.M13_MODEL, M13_CustCreateModel.builder().build());
 		return ControllerConstant.M13_CUSTOMER_CREATE;
 	}
-	
-	@PostMapping("/create-customer")
-	public String createCustomer(@Valid @ModelAttribute M13_CustCreateModel customerModel,
-			BindingResult bindingResult, Model model) {
-		if(bindingResult.hasErrors()) {
+
+	@PostMapping("/cust-create")
+	public String create(@Valid @ModelAttribute M13_CustCreateModel customerModel, BindingResult bindingResult,
+			Model model) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("companyName", customerModel.getCompanyName());
 			model.addAttribute(ControllerConstant.M13_MODEL, customerModel);
 		} else {

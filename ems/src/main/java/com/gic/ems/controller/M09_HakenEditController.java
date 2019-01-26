@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gic.ems.common.constant.ControllerConstant;
@@ -23,43 +24,50 @@ import com.gic.ems.service.M09_Service;
 import com.gic.ems.web.model.M09_HakenCreateModel;
 
 /**
- * The Class M09_HakenCreateController.
+ * The Class M09_HakenEditController.
  *
- * @author KYIMINHAN Jan 27, 2019 <BR>
- *         The Class M09_HakenCreateController.
+ * @author ThetThetKhine Jan 27, 2019 <BR>
+ *         The Class M09_HakenEditController.
  */
 @Controller
-public class M09_HakenCreateController {
+public class M09_HakenEditController {
 
 	/** The service. */
-	@Autowired
 	private M09_Service service;
+
+	@Autowired
+	public void setService(M09_Service service) {
+		this.service = service;
+	}
 
 	/**
 	 * Inits the.
 	 *
+	 * @param id     the id
 	 * @param model  the model
 	 * @param locale the locale
 	 * @return String
 	 */
-	@GetMapping("/com-haken-create")
-	public String init(Model model, Locale locale) {
+	@GetMapping("/{id}/com-haken-edit")
+	public String init(@PathVariable("id") String id, Model model, Locale locale) {
 		model.addAttribute(ControllerConstant.M09_MODEL, M09_HakenCreateModel.builder().build());
-		return ControllerConstant.M09_HAKEN_CREATE;
+		return ControllerConstant.M09_HAKEN_EDIT;
 	}
 
 	/**
-	 * Creates the company haken.
+	 * Edits the.
 	 *
+	 * @param id            the id
 	 * @param hakenModel    the haken model
-	 * @param bindingResult the binding result
 	 * @param model         the model
+	 * @param bindingResult the binding result
+	 * @param locale        the locale
 	 * @return String
 	 */
-	@PostMapping("/com-haken-create")
-	public String create(@Valid @ModelAttribute M09_HakenCreateModel hakenModel, BindingResult bindingResult,
-			Model model) {
-		this.service.save(hakenModel);
-		return ControllerConstant.M09_HAKEN_CREATE;
+	@PostMapping("/{id}/com-haken-edit")
+	public String edit(@PathVariable("id") String id, @Valid @ModelAttribute M09_HakenCreateModel hakenModel,
+			Model model, BindingResult bindingResult, Locale locale) {
+		service.save(hakenModel);
+		return ControllerConstant.M09_HAKEN_EDIT;
 	}
 }

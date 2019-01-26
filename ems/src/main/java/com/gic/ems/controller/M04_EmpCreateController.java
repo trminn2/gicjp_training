@@ -54,7 +54,7 @@ public class M04_EmpCreateController {
 	 * @param locale
 	 * @return
 	 */
-	@GetMapping("/create-employee")
+	@GetMapping("/emp-create")
 	public String init(Model model, Locale locale) {
 		String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
 		model.addAttribute("message", msg04);
@@ -70,7 +70,7 @@ public class M04_EmpCreateController {
 	 * @param model         the model
 	 * @return String
 	 */
-	@PostMapping("/create-employee")
+	@PostMapping("/emp-create")
 	public String createEmployee(@Valid @ModelAttribute M04_EmpCreateModel empModel, BindingResult bindingResult,
 			Model model) {
 		if (bindingResult.hasErrors()) {

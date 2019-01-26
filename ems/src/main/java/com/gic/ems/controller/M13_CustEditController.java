@@ -43,7 +43,7 @@ public class M13_CustEditController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/cust-edit")
-	public String init(@PathVariable String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") String id, Model model, Locale locale) {
 		return ControllerConstant.M13_CUSTOMER_EDIT;
 	}
 
@@ -56,7 +56,7 @@ public class M13_CustEditController {
 	 * @return String
 	 */
 	@PostMapping("/{id}/cust-edit")
-	public String edit(@PathVariable String id, Model model, Locale locale) {
+	public String edit(@PathVariable("id") String id, Model model, Locale locale) {
 		return ControllerConstant.M13_CUSTOMER_EDIT;
 	}
 }

@@ -50,11 +50,11 @@ public interface ControllerConstant {
 	/** The Constant M15_MODEL. */
 	static final String M15_MODEL = "m15Model";
 
-	/** The Constant M04_EMPLOYEE_INTIAL_INFO. */
-	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
-
 	/** The Constant M02_PASSWORD_CHANGE. */
 	static final String M02_PASSWORD_CHANGE = "M02-password-change";
+
+	/** The Constant M04_EMPLOYEE_INTIAL_INFO. */
+	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
 
 	/** The Constant MG005_EMPLOYEE_LIST_SEARCH. */
 	static final String MG005_EMPLOYEE_LIST_SEARCH = "M05-employee-list";
@@ -64,6 +64,9 @@ public interface ControllerConstant {
 
 	/** The Constant M09_HAKEN_CREATE. */
 	static final String M09_HAKEN_CREATE = "M09-haken-create";
+
+	/** The Constant M09_HAKEN_EDIT. */
+	static final String M09_HAKEN_EDIT = "M09-haken-edit";
 
 	/** The Constant M10_HAKEN_INFO_SEARCH. */
 	static final String M10_HAKEN_INFO_SEARCH = "M10-haken-info-search";

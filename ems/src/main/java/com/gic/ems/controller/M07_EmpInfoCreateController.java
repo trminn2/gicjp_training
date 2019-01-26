@@ -48,7 +48,7 @@ public class M07_EmpInfoCreateController {
 	 * @param locale the locale
 	 * @return String
 	 */
-	@GetMapping("/create-emp-info")
+	@GetMapping("/emp-info-create")
 	public String hakenCreate(Model model, Locale locale) {
 		return ControllerConstant.M07_EMP_INFO_CREATE;
 	}
@@ -62,7 +62,7 @@ public class M07_EmpInfoCreateController {
 	 * @param locale        the locale
 	 * @return String
 	 */
-	@PostMapping("/create-emp-info")
+	@PostMapping("/emp-info-create")
 	public String create(@Valid @ModelAttribute M07_EmpInfoCreateModel empInfoModel, Model model,
 			BindingResult bindingResult, Locale locale) {
 		this.service.save(empInfoModel);

@@ -28,7 +28,7 @@ public class M14_EmpHakenEditController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/emp-haken-edit")
-	public String init(@PathVariable String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") String id, Model model, Locale locale) {
 		return ControllerConstant.M14_EMPLOYEE_HAKE_EDIT;
 	}
 
@@ -41,7 +41,7 @@ public class M14_EmpHakenEditController {
 	 * @return String
 	 */
 	@PostMapping("/{id}/emp-haken-edit")
-	public String edit(@PathVariable String id, Model model, Locale locale) {
+	public String edit(@PathVariable("id") String id, Model model, Locale locale) {
 		return ControllerConstant.M14_EMPLOYEE_HAKE_EDIT;
 	}
 }
