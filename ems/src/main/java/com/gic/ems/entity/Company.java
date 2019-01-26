@@ -1,7 +1,7 @@
 package com.gic.ems.entity;
 
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -66,7 +66,7 @@ public class Company extends BaseEntity {
 
 	/** The contract start date. */
 	@Column
-	private Date contractStartDate;
+	private LocalDate contractStartDate;
 
 	/** The address. */
 	@Column
@@ -100,7 +100,7 @@ public class Company extends BaseEntity {
 	@Builder
 	public Company(Long id, String companyId, String companyName, String contactEmail, String contactPersonFirstName,
 			String contactPersonFirstNameKana, String contactPersonLastName, String contactPersonLastNameKana,
-			String contactPhone, Date contractStartDate, String address, String postalCode,
+			String contactPhone, LocalDate contractStartDate, String address, String postalCode,
 			Collection<DispatchDepartment> dispatchDepartments) {
 		super(id);
 		this.companyId = companyId;
