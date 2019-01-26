@@ -13,12 +13,18 @@ public interface ControllerConstant {
 
 	/** The Constant M05_MODEL. */
 	static final String M05_MODEL = "m05Model";
+	
+	/** The Constant M10_MODEL. */
+	static final String M10_MODEL = "m10Model";
+	
+	/** The Constant M07_MODEL. */
+	static final String M07_MODEL = "m07Model";
+
+	/** The Constant M09_MODEL. */
+	static final String M09_MODEL = "m09Model";
 
 	/** The Constant M05_MODEL_LIST. */
 	static final String M05_MODEL_LIST = "m05ModelList";
-
-	/** The Constant M10_MODEL. */
-	static final String M10_MODEL = "m10Model";
 
 	/** The Constant M10_MODEL_LIST. */
 	static final String M10_MODEL_LIST = "m10ModelList";
