@@ -25,7 +25,7 @@ public interface ControllerConstant {
 
 	/** The Constant M10_MODEL. */
 	static final String M10_MODEL = "m10Model";
-
+	
 	/** The Constant M07_MODEL. */
 	static final String M07_MODEL = "m07Model";
 
@@ -37,12 +37,18 @@ public interface ControllerConstant {
 
 	/** The Constant M10_MODEL_LIST. */
 	static final String M10_MODEL_LIST = "m10ModelList";
+	
+	/** The Constant M15_MODEL_LIST. */
+	static final String M15_MODEL_LIST = "m15ModelList";
 
 	/** The Constant M13_MODEL. */
 	static final String M13_MODEL = "m13Model";
 
 	/** The Constant M14_MODEL. */
 	static final String M14_MODEL = "m14Model";
+	
+	/** The Constant M15_MODEL. */
+	static final String M15_MODEL = "m15Model";
 
 	/** The Constant M04_EMPLOYEE_INTIAL_INFO. */
 	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
@@ -76,5 +82,8 @@ public interface ControllerConstant {
 
 	/** The Constant M14_EMPLOYEE_HAKEN_CREATE. */
 	static final String M14_EMPLOYEE_HAKEN_CREATE = "M14-employee-haken-create";
+	
+	/** The Constant M15_CUSTOMER_INFO_SEARCH. */
+	static final String M15_CUSTOMER_INFO_SEARCH = "M15-customer-list";
 
 }

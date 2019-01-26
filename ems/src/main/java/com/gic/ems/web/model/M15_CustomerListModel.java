@@ -20,11 +20,11 @@ public class M15_CustomerListModel extends BaseModel {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** Name */
-	private String name;
-
 	/** Id */
 	private String companyId;
+	
+	/** Company Name */
+	private String companyName;
 
 	/** Contract Start Date */
 	private LocalDate contractStartDate;
@@ -56,8 +56,8 @@ public class M15_CustomerListModel extends BaseModel {
 	/**
 	 * @param id
 	 * @param uuid
-	 * @param name
 	 * @param companyId
+	 * @param companyName
 	 * @param contractStartDate
 	 * @param address
 	 * @param postalCode
@@ -69,13 +69,13 @@ public class M15_CustomerListModel extends BaseModel {
 	 * @param contactPhone
 	 */
 	@Builder
-	public M15_CustomerListModel(Long id, String uuid, String name, String companyId, LocalDate contractStartDate,
+	public M15_CustomerListModel(Long id, String uuid,String companyId, String companyName, LocalDate contractStartDate,
 			String address, String postalCode, String contactPersonFirstName, String contactPersonLastName,
 			String contactPersonFirstNameKana, String contactPersonLastNameKana, String contactEmail,
 			String contactPhone) {
 		super(id, uuid);
-		this.name = name;
 		this.companyId = companyId;
+		this.companyName = companyName;
 		this.contractStartDate = contractStartDate;
 		this.address = address;
 		this.postalCode = postalCode;
