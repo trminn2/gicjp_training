@@ -1,25 +1,43 @@
 package com.gic.ems.common.constant;
 
+/**
+ * The Interface ControllerConstant.
+ *
+ * @author GIC-JP Jan 26, 2019 <BR>
+ *         The Interface ControllerConstant.
+ */
 public interface ControllerConstant {
-	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
-	
-	//M02_PasswordUpdate
-	static final String M02_MODEL = "m02Model";
-	static final String M02_PASSWORDUPDATE = "M02-PasswordUpdate";
-	
-	//M14_EmpHakenCreate
+
+	/** The Constant M14_MODEL. */
 	static final String M14_MODEL = "m14Model";
-	static final String M14_EMPHAKENCREATE = "M14_emp_haken_create";
-	
-	//M05_EmployeeListSearch
+
+	/** The Constant M02_MODEL. */
+	static final String M02_MODEL = "m02Model";
+
+	/** The Constant M04_EMPLOYEE_INTIAL_INFO. */
+	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
+
+	/** The Constant M02_PASSWORD_UPDATE. */
+	static final String M02_PASSWORD_UPDATE = "M02-PasswordUpdate";
+
+	/** The Constant MG005_EMPLOYEE_LIST_SEARCH. */
 	static final String MG005_EMPLOYEE_LIST_SEARCH = "M05-employee-list";
-	
-	//M07_EmpInfoCreate
+
+	/** The Constant M07_EMP_INFO_CREATE. */
 	static final String M07_EMP_INFO_CREATE = "M07-emp-info-create";
-	
-	//M09_HakenCreate
+
+	/** The Constant M09_HAKEN_CREATE. */
 	static final String M09_HAKEN_CREATE = "M09-haken-create";
-	
-	//M12_EmployeeDetailInfo
+
+	/** The Constant M12_EMPLOYEE_DETAIL_INFO. */
 	static final String M12_EMPLOYEE_DETAIL_INFO = "M12-employee-detail-info";
+
+	/** The Constant M10_HAKEN_INFO_SEARCH. */
+	static final String M10_HAKEN_INFO_SEARCH = "M10-haken-info-search";
+
+	/** The Constant M14_EMPLOYEE_HAKE_EDIT. */
+	static final String M14_EMPLOYEE_HAKE_EDIT = "M14-employee-haken-edit";
+
+	/** The Constant M14_EMPLOYEE_HAKEN_CREATE. */
+	static final String M14_EMPLOYEE_HAKEN_CREATE = "M14-employee-haken-create";
 }

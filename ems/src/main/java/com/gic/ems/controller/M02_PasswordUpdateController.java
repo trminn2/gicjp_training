@@ -22,7 +22,7 @@ public class M02_PasswordUpdateController {
 	@GetMapping(value = { "/passwordupdate" })
 	public String init(Model model) {
 		model.addAttribute(ControllerConstant.M02_MODEL, new M02_PasswordUpdateModel());
-		return ControllerConstant.M02_PASSWORDUPDATE;
+		return ControllerConstant.M02_PASSWORD_UPDATE;
 	}
 
 	@RequestMapping(path = "/update", method = RequestMethod.POST)
@@ -33,6 +33,6 @@ public class M02_PasswordUpdateController {
 		} else {
 			this.userservice.update(m02Model);
 		}
-		return ControllerConstant.M02_PASSWORDUPDATE;
+		return ControllerConstant.M02_PASSWORD_UPDATE;
 	}
 }
