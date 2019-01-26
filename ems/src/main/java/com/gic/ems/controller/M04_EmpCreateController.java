@@ -15,7 +15,7 @@ import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
 /**
- * The Class M04_EmpCreateController
+ * The Class M04_EmpCreateController.
  *
  * @author MOEPWINTPHYU Jan 26, 2019 <BR>
  *         The Class M04_EmpCreateController.
@@ -23,10 +23,35 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
 @Controller
 public class M04_EmpCreateController {
 	
-	@Autowired
+	/** The service. */
 	private M04_Service service;
-	@Autowired
+	
+	/** The message source. */
 	private MessageSource messageSource;
+	
+	/**
+	 * Sets the service.
+	 *
+	 * @param service the new service
+	 */
+	@Autowired
+	public void setService(M04_Service service) {
+		this.service = service;
+	}
+
+	/**
+	 * Gets the message source.
+	 *
+	 * @return the message source
+	 */
+	@Autowired
+	public MessageSource getMessageSource() {
+		return messageSource;
+	}
+
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
 
 	/**
 	 * @param model
