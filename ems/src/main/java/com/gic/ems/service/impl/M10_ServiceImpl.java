@@ -2,6 +2,8 @@ package com.gic.ems.service.impl;
 
 import java.util.Collection;
 
+import org.springframework.stereotype.Service;
+
 import com.gic.ems.service.M10_Service;
 import com.gic.ems.web.model.M10_HakenInfoSearchModel;
 
@@ -11,6 +13,7 @@ import com.gic.ems.web.model.M10_HakenInfoSearchModel;
  * @author KYIMINHAN Jan 26, 2019 <BR>
  *         The Class M10_ServiceImpl.
  */
+@Service
 public class M10_ServiceImpl implements M10_Service {
 
 	/*
