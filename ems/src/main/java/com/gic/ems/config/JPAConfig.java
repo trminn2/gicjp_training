@@ -35,6 +35,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan("com.gic.ems")
 public class JPAConfig {
 
+	/** The env. */
 	@Autowired
 	private Environment env;
 
