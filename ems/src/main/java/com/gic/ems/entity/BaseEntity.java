@@ -16,10 +16,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.gic.ems.common.constant.Constant;
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.utility.UserUtility;
 
@@ -80,9 +80,6 @@ public abstract class BaseEntity implements Serializable {
 	@Column
 	private DeleteFlag deleteFlag;
 
-	@Transient
-	private UserUtility userUtility;
-
 	/**
 	 * Instantiates a new base entity.
 	 */
@@ -109,11 +106,11 @@ public abstract class BaseEntity implements Serializable {
 	 */
 	public void init() {
 		this.deleteFlag = DeleteFlag.ACTIVE;
-		this.createUserId = (null != userUtility) ? userUtility.getLoginUserName() : "SYSTEM";
 		this.createDate = LocalDateTime.now();
-		this.uuid = UUID.randomUUID().toString().replace("-", "");
-		this.updateUserId = (null != userUtility) ? userUtility.getLoginUserName() : "SYSTEM";
 		this.updateDate = LocalDateTime.now();
+		this.createUserId = UserUtility.getLoginUserName();
+		this.updateUserId = UserUtility.getLoginUserName();
+		this.uuid = UUID.randomUUID().toString().replace(Constant.HYPHEN, Constant.EMPTY_STRING);
 	}
 
 	/**

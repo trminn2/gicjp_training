@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.gic.ems.common.constant.Constant;
 import com.gic.ems.dao.EmployeeDao;
 import com.gic.ems.dao.GroupDao;
 import com.gic.ems.entity.EmpGroup;
@@ -42,18 +44,18 @@ public class M05_ServiceImpl implements M05_Service {
 	public Collection<M05_EmpListModel> findAll(M05_EmpListModel searchModel) {
 
 		List<M05_EmpListModel> list = new ArrayList<>();
-		
+
 		List<Employee> empList = this.employeeDao.findAll();
-		
+
 		for (Employee emp : empList) {
 			EmpGroup empGroup = groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
-			//TODO delete after developing
-			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : StringUtils.EMPTY;
+			// TODO delete after developing
+			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : Constant.EMPTY_STRING;
 			list.add(M05_EmpListModel.builder().employeeId(emp.getEmployeeId()).firstName(emp.getFirstName())
 					.lastName(emp.getLastName()).email(email).gender(emp.getGender())
 					.groupName((null != empGroup) ? empGroup.getName() : StringUtils.EMPTY).build());
 		}
-		
+
 		return list;
 	}
 }

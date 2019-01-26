@@ -34,9 +34,9 @@ public class M01_LoginController {
 	 * @param model the model
 	 * @return String
 	 */
-	@GetMapping("/accessDenied")
+	@GetMapping("/access-denied")
 	public String accessDenied(Model model, Locale locle) {
-		return ControllerConstant.ACCESSDENIED;
+		return ControllerConstant.ACCESS_DENIED;
 	}
 
 	/**

@@ -3,7 +3,8 @@ package com.gic.ems.common.utility;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.stereotype.Component;
+
+import com.gic.ems.common.constant.Constant;
 
 /**
  * The Class UserUtility.
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Component;
  * @author KYIMINHAN Jan 26, 2019 <BR>
  *         The Class UserUtility.
  */
-@Component
 public class UserUtility {
 
 	/**
@@ -19,7 +19,7 @@ public class UserUtility {
 	 *
 	 * @return the login user
 	 */
-	public User getLoginUser() {
+	public static User getLoginUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User userDetail = null;
 		if (null != auth) {
@@ -35,8 +35,8 @@ public class UserUtility {
 	 *
 	 * @return the login user name
 	 */
-	public String getLoginUserName() {
-		return getLoginUser().getUsername();
+	public static String getLoginUserName() {
+		return (null != getLoginUser()) ? getLoginUser().getUsername() : Constant.SYSTEM;
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class UserUtility {
 	 *
 	 * @return the login use role
 	 */
-	public String getLoginUseRole() {
+	public static String getLoginUseRole() {
 		return null;
 	}
 }

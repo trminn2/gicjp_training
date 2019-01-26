@@ -9,8 +9,17 @@ package com.gic.ems.common.constant;
 public interface Constant {
 
 	/** The Constant SPACE. */
-	public static final String SPACE = " ";
+	static final String SPACE = " ";
+
+	/** The Constant EMPTY_STRING. */
+	static final String EMPTY_STRING = "";
+
+	/** The Constant HYPHEN. */
+	static final String HYPHEN = "-";
 
 	/** The Constant DEFAULT_PASSWORD. */
-	public static final CharSequence DEFAULT_PASSWORD = "admin";
+	static final String DEFAULT_PASSWORD = "admin";
+
+	/** The Constant SYSTEM. */
+	static final String SYSTEM = "SYSTEM";
 }
