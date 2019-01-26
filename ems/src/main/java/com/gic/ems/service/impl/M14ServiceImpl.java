@@ -47,5 +47,4 @@ public class M14ServiceImpl implements M14Service {
 		// TODO Auto-generated method stub
 		this.dispatchDao.save(Dispatch.builder().build());
 	}
-
 }

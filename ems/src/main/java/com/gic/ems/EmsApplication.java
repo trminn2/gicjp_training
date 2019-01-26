@@ -9,13 +9,25 @@ import com.gic.ems.common.type.Gender;
 import com.gic.ems.service.impl.M04_ServiceImpl;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
+/**
+ * The Class EmsApplication.
+ *
+ * @author GIC-JP Jan 5, 2019 <BR>
+ *         The Class EmsApplication.
+ */
 @SpringBootApplication
 public class EmsApplication implements CommandLineRunner {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(EmsApplication.class, args);
 	}
 
+	/** The service. */
 	// TODO to delete after developing phase
 	@Autowired
 	private M04_ServiceImpl service;
