@@ -12,7 +12,7 @@ public interface ControllerConstant {
 	static final String M14_EMPHAKENCREATE = "M14_emp_haken_create";
 	
 	//M05_EmployeeListSearch
-	static final String MG005_EMPLOYEE_LIST_SEARCH = "MG005-employee-list";
+	static final String MG005_EMPLOYEE_LIST_SEARCH = "M05-employee-list";
 	
 	//M09_HakenCreate
 	static final String M09_HAKEN_CREATE = "M09-haken-create";

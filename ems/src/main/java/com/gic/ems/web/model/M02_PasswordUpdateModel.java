@@ -1,35 +1,58 @@
 package com.gic.ems.web.model;
 
-import java.io.Serializable;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class M02_PasswordUpdateModel implements Serializable {
+/**
+ * The Class M02_PasswordUpdateModel.
+ *
+ * @author GIC-JP Jan 26, 2019 <BR>
+ *         The Class M02_PasswordUpdateModel.
+ */
+@Getter
+@Setter
 
+/**
+ * Instantiates a new m 02 password update model.
+ */
+@NoArgsConstructor
+public class M02_PasswordUpdateModel extends BaseModel {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The current password. */
 	private String currentPassword;
+
+	/** The new password. */
 	private String newPassword;
+
+	/** The confirm password. */
 	private String confirmPassword;
 
-	public String getCurrentPassword() {
-		return currentPassword;
-	}
+	/**
+	 * Instantiates a new m 02 password update model.
+	 *
+	 * @param id              the id
+	 * @param uuid            the uuid
+	 * @param currentPassword the current password
+	 * @param newPassword     the new password
+	 * @param confirmPassword the confirm password
+	 */
 
-	public void setCurrentPassword(String currentPassword) {
+	/**
+	 * Builds the.
+	 *
+	 * @return M02_PasswordUpdateModel
+	 */
+	@Builder
+	public M02_PasswordUpdateModel(Long id, String uuid, String currentPassword, String newPassword,
+			String confirmPassword) {
+		super(id, uuid);
 		this.currentPassword = currentPassword;
-	}
-
-	public String getNewPassword() {
-		return newPassword;
-	}
-
-	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
-	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
 }
