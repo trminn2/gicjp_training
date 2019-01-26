@@ -1,11 +1,12 @@
 /*
-   * 作成日 : 2019/01/26
-   * 作成者 : テッ　テッ　カイン
-   * 画面名 : M07_個人情報登録画面
+ * 作成日 : 2019/01/26
+ * 作成者 : テッ　テッ　カイン
+ * 画面名 : M07_個人情報登録画面
  */
 package com.gic.ems.web.model;
 
 import java.util.Date;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,120 +19,210 @@ public class M07_EmpInfoCreateModel extends BaseModel{
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
-	/** 社員番号 */
+	/** Employee Id */
 	private String employeeId;
 	
-	/** 姓 */
+	/** First Name */
 	private String firstName;
 	
-	/** 名 */
+	/** Last Name */
 	private String lastName;
 	
-	/** セイ */
+	/** First Name Kana */
 	private String firstNameKana;
 	
-	/** メイ  */
+	/** Last Name Kana  */
 	private String lastNameKana;
 	
-	/** 郵便番号 */
+	/** Postal Code */
 	private String postalCode;
 	
-	/** 住所 */
+	/** Address */
 	private String address;
 	
-	/** 性別 */
+	/** Gender */
 	private String gender;
 	
-	/** 国籍・地域  */
+	/** Nationality  */
 	private String nationality;
 	
-	/** 電話番号 */
+	/** Phone */
 	private String phone;
 	
-	/** メール */
+	/** Email */
 	private String email;
 	
-	/** 在留番号 */
+	/** Residence Number */
 	private String residenceNo;
 	
-	/** 在留資格 */
+	/** Residence Status */
 	private String residenceStatus;
 	
-	/** 在留期間 */
+	/** Residence Period */
 	private String residencePeriod;
 	
-	/** パスポートの種類 */
+	/** Passport Type */
 	private String passportType;
 	
-	/** passportNum */
+	/** Passport Number */
 	private String passportNum;
 	
-	/** パスポート国番号  */
+	/** Passport Country Code */
 	private String passportCountryCode;
 	
-	/** パスポート機関 */
+	/** Passport Authority */
 	private String passportAuthority;
 	
-	/** 銀行口座 */
+	/** Bank Account */
 	private String bankAccount;
 	
-	/** 保険タイプ */
+	/** Insurance Type */
 	private String insuranceType;
 	
-	/** 被保険者番号 */
+	/** Insured Number */
 	private String insuredNum;
 	
-	/** 保険会社番号 */
-	private String insurerNum;
-	
-	/** 保険会社名 */
+	/** Insured Name */
 	private String insurerName;
 	
-	/** 個人番号 */
+	/** My Number */
 	private String myNumber;
 	
-	/** 開始駅 */
+	/** Start Station */
 	private String startStation;
 	
-	/** 終了駅 */
+	/** End Station */
 	private String endStation;
 	
-	/** 考え方 */
+	/** The Way of Thinking */
 	private String wayOfThinking;
 	
-	/** 自信あること */
+	/** Confidence Skill */
 	private String confidenceSkill;
 	
-	/** 得意分野 */
+	/** The special */
 	private String speciality;
 	
-	/** グループID */
+	/** Group Id */
 	private int groupId;
 	
-	/** バンド */
+	/** Band */
 	private int band;
 	
-	/** 部署ID */
+	/** Department Id */
 	private int departmentId;
 	
-	/** 資格ID */
+	/** Certificate Id */
 	private int certificateId;
 	
-	/** 生年月日 */
+	/** Birth Date */
 	private Date birthDate;
 	
-	/** 入社日 */
+	/** Hired Date */
 	private Date hiredDate;
 	
-	/** パスポート有効期限 */
+	/** Passport Issued Date */
 	private Date passportIssuedDate;
 	
-	/** パスポート機関 */
+	/** Passport Expired Date */
 	private Date passportExpiredDate;
 	
-	/**  被保険者認定日*/
+	/** Insured Qualified Date */
 	private Date insuredQualifiedDate;
 	
-	/** 定期券パス有効期限 */
+	/** Commuter Pass Expired Date */
 	private Date commuterPassExpiredDate;
+
+	/**
+	 * @param id
+	 * @param uuid
+	 * @param employeeId
+	 * @param firstName
+	 * @param lastName
+	 * @param firstNameKana
+	 * @param lastNameKana
+	 * @param postalCode
+	 * @param address
+	 * @param gender
+	 * @param nationality
+	 * @param phone
+	 * @param email
+	 * @param residenceNo
+	 * @param residenceStatus
+	 * @param residencePeriod
+	 * @param passportType
+	 * @param passportNum
+	 * @param passportCountryCode
+	 * @param passportAuthority
+	 * @param bankAccount
+	 * @param insuranceType
+	 * @param insuredNum
+	 * @param insurerName
+	 * @param myNumber
+	 * @param startStation
+	 * @param endStation
+	 * @param wayOfThinking
+	 * @param confidenceSkill
+	 * @param speciality
+	 * @param groupId
+	 * @param band
+	 * @param departmentId
+	 * @param certificateId
+	 * @param birthDate
+	 * @param hiredDate
+	 * @param passportIssuedDate
+	 * @param passportExpiredDate
+	 * @param insuredQualifiedDate
+	 * @param commuterPassExpiredDate
+	 */
+	@Builder
+	public M07_EmpInfoCreateModel(Long id, String uuid, String employeeId, String firstName, String lastName,
+			String firstNameKana, String lastNameKana, String postalCode, String address, String gender,
+			String nationality, String phone, String email, String residenceNo, String residenceStatus,
+			String residencePeriod, String passportType, String passportNum, String passportCountryCode,
+			String passportAuthority, String bankAccount, String insuranceType, String insuredNum, 
+			String insurerName, String myNumber, String startStation, String endStation, String wayOfThinking,
+			String confidenceSkill, String speciality, int groupId, int band, int departmentId, int certificateId,
+			Date birthDate, Date hiredDate, Date passportIssuedDate, Date passportExpiredDate,
+			Date insuredQualifiedDate, Date commuterPassExpiredDate) {
+		super(id, uuid);
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.firstNameKana = firstNameKana;
+		this.lastNameKana = lastNameKana;
+		this.postalCode = postalCode;
+		this.address = address;
+		this.gender = gender;
+		this.nationality = nationality;
+		this.phone = phone;
+		this.email = email;
+		this.residenceNo = residenceNo;
+		this.residenceStatus = residenceStatus;
+		this.residencePeriod = residencePeriod;
+		this.passportType = passportType;
+		this.passportNum = passportNum;
+		this.passportCountryCode = passportCountryCode;
+		this.passportAuthority = passportAuthority;
+		this.bankAccount = bankAccount;
+		this.insuranceType = insuranceType;
+		this.insuredNum = insuredNum;
+		this.insurerName = insurerName;
+		this.myNumber = myNumber;
+		this.startStation = startStation;
+		this.endStation = endStation;
+		this.wayOfThinking = wayOfThinking;
+		this.confidenceSkill = confidenceSkill;
+		this.speciality = speciality;
+		this.groupId = groupId;
+		this.band = band;
+		this.departmentId = departmentId;
+		this.certificateId = certificateId;
+		this.birthDate = birthDate;
+		this.hiredDate = hiredDate;
+		this.passportIssuedDate = passportIssuedDate;
+		this.passportExpiredDate = passportExpiredDate;
+		this.insuredQualifiedDate = insuredQualifiedDate;
+		this.commuterPassExpiredDate = commuterPassExpiredDate;
+	}
 }
