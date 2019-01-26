@@ -31,6 +31,9 @@ public interface ControllerConstant {
 
 	/** The Constant M12_EMPLOYEE_DETAIL_INFO. */
 	static final String M12_EMPLOYEE_DETAIL_INFO = "M12-employee-detail-info";
+	
+	/** The Constant M13_CUSTOMER_REGISTER. */
+	static final String M13_CUSTOMER_REGISTER = "M13-customer-register";
 
 	/** The Constant M10_HAKEN_INFO_SEARCH. */
 	static final String M10_HAKEN_INFO_SEARCH = "M10-haken-info-search";
