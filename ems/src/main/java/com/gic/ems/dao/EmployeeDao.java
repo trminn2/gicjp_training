@@ -7,11 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.gic.ems.entity.Employee;
 
+/**
+ * The Interface EmployeeDao.
+ *
+ * @author THAEMYATNOELWIN Jan 26, 2019 <BR>
+ *         The Interface EmployeeDao.
+ */
 @Repository
 public interface EmployeeDao extends JpaRepository<Employee, Long> {
-	
-	//employee list searching Thae 
+
+	// employee list searching Thae
 	@Query(value = "SELECT * FROM employee LEFT JOIN empgroup ON employee.empGroup_id = empgroup.id ", nativeQuery = true)
 	List<Employee> findAll();
-	
 }
