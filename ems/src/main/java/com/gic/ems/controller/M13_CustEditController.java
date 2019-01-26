@@ -20,7 +20,7 @@ import com.gic.ems.web.model.M13_CustCreateModel;
  *
  */
 @Controller
-public class M13_CustCreateController {
+public class M13_CustEditController {
 	
 	@Autowired
 	M13_Service service;
