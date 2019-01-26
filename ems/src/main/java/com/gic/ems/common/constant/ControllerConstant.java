@@ -8,17 +8,23 @@ package com.gic.ems.common.constant;
  */
 public interface ControllerConstant {
 
-	/** The Constant M14_MODEL. */
-	static final String M14_MODEL = "m14Model";
-
-	/** The Constant M13_MODEL. */
-	static final String M13_MODEL = "m13Model";
-
-	/** The Constant M02_MODEL. */
-	static final String M02_MODEL = "m02Model";
-
 	/** The Constant M01_LOGIN. */
 	static final String M01_LOGIN = "M01-login";
+	
+	/** The Constant M02_MODEL. */
+	static final String M02_MODEL = "m02Model";
+	
+	/** The Constant M07_MODEL. */
+	static final String M07_MODEL = "m07Model";
+	
+	/** The Constant M09_MODEL. */
+	static final String M09_MODEL = "m09Model";
+	
+	/** The Constant M13_MODEL. */
+	static final String M13_MODEL = "m13Model";
+	
+	/** The Constant M14_MODEL. */
+	static final String M14_MODEL = "m14Model";
 
 	/** The Constant M02_PASSWORD_UPDATE. */
 	static final String M02_PASSWORD_UPDATE = "M02-PasswordUpdate";
