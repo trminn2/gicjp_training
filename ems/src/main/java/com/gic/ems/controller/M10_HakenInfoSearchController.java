@@ -2,12 +2,15 @@ package com.gic.ems.controller;
 
 import java.util.Locale;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.gic.ems.common.constant.ControllerConstant;
+import com.gic.ems.service.M10_Service;
 import com.gic.ems.web.model.M10_HakenInfoSearchModel;
 
 /**
@@ -19,17 +22,17 @@ import com.gic.ems.web.model.M10_HakenInfoSearchModel;
 @Controller
 public class M10_HakenInfoSearchController {
 
-	/**
-	 * Inits the.
-	 *
-	 * @param model the model
-	 * @param local the local
-	 * @return String
-	 */
-	@GetMapping("/hanken-info-search")
-	public String init(Model model, Locale local) {
+	/** The service. */
+	private M10_Service service;
 
-		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
+	/**
+	 * Sets the service.
+	 *
+	 * @param service the new service
+	 */
+	@Autowired
+	public void setService(M10_Service service) {
+		this.service = service;
 	}
 
 	/**
@@ -41,8 +44,14 @@ public class M10_HakenInfoSearchController {
 	 * @return String
 	 */
 	@GetMapping("/hanken-info-search")
-	public String search(@ModelAttribute M10_HakenInfoSearchModel searchModel, Model model, Locale local) {
+	public String init(@ModelAttribute M10_HakenInfoSearchModel searchModel, Model model, Locale local) {
+		if (null == searchModel) {
+			model.addAttribute(ControllerConstant.M10_MODEL, M10_HakenInfoSearchModel.builder().build());
+			model.addAttribute(ControllerConstant.M10_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);
+		} else {
 
+		}
+		this.service.search(searchModel);
 		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
 	}
 }
