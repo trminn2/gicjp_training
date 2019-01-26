@@ -1,116 +1,53 @@
+/*
+   * 作成日 : 2019/01/26
+   * 作成者 : テッ　テッ　カイン
+   * 画面名 : M09_派遣先情報登録画面
+ */
 package com.gic.ems.web.model;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-@Entity
-@Table(name = "dispatch_department")
-public class M09_HakenCreateModel implements Serializable{
+@Getter
+@Setter
+@NoArgsConstructor
+public class M09_HakenCreateModel extends BaseModel{
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@Column
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	/** 部署ID */
+	private String dispatchDepartmentId;
 	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+	/** 会社ID */
+	private String companyId;
+	
+	/** 部署名 */
+	private String name;
+	
+	/** メール  */
 	private String contractEmail;
 	
+	/** 責任者前名 */
 	private String contractPersonFirstName;
 	
+	/** 責任者後名  */
 	private String contractPersonLastName;
 	
+	/** 責任者前名カタカナ */
 	private String contractPersonFirstNameKana;
 	
+	/** 責任者後名カタカナ */
 	private String contractPersonLastNameKana;
 	
-	@NotNull(message = "required")
-	@NotBlank(message = "required")
+	/** 責任者電話番号 */
 	private String contractPhone;
 	
+	/** 住所 */
 	private String address;
 	
+	/** 郵便番号 */
 	private String postalCode;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getContractEmail() {
-		return contractEmail;
-	}
-
-	public void setContractEmail(String contractEmail) {
-		this.contractEmail = contractEmail;
-	}
-
-	public String getContractPersonFirstName() {
-		return contractPersonFirstName;
-	}
-
-	public void setContractPersonFirstName(String contractPersonFirstName) {
-		this.contractPersonFirstName = contractPersonFirstName;
-	}
-
-	public String getContractPersonLastName() {
-		return contractPersonLastName;
-	}
-
-	public void setContractPersonLastName(String contractPersonLastName) {
-		this.contractPersonLastName = contractPersonLastName;
-	}
-
-	public String getContractPersonFirstNameKana() {
-		return contractPersonFirstNameKana;
-	}
-
-	public void setContractPersonFirstNameKana(String contractPersonFirstNameKana) {
-		this.contractPersonFirstNameKana = contractPersonFirstNameKana;
-	}
-
-	public String getContractPersonLastNameKana() {
-		return contractPersonLastNameKana;
-	}
-
-	public void setContractPersonLastNameKana(String contractPersonLastNameKana) {
-		this.contractPersonLastNameKana = contractPersonLastNameKana;
-	}
-
-	public String getContractPhone() {
-		return contractPhone;
-	}
-
-	public void setContractPhone(String contractPhone) {
-		this.contractPhone = contractPhone;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
+	
+	/** 郵便番号 */
+	private String dispatchStartDate;	
 }
