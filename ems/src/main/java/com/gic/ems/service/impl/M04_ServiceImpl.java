@@ -10,11 +10,11 @@ import com.gic.ems.dao.EmployeeDao;
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.Employee;
 import com.gic.ems.entity.User;
-import com.gic.ems.service.M04Service;
+import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
 @Service
-public class M04ServiceImpl implements M04Service {
+public class M04_ServiceImpl implements M04_Service {
 
 	/** The employee dao. */
 	@Autowired

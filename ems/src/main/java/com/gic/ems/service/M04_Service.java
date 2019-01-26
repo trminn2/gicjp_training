@@ -2,7 +2,7 @@ package com.gic.ems.service;
 
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
-public interface M04Service {
+public interface M04_Service {
 	/**
 	 * Save.
 	 *

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.gic.ems.common.constant.ControllerConstant;
-import com.gic.ems.service.M04Service;
+import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
 @Controller
 public class M04_EmpCreateController {
 	@Autowired
-	M04Service service;
+	M04_Service service;
 	@Autowired
 	private MessageSource messageSource;
 
