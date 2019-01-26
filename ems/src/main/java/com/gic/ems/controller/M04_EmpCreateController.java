@@ -21,7 +21,7 @@ public class M04_EmpCreateController {
 	@Autowired
 	private MessageSource messageSource;
 
-	@GetMapping("/empIntialRegist")
+	@GetMapping("/emp-intial-regist")
 	public String init(Model model) {
 		String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
 		model.addAttribute("message", msg04);
@@ -29,7 +29,7 @@ public class M04_EmpCreateController {
 		return ControllerConstant.M04_EMPLOYEE_INTIAL_INFO;
 	}
 
-	@PostMapping("/createEmployee")
+	@PostMapping("/create-employee")
 	public String createEmployee(@Valid @ModelAttribute M04_EmpCreateModel empModel,
 			BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {

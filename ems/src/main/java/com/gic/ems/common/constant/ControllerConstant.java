@@ -14,9 +14,12 @@ public interface ControllerConstant {
 	//M05_EmployeeListSearch
 	static final String MG005_EMPLOYEE_LIST_SEARCH = "M05-employee-list";
 	
+	//M07_EmpInfoCreate
+	static final String M07_EMP_INFO_CREATE = "M07-emp-info-create";
+	
 	//M09_HakenCreate
 	static final String M09_HAKEN_CREATE = "M09-haken-create";
 	
-	//M07_EmpInfoCreate
-	static final String M07_EMP_INFO_CREATE = "M07-emp-info-create";
+	//M12_EmployeeDetailInfo
+	static final String M12_EMPLOYEE_DETAIL_INFO = "M12-employee-detail-info";
 }
