@@ -16,7 +16,7 @@ import com.gic.ems.service.M05_Service;
 import com.gic.ems.web.model.M05_EmpListModel;
 
 @Service
-public class MG005ServiceImpl implements M05_Service {
+public class M05_ServiceImpl implements M05_Service {
 
 	@Autowired
 	private EmployeeDao employeeDao;
@@ -39,7 +39,7 @@ public class MG005ServiceImpl implements M05_Service {
 			model.setFirstName(emp.getFirstName());
 			model.setLastName(emp.getLastName());
 			model.setEmail(emp.getUser().getEmail());
-			model.setGender(emp.getGender().name());
+			model.setGender(emp.getGender());
 			models.add(model);
 			
 			EmpGroup g = groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);

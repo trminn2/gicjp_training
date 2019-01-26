@@ -1,63 +1,69 @@
 package com.gic.ems.web.model;
 
-import java.io.Serializable;
+import com.gic.ems.common.type.Gender;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+/**
+ * The Class EmployeeCreateModel.
+ *
+ * @author THAEMYATNOELWIN Jan 26, 2019 <BR>
+ *         The Class EmployeeListModel.
+ */
+@Getter
+@Setter
 
-public class M05_EmpListModel implements Serializable {
-
+/**
+ * Instantiates a new employee list model.
+ */
+@NoArgsConstructor
+public class M05_EmpListModel extends BaseModel {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The employee id. */
 	private String employeeId;
+	
+	/** The first name. */
 	private String firstName;
+	
+	/** The first name kana. */
 	private String lastName;
+	
+	/** The email. */
 	private String email;
+	
+	/** The groupName. */
 	private String groupName;
-	private String gender;
-
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(String employeeId) {
+	
+	/** The gender. */
+	private Gender gender;
+	
+	/**
+	 * Instantiates a new m 04 emp create model.
+	 *
+	 * @param id            the id
+	 * @param uuid          the uuid
+	 * @param employeeId    the employee id
+	 * @param firstName     the first name
+	 * @param lastName      the last name
+	 * @param email         the email
+	 * @param groupName     the groupName
+	 * @param gender        the gender
+	 */
+	@Builder
+	public M05_EmpListModel(Long id, String uuid, String employeeId, String firstName,
+			String lastName,  String email, String groupName, Gender gender) {
+		super(id, uuid);
 		this.employeeId = employeeId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getGroupName() {
-		return groupName;
-	}
-
-	public void setGroupName(String groupName) {
 		this.groupName = groupName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 }

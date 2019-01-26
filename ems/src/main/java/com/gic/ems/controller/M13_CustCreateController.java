@@ -26,7 +26,7 @@ public class M13_CustCreateController {
 	
 	@Autowired
 	M13_Service service;
-	@Autowired
+	@Autowired(required=false)
 	private MessageSource messageSource;
 	
 	@GetMapping("/cust-register")
