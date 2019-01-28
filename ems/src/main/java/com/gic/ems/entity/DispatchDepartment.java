@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,6 +30,7 @@ import lombok.Setter;
  */
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode(callSuper = false, doNotUseGetters = true, onlyExplicitlyIncluded = true)
 public class DispatchDepartment extends BaseEntity {
 
 	/** The Constant serialVersionUID. */
@@ -111,7 +113,7 @@ public class DispatchDepartment extends BaseEntity {
 			String contractPersonLastName, String contractPersonLastNameKana, String contractPhone,
 			String dispatchDepartmentId, LocalDate dispatchStartDate, Collection<Dispatch> dispatches) {
 		super(id);
-		DispatchDepartmentName = dispatchDepartmentName;
+		this.DispatchDepartmentName = dispatchDepartmentName;
 		this.postalCode = postalCode;
 		this.address = address;
 		this.company = company;

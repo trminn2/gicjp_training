@@ -23,6 +23,7 @@ import com.gic.ems.common.constant.Constant;
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.utility.UserUtility;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -45,6 +46,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Component
 @MappedSuperclass
+@EqualsAndHashCode
 public abstract class BaseEntity implements Serializable {
 
 	/** The Constant serialVersionUID. */

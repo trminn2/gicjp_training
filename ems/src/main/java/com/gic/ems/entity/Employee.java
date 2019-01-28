@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import com.gic.ems.common.type.Gender;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +36,7 @@ import lombok.Setter;
  */
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode(callSuper = false, doNotUseGetters = true, onlyExplicitlyIncluded = true)
 public class Employee extends BaseEntity {
 
 	/** The Constant serialVersionUID. */
