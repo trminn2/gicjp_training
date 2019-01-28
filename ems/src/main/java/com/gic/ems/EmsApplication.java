@@ -12,8 +12,12 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
 /**
  * The Class EmsApplication.
  *
- * @author KYIMINHAN Jan 5, 2019 <BR>
- *         The Class EmsApplication.
+ * @author KYIMINHAN Jan 5, 2019 </BR>
+ * @version 1.0 </BR>
+ * @since 2019 </BR>
+ *        ems system</BR>
+ *        com.gic.ems </BR>
+ *        EmsApplication.java </BR>
  */
 @SpringBootApplication
 public class EmsApplication implements CommandLineRunner {
@@ -30,6 +34,21 @@ public class EmsApplication implements CommandLineRunner {
 	/** The service. */
 	private M04_ServiceImpl service;
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[])
+	 */
+	@Override
+	public void run(String... args) throws Exception {
+		String email = "admin@gmail.com";
+		if (!this.service.hasAccount(email)) {
+			M04_EmpCreateModel empCreateModel = M04_EmpCreateModel.builder().email(email).firstName("KyiMin")
+					.lastName("Han").firstNameKana("チミン").lastNameKana("ハン").gender(Gender.MALE).build();
+			this.service.save(empCreateModel);
+		}
+	}
+
 	/**
 	 * Sets the service.
 	 *
@@ -38,20 +57,5 @@ public class EmsApplication implements CommandLineRunner {
 	@Autowired
 	public void setService(M04_ServiceImpl service) {
 		this.service = service;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[])
-	 */
-	@Override
-	public void run(String... args) throws Exception {
-		String email = "admin@gmail.com";
-		if (!service.hasAccount(email)) {
-			M04_EmpCreateModel empCreateModel = M04_EmpCreateModel.builder().email(email).firstName("KyiMin")
-					.lastName("Han").firstNameKana("チミン").lastNameKana("ハン").gender(Gender.MALE).build();
-			service.save(empCreateModel);
-		}
 	}
 }

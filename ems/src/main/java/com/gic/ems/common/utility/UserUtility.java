@@ -7,22 +7,19 @@ import org.springframework.security.core.userdetails.User;
 import com.gic.ems.common.constant.Constant;
 
 /**
- * The Class UserUtility.
+ * The Class UserUtility.</BR>
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Class UserUtility.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Jan 27, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.common.utility </BR>
+ *        UserUtility.java </BR>
  */
 public final class UserUtility {
 
 	/** The user utility. */
 	private volatile static UserUtility userUtility;
-
-	/**
-	 * Instantiates a new user utility.
-	 */
-	private UserUtility() {
-		super();
-	}
 
 	/**
 	 * Gets the single instance of UserUtility.
@@ -39,6 +36,13 @@ public final class UserUtility {
 	}
 
 	/**
+	 * Instantiates a new user utility.
+	 */
+	private UserUtility() {
+		super();
+	}
+
+	/**
 	 * Gets the login user.
 	 *
 	 * @return the login user
@@ -48,8 +52,9 @@ public final class UserUtility {
 		User userDetail = null;
 		if (null != auth) {
 			Object principal = auth.getPrincipal();
-			if (principal instanceof User)
+			if (principal instanceof User) {
 				userDetail = (User) principal;
+			}
 		}
 		return userDetail;
 	}
@@ -60,7 +65,7 @@ public final class UserUtility {
 	 * @return the login user name
 	 */
 	public final String getLoginUserName() {
-		return (null != getLoginUser()) ? getLoginUser().getUsername() : Constant.SYSTEM;
+		return (null != this.getLoginUser()) ? this.getLoginUser().getUsername() : Constant.SYSTEM;
 	}
 
 	/**

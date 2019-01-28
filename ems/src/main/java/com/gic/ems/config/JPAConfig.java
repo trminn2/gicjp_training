@@ -6,12 +6,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.hibernate.cfg.AvailableSettings;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -25,8 +24,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * The Class JPAConfig.
  *
- * @author KYIMINHAN Jan 5, 2019 <BR>
- *         The Class JPAConfig.
+ * @author KYIMINHAN Jan 5, 2019 </BR>
+ * @version 1.0 </BR>
+ * @since 2019 </BR>
+ *        ems </BR>
+ *        com.gic.ems.config </BR>
+ *        JPAConfig.java </BR>
  */
 @Configuration
 @EnableTransactionManagement
@@ -35,9 +38,41 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan("com.gic.ems")
 public class JPAConfig {
 
-	/** The env. */
-	@Autowired
-	private Environment env;
+	/** The mysql driver. */
+	@Value("${mysql.driver}")
+	private String mysqlDriver;
+
+	/** The jdbcURL. */
+	@Value("${mysql.jdbcUrl}")
+	private String jdbcURL;
+
+	/** The user name. */
+	@Value("${mysql.username}")
+	private String userName;
+
+	/** The password. */
+	@Value("${mysql.password}")
+	private String password;
+
+	/** The hibernte dialet. */
+	@Value("${hibernate.dialet}")
+	private String hibernteDialet;
+
+	/** The hibernate show sql. */
+	@Value("${hibernate.show_sql}")
+	private String hibernateShowSql;
+
+	/** The hibernage hbm ddl auto. */
+	@Value("${hibernate.hbm2ddl.auto}")
+	private String hibernageHbmDdlAuto;
+
+	/** The hibernate lazy load. */
+	@Value("${hibernate.enable_lazy_load_no_trans}")
+	private String hibernateLazyLoad;
+
+	/** The hibernate etities. */
+	@Value("${hibernate.entity}")
+	private String hibernateEtities;
 
 	/**
 	 * Entity manager factory.
@@ -47,8 +82,8 @@ public class JPAConfig {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean lcemf = new LocalContainerEntityManagerFactoryBean();
-		lcemf.setDataSource(dataSource());
-		lcemf.setPackagesToScan(new String[] { this.env.getProperty("hibernate.entity") });
+		lcemf.setDataSource(getDataSource());
+		lcemf.setPackagesToScan(new String[] { this.hibernateEtities });
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		lcemf.setJpaVendorAdapter(vendorAdapter);
 		lcemf.setJpaProperties(additionalProperties());
@@ -61,12 +96,12 @@ public class JPAConfig {
 	 * @return DataSource
 	 */
 	@Bean
-	public DataSource dataSource() {
+	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(this.env.getProperty("mysql.driver"));
-		dataSource.setUrl(this.env.getProperty("mysql.jdbcUrl"));
-		dataSource.setUsername(this.env.getProperty("mysql.username"));
-		dataSource.setPassword(this.env.getProperty("mysql.password"));
+		dataSource.setDriverClassName(this.mysqlDriver);
+		dataSource.setUrl(this.jdbcURL);
+		dataSource.setUsername(this.userName);
+		dataSource.setPassword(this.password);
 		return dataSource;
 	}
 
@@ -98,13 +133,12 @@ public class JPAConfig {
 	 *
 	 * @return Properties
 	 */
-	Properties additionalProperties() {
+	private Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.put(AvailableSettings.DIALECT, this.env.getProperty("hibernate.dialet"));
-		properties.put(AvailableSettings.SHOW_SQL, this.env.getProperty("hibernate.show_sql"));
-		properties.put(AvailableSettings.HBM2DDL_AUTO, this.env.getProperty("hibernate.hbm2ddl.auto"));
-		properties.put(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS,
-				this.env.getProperty("hibernate.enable_lazy_load_no_trans"));
+		properties.put(AvailableSettings.DIALECT, this.hibernteDialet);
+		properties.put(AvailableSettings.SHOW_SQL, this.hibernateShowSql);
+		properties.put(AvailableSettings.HBM2DDL_AUTO, this.hibernageHbmDdlAuto);
+		properties.put(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, this.hibernateLazyLoad);
 		return properties;
 	}
 }

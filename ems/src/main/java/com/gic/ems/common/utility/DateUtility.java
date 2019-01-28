@@ -2,26 +2,24 @@ package com.gic.ems.common.utility;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.NonNull;
 
 /**
- * The Class DateUtils.
+ * The Class DateUtility.</BR>
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Class DateUtils.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Jan 27, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.common.utility </BR>
+ *        DateUtility.java </BR>
  */
 public final class DateUtility {
 
 	/** The date utils. */
 	private volatile static DateUtility dateUtils;
-
-	/**
-	 * Instantiates a new date utils.
-	 */
-	private DateUtility() {
-		super();
-	}
 
 	/**
 	 * Gets the single instance of DateUtility.
@@ -38,26 +36,39 @@ public final class DateUtility {
 	}
 
 	/**
-	 * Convert string to locale date.
-	 *
-	 * @param stringDate the string date
-	 * @param dateFormat the date format
-	 * @return LocalDate
+	 * Instantiates a new date utility.
 	 */
-	public final LocalDate convertStringToLocaleDate(@NonNull final String stringDate,
+	private DateUtility() {
+		super();
+	}
+
+	/**
+	 * Convert locale date time to string.
+	 *
+	 * @param localDateTime the local date time
+	 * @param dateFormat    the date format
+	 * @return String
+	 */
+	public final String convertLocaleDateTimeToString(@NonNull final LocalDateTime localDateTime,
 			@NonNull final String dateFormat) {
-		return null;
+		return localDateTime.format(DateTimeFormatter.ofPattern(dateFormat));
 	}
 
 	/**
 	 * Convert locale date to string.
 	 *
-	 * @param date       the date
+	 * @param localDate  the local date
 	 * @param dateFormat the date format
-	 * @return LocalDate
+	 * @return String
 	 */
-	public final LocalDate convertLocaleDateToString(@NonNull final LocalDate date, @NonNull final String dateFormat) {
-		return null;
+	public final String convertLocaleDateToString(@NonNull final LocalDate localDate,
+			@NonNull final String dateFormat) {
+		return localDate.format(DateTimeFormatter.ofPattern(dateFormat));
+	}
+
+	public final LocalDate convertStringToLocaleDate(@NonNull final String stringDate,
+			@NonNull final String dateFormat) {
+		return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat));
 	}
 
 	/**
@@ -67,20 +78,8 @@ public final class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public final LocalDate convertStringToLocaleDateTime(@NonNull final String stringDate,
+	public final LocalDateTime convertStringToLocaleDateTime(@NonNull final String stringDate,
 			@NonNull final String dateFormat) {
-		return null;
-	}
-
-	/**
-	 * Convert locale date time to string.
-	 *
-	 * @param date       the date
-	 * @param dateFormat the date format
-	 * @return LocalDate
-	 */
-	public final LocalDate convertLocaleDateTimeToString(@NonNull final LocalDateTime date,
-			@NonNull final String dateFormat) {
-		return null;
+		return LocalDateTime.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat));
 	}
 }
