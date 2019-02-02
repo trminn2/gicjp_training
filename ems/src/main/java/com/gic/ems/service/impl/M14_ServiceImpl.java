@@ -37,55 +37,6 @@ public class M14_ServiceImpl implements M14_Service {
 	private DispatchDao dispatchDao;
 	private DispatchDepartmentDao dispatchDepartmentDao;
 
-	@Override
-	public Collection<Company> findAllCompanies() {
-		return this.companyDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
-	}
-
-	@Override
-	public Collection<EmpGroup> findAllEmpGroups() {
-		return this.groupDao.findByDeleteFlag(DeleteFlag.ACTIVE);
-	}
-
-	@Override
-	public Collection<Employee> findByEmployeeIdContaining(String employeeId) {
-		return this.employeeDao.findByEmployeeCodeAndDeleteFlagContaining(employeeId, DeleteFlag.ACTIVE);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see com.gic.ems.service.M14_Service#findById(java.lang.Long)
-	 */
-	@Override
-	public M14_EmpHakenModel findById(Long id) {
-		// TODO Auto-generated method stub
-		return M14_EmpHakenModel.builder().build();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see com.gic.ems.service.M14Service#save(com.gic.ems.web.model.
-	 * M14_EmpHakenCreateModel)
-	 */
-	@Override
-	@Transactional(rollbackFor = Exception.class)
-	public void save(M14_EmpHakenModel m14Model) {
-		// TODO Auto-generated method stub
-		this.dispatchDao.save(Dispatch.builder()
-				.employee(this.employeeDao.findByEmployeeCodeAndDeleteFlag(m14Model.getEmployeeId(), DeleteFlag.ACTIVE))
-				.empGroup(EmpGroup.builder().id(Long.valueOf(m14Model.getGroupId())).build())
-				.dispatchDepartment(DispatchDepartment.builder().id(Long.valueOf(m14Model.getDispatchDeptId())).build())
-				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyId())).build())
-				.dispatchStartDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchStartDate(),
-						DateFormat.YYYY_MM_DD))
-				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
-						DateFormat.YYYY_MM_DD))
-				.income(Double.valueOf(m14Model.getIncome())).build());
-
-	}
-
 	@Autowired
 	public void setCompanyDao(CompanyDao companyDao) {
 		this.companyDao = companyDao;
@@ -111,6 +62,67 @@ public class M14_ServiceImpl implements M14_Service {
 		this.groupDao = groupDao;
 	}
 
+	@Override
+	public Collection<Company> findAllCompanies() {
+		return this.companyDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
+	}
+
+	@Override
+	public Collection<EmpGroup> findAllEmpGroups() {
+		return this.groupDao.findByDeleteFlag(DeleteFlag.ACTIVE);
+	}
+
+	@Override
+	public Collection<Employee> findByEmployeeIdContaining(String employeeCode) {
+		return this.employeeDao.findByEmployeeCodeAndDeleteFlagContaining(employeeCode, DeleteFlag.ACTIVE);
+	}
+
+	@Override
+	public Collection<DispatchDepartment> findAllDispatchDepartments() {
+		return this.dispatchDepartmentDao.findByDeleteFlag(DeleteFlag.ACTIVE);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M14_Service#findById(java.lang.Long)
+	 */
+	@Override
+	public M14_EmpHakenModel findById(Long id) {
+		Dispatch dispatch = this.dispatchDao.findById(id).orElse(null);
+
+		return M14_EmpHakenModel.builder().id(dispatch.getId()).companyId(dispatch.getCompany().getId())
+				.dispatchDeptId(dispatch.getDispatchDepartment().getId()).groupId(dispatch.getEmpGroup().getId())
+				.employeeCode(dispatch.getEmployee().getEmployeeCode())
+				.dispatchStartDate(DateUtility.getInstance().convertLocaleDateToString(dispatch.getDispatchStartDate(),
+						DateFormat.DDMMYYYY))
+				.dispatchEndDate(DateUtility.getInstance().convertLocaleDateToString(dispatch.getDispatchEndDate(),
+						DateFormat.DDMMYYYY))
+				.income(dispatch.getIncome().toString()).build();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M14Service#save(com.gic.ems.web.model.
+	 * M14_EmpHakenCreateModel)
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void save(M14_EmpHakenModel m14Model) {
+		this.dispatchDao.save(Dispatch.builder()
+				.employee(
+						this.employeeDao.findByEmployeeCodeAndDeleteFlag(m14Model.getEmployeeCode(), DeleteFlag.ACTIVE))
+				.empGroup(EmpGroup.builder().id(Long.valueOf(m14Model.getGroupId())).build())
+				.dispatchDepartment(DispatchDepartment.builder().id(Long.valueOf(m14Model.getDispatchDeptId())).build())
+				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyId())).build())
+				.dispatchStartDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchStartDate(),
+						DateFormat.DDMMYYYY))
+				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
+						DateFormat.DDMMYYYY))
+				.income(Double.valueOf(m14Model.getIncome())).build());
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -121,14 +133,15 @@ public class M14_ServiceImpl implements M14_Service {
 	@Transactional(rollbackFor = Exception.class)
 	public void update(M14_EmpHakenModel m14Model) {
 		this.dispatchDao.save(Dispatch.builder().id(m14Model.getId())
-				.employee(Employee.builder().id(Long.valueOf(m14Model.getEmployeeId())).build())
+				.employee(
+						this.employeeDao.findByEmployeeCodeAndDeleteFlag(m14Model.getEmployeeCode(), DeleteFlag.ACTIVE))
 				.empGroup(EmpGroup.builder().id(Long.valueOf(m14Model.getGroupId())).build())
 				.dispatchDepartment(DispatchDepartment.builder().id(Long.valueOf(m14Model.getDispatchDeptId())).build())
 				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyId())).build())
 				.dispatchStartDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchStartDate(),
-						DateFormat.YYYY_MM_DD))
+						DateFormat.DDMMYYYY))
 				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
-						DateFormat.YYYY_MM_DD))
+						DateFormat.DDMMYYYY))
 				.income(Double.valueOf(m14Model.getIncome())).build());
 	}
 }

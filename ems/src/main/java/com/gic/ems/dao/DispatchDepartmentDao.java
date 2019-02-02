@@ -1,5 +1,7 @@
 package com.gic.ems.dao;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.gic.ems.common.type.DeleteFlag;
@@ -20,4 +22,6 @@ import lombok.NonNull;
 public interface DispatchDepartmentDao extends JpaRepository<DispatchDepartment, Long> {
 
 	DispatchDepartment findByIdAndDeleteFlag(@NonNull Long id, DeleteFlag active);
+
+	Collection<DispatchDepartment> findByDeleteFlag(DeleteFlag active);
 }

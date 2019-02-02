@@ -44,7 +44,10 @@ public class M14_EmpHakenCreateController {
 	 * @return String
 	 */
 	@GetMapping("/emp-haken-create")
-	public String init(Model model, Locale locale) {
+	public String init(@ModelAttribute M14_EmpHakenModel m14Model, Model model, Locale locale) {
+		model.addAttribute(ControllerConstant.COMPANIES, this.service.findAllCompanies());
+		model.addAttribute(ControllerConstant.EMP_GROUPS, this.service.findAllEmpGroups());
+		model.addAttribute(ControllerConstant.DISPATCH_DEPARTMENTS, this.service.findAllDispatchDepartments());
 		model.addAttribute(ControllerConstant.M14_MODEL, M14_EmpHakenModel.builder().build());
 		return ControllerConstant.M14_EMPLOYEE_HAKEN_CREATE;
 	}

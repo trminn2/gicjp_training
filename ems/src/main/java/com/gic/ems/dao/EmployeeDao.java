@@ -26,5 +26,5 @@ public interface EmployeeDao extends JpaRepository<Employee, Long> {
 
 	Employee findByEmployeeCodeAndDeleteFlag(String employeeId, DeleteFlag active);
 
-	Collection<Employee> findByEmployeeCodeAndDeleteFlagContaining(String employeeId, DeleteFlag active);
+	Collection<Employee> findByEmployeeCodeAndDeleteFlagContaining(String employeeCode, DeleteFlag active);
 }

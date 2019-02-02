@@ -49,6 +49,9 @@ public class M14_EmpHakenEditController {
 	 */
 	@GetMapping("/{id}/emp-haken-edit")
 	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
+		model.addAttribute(ControllerConstant.COMPANIES, this.service.findAllCompanies());
+		model.addAttribute(ControllerConstant.EMP_GROUPS, this.service.findAllEmpGroups());
+		model.addAttribute(ControllerConstant.DISPATCH_DEPARTMENTS, this.service.findAllDispatchDepartments());
 		model.addAttribute(ControllerConstant.M14_MODEL, this.service.findById(Long.valueOf(id)));
 		return ControllerConstant.M14_EMPLOYEE_HAKE_EDIT;
 	}

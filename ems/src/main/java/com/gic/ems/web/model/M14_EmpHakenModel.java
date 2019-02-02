@@ -24,19 +24,19 @@ public class M14_EmpHakenModel extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	/** The company id. */
-	private String companyId;
+	private Long companyId;
 
-	/** The employee id. */
-	private String employeeId;
+	/** The employee code. */
+	private String employeeCode;
 
 	/** The employee name. */
-	//private String employeeName;
+	// private String employeeName;
 
 	/** The group id. */
-	private String groupId;
+	private Long groupId;
 
 	/** The dispatch dept. */
-	private String dispatchDeptId;
+	private Long dispatchDeptId;
 
 	/** The dispatch start date. */
 	private String dispatchStartDate;
@@ -47,38 +47,16 @@ public class M14_EmpHakenModel extends BaseModel {
 	/** The income. */
 	private String income;
 
-	
-	/**
-	 * Instantiates a new m 14 emp haken create model.
-	 *
-	 * @param id                the id
-	 * @param uuid              the uuid
-	 * @param companyId         the company id
-	 * @param employeeId        the employee id
-	 * @param employeeName      the employee name
-	 * @param groupId           the group id
-	 * @param dispatchDept      the dispatch dept
-	 * @param dispatchStartDate the dispatch start date
-	 * @param dispatchEndDate   the dispatch end date
-	 * @param income            the income
-	 */
-
-	/**
-	 * Builds the.
-	 *
-	 * @return M14_EmpHakenCreateModel
-	 */
 	@Builder
-	public M14_EmpHakenModel(Long id, String uuid, String companyId, String employeeId, String groupId,
-			String dispatchDeptId, String dispatchStartDate, String dispatchEndDate, String income) {
+	public M14_EmpHakenModel(Long id, String uuid, Long companyId, String employeeCode, Long groupId,
+			Long dispatchDeptId, String dispatchStartDate, String dispatchEndDate, String income) {
 		super(id, uuid);
 		this.companyId = companyId;
-		this.employeeId = employeeId;
+		this.employeeCode = employeeCode;
 		this.groupId = groupId;
 		this.dispatchDeptId = dispatchDeptId;
 		this.dispatchStartDate = dispatchStartDate;
 		this.dispatchEndDate = dispatchEndDate;
 		this.income = income;
 	}
-
 }

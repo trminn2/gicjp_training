@@ -50,9 +50,9 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
-								<label for="employeeId">社員ID<span class="text-danger">*</span></label>
+								<label for="employeeCode">社員ID<span class="text-danger">*</span></label>
 								<input type="text" class="form-control form-control-sm"
-									id="employeeId" name="employeeId" aria-describedby="emailHelp"
+									id="employeeCode" name="employeeCode" aria-describedby="emailHelp"
 									placeholder="社員IDを入れてください">
 							</div>
 						</div>
@@ -61,14 +61,10 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<label for="groupId">グループID<span class="text-danger">*</span></label>
-								<select class="custom-select custom-select-sm" id="groupId"
+								<select class="custom-select custom-select-sm" id="cboGroupId"
 									name="groupId">
 									<option selected>選択してください...</option>
-									<option value="1">GSE group 1</option>
-									<option value="1">GSE group 2</option>
-									<option value="1">GSE group 3</option>
-									<option value="1">GSE group 4</option>
-									<option value="1">GSE group 5</option>
+									<option th:each="empGroup: ${empGroups}" th:text="${empGroup.name}" th:value="${group.id}"></option>
 								</select>
 							</div>
 						</div>
@@ -76,29 +72,21 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
-								<label for="companyId">お客様先<span class="text-danger">*</span></label>
-								<select class="custom-select custom-select-sm" id="companyId"
+								<label for="companyCode">お客様先<span class="text-danger">*</span></label>
+								<select class="custom-select custom-select-sm" id="cboCompanyId"
 									name="companyId">
 									<option selected>選択してください...</option>
-									<option value="1">お客様先 1</option>
-									<option value="1">お客様先 2</option>
-									<option value="1">お客様先 3</option>
-									<option value="1">お客様先 4</option>
-									<option value="1">お客様先 5</option>
+									<option th:each="company:${companies}" th:utext="${company.companyName}" th:value="${company.id}"></option>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
-								<label for="dispatchDept">派遣部署<span class="text-danger">*</span></label>
-								<select class="custom-select custom-select-sm" id="dispatchDept"
-									name="dispatchDept">
+								<label for="dispatchDeptId">派遣部署<span class="text-danger">*</span></label>
+								<select class="custom-select custom-select-sm" id="cboDispatchDeptId"
+									name="dispatchDeptId">
 									<option selected>選択してください...</option>
-									<option value="1">派遣部署 1</option>
-									<option value="1">派遣部署 2</option>
-									<option value="1">派遣部署 3</option>
-									<option value="1">派遣部署 4</option>
-									<option value="1">派遣部署 5</option>
+									<option th:each="disDept:${dispatchDepartments}" th:utext="${disDept.DispatchDepartmentName}" th:value="${disDept.id}"></option>
 								</select>
 							</div>
 						</div>

@@ -94,4 +94,8 @@ public interface ControllerConstant {
 
 	static final String COMPANIES = "companies";
 
+	static final String EMP_GROUPS = "empGroups";
+
+	static final String DISPATCH_DEPARTMENTS = "dispatchDepartments";
+
 }
