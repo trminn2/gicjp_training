@@ -2,13 +2,10 @@ package com.gic.ems.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.dao.DispatchDepartmentDao;
@@ -16,7 +13,6 @@ import com.gic.ems.entity.Company;
 import com.gic.ems.entity.DispatchDepartment;
 import com.gic.ems.service.M09_Service;
 import com.gic.ems.web.model.M09_HakenCreateModel;
-
 import lombok.NonNull;
 
 /**

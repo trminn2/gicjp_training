@@ -1,12 +1,6 @@
-/*
- * 作成日 : 2019/01/26
- * 作成者 : テッ　テッ　カイン
- * 画面名 : M09_派遣先情報登録画面
- */
 package com.gic.ems.web.model;
 
 import java.time.LocalDate;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
