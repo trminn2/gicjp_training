@@ -3,6 +3,7 @@ package com.gic.ems.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gic.ems.common.utility.CodeUtility;
 import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.entity.Company;
 import com.gic.ems.service.M13_Service;
@@ -20,6 +21,26 @@ public class M13_ServiceImpl implements M13_Service {
 	/** The company dao. */
 	private CompanyDao companyDao;
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M13_Service#save(com.gic.ems.web.model.
+	 * M13_CustCreateModel)
+	 */
+	@Override
+	public void save(M13_CustCreateModel custCreateModel) {
+		Company company = Company.builder().companyCode(CodeUtility.getInstance().generateCompanyCode())
+				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
+				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
+				.address(custCreateModel.getAddress())
+				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
+				.contactPersonLastName(custCreateModel.getContactPersonLastName())
+				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
+				.contractStartDate(custCreateModel.getContractStartDate()).postalCode(custCreateModel.getPostalCode())
+				.contactPhone(custCreateModel.getContactPhone()).build();
+		this.companyDao.save(company);
+	}
+
 	/**
 	 * Sets the company dao.
 	 *
@@ -32,36 +53,14 @@ public class M13_ServiceImpl implements M13_Service {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see com.gic.ems.service.M13_Service#save(com.gic.ems.web.model.
-	 * M13_CustCreateModel)
-	 */
-	@Override
-	public void save(M13_CustCreateModel custCreateModel) {
-		Company company = Company.builder()
-				.companyId(GenerateCompanyID.getInstance().generateID())
-				.companyName(custCreateModel.getCompanyName())
-				.contactEmail(custCreateModel.getContactEmail())
-				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
-				.address(custCreateModel.getAddress())
-				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
-				.contactPersonLastName(custCreateModel.getContactPersonLastName())
-				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
-				.contractStartDate(custCreateModel.getContractStartDate())
-				.postalCode(custCreateModel.getPostalCode()).contactPhone(custCreateModel.getContactPhone()).build();
-		this.companyDao.save(company);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.gic.ems.service.M13_Service#edit(com.gic.ems.web.model.
 	 * M13_CustCreateModel)
 	 */
 	@Override
 	public void update(M13_CustCreateModel custCreateModel) {
 		// TODO Auto-generated method stub
-		Company company = Company.builder().companyId(custCreateModel.getCompanyId())
+		Company company = Company.builder().companyCode(custCreateModel.getCompanyId())
 				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
 				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
 				.address(custCreateModel.getAddress())

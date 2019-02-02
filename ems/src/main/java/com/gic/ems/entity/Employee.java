@@ -23,10 +23,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Class Employee.
+ * The Class Employee.</BR>
  *
- * @author KYIMINHAN Jan 5, 2019 <BR>
- *         The Class Employee.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Jan 5, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.entity </BR>
+ *        Employee.java </BR>
  */
 @Getter
 @Setter
@@ -42,9 +46,9 @@ public class Employee extends BaseEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The employee id. */
+	/** The employee code. */
 	@Column
-	private String employeeId;;
+	private String employeeCode;
 
 	/** The address. */
 	@Column
@@ -225,7 +229,7 @@ public class Employee extends BaseEntity {
 	 * Instantiates a new employee.
 	 *
 	 * @param id                      the id
-	 * @param employeeId              the employee id
+	 * @param employeeCode            the employee code
 	 * @param address                 the address
 	 * @param band                    the band
 	 * @param bankAccount             the bank account
@@ -270,8 +274,14 @@ public class Employee extends BaseEntity {
 	 * @param user                    the user
 	 * @param dispatchs               the dispatchs
 	 */
+
+	/**
+	 * Builds the.
+	 *
+	 * @return Employee
+	 */
 	@Builder
-	public Employee(Long id, String employeeId, String address, int band, String bankAccount, LocalDate birthDate,
+	public Employee(Long id, String employeeCode, String address, int band, String bankAccount, LocalDate birthDate,
 			LocalDate commuterPassExpiredDate, String confidenceSkill, Department department, String endStation,
 			String firstName, String firstNameKana, Gender gender, String goals, EmpGroup empGroup, LocalDate hiredDate,
 			String insuranceType, String insuredNum, LocalDate insuredQualifiedDate, String insurerName,
@@ -283,7 +293,7 @@ public class Employee extends BaseEntity {
 			Collection<EmployeeSkill> employeeskills, Collection<EmployeeCertificate> employeeCertificates, User user,
 			Collection<Dispatch> dispatchs) {
 		super(id);
-		this.employeeId = employeeId;
+		this.employeeCode = employeeCode;
 		this.address = address;
 		this.band = band;
 		this.bankAccount = bankAccount;

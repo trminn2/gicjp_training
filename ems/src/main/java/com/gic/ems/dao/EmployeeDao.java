@@ -20,10 +20,11 @@ import com.gic.ems.entity.Employee;
 public interface EmployeeDao extends JpaRepository<Employee, Long> {
 
 	// employee list searching Thae
+	@Override
 	@Query(value = "SELECT * FROM employee LEFT JOIN empgroup ON employee.empGroup_id = empgroup.id ", nativeQuery = true)
 	List<Employee> findAll();
 
-	Collection<Employee> findByEmployeeIdAndDeleteFlagContaining(String employeeId, DeleteFlag active);
+	Employee findByEmployeeCodeAndDeleteFlag(String employeeId, DeleteFlag active);
 
-	Employee findByEmployeeIdAndDeleteFlag(String employeeId, DeleteFlag active);
+	Collection<Employee> findByEmployeeCodeAndDeleteFlagContaining(String employeeId, DeleteFlag active);
 }

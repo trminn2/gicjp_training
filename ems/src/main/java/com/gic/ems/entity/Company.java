@@ -34,9 +34,9 @@ public class Company extends BaseEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The company id. */
+	/** The company code. */
 	@Column
-	private String companyId;
+	private String companyCode;
 
 	/** The company name. */
 	@Column
@@ -86,7 +86,7 @@ public class Company extends BaseEntity {
 	 * Instantiates a new company.
 	 *
 	 * @param id                         the id
-	 * @param companyId                  the company id
+	 * @param companyCode                the company code
 	 * @param companyName                the company name
 	 * @param contactEmail               the contact email
 	 * @param contactPersonFirstName     the contact person first name
@@ -100,12 +100,12 @@ public class Company extends BaseEntity {
 	 * @param dispatchDepartments        the dispatch departments
 	 */
 	@Builder
-	public Company(Long id, String companyId, String companyName, String contactEmail, String contactPersonFirstName,
+	public Company(Long id, String companyCode, String companyName, String contactEmail, String contactPersonFirstName,
 			String contactPersonFirstNameKana, String contactPersonLastName, String contactPersonLastNameKana,
 			String contactPhone, LocalDate contractStartDate, String address, String postalCode,
 			Collection<DispatchDepartment> dispatchDepartments) {
 		super(id);
-		this.companyId = companyId;
+		this.companyCode = companyCode;
 		this.companyName = companyName;
 		this.contactEmail = contactEmail;
 		this.contactPersonFirstName = contactPersonFirstName;

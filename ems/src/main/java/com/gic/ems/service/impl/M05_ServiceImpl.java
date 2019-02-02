@@ -3,8 +3,10 @@ package com.gic.ems.service.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.gic.ems.common.constant.Constant;
 import com.gic.ems.dao.EmployeeDao;
 import com.gic.ems.dao.GroupDao;
@@ -28,29 +30,9 @@ public class M05_ServiceImpl implements M05_Service {
 	/** The employee dao. */
 	private EmployeeDao employeeDao;
 
-	/**
-	 * Sets the group dao.
-	 *
-	 * @param groupDao the new group dao
-	 */
-	@Autowired
-	public void setGroupDao(GroupDao groupDao) {
-		this.groupDao = groupDao;
-	}
-
-	/**
-	 * Sets the employee dao.
-	 *
-	 * @param employeeDao the new employee dao
-	 */
-	@Autowired
-	public void setEmployeeDao(EmployeeDao employeeDao) {
-		this.employeeDao = employeeDao;
-	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.gic.ems.service.M05_Service#findAll(com.gic.ems.web.model.
 	 * M05_EmpListModel)
 	 */
@@ -65,13 +47,33 @@ public class M05_ServiceImpl implements M05_Service {
 			if (null == emp.getEmpGroup()) {
 				continue;
 			}
-			EmpGroup empGroup = groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
+			EmpGroup empGroup = this.groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
 			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : Constant.EMPTY_STRING;
-			list.add(M05_EmpListModel.builder().employeeId(emp.getEmployeeId()).firstName(emp.getFirstName())
+			list.add(M05_EmpListModel.builder().employeeId(emp.getEmployeeCode()).firstName(emp.getFirstName())
 					.lastName(emp.getLastName()).email(email).gender(emp.getGender()).groupName(empGroup.getName())
 					.build());
 
 		}
 		return list;
+	}
+
+	/**
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
+	 */
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
+	/**
+	 * Sets the group dao.
+	 *
+	 * @param groupDao the new group dao
+	 */
+	@Autowired
+	public void setGroupDao(GroupDao groupDao) {
+		this.groupDao = groupDao;
 	}
 }

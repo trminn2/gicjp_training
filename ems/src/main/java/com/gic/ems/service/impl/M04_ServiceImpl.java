@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.gic.ems.common.constant.Constant;
 import com.gic.ems.common.type.Role;
+import com.gic.ems.common.utility.CodeUtility;
 import com.gic.ems.dao.EmployeeDao;
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.Employee;
@@ -31,6 +33,34 @@ public class M04_ServiceImpl implements M04_Service {
 	/** The encoder. */
 	private PasswordEncoder encoder;
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M04_EmpCreateService#hasAccount(java.lang.String)
+	 */
+	@Override
+	public boolean hasAccount(String email) {
+		return this.userDao.existsByEmail(email);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M04_EmpCreateService#save(com.gic.ems.web.model.
+	 * M04_EmpCreateModel)
+	 */
+	@Override
+	@Transactional
+	public void save(M04_EmpCreateModel model) {
+		Employee emp = Employee.builder().employeeCode(CodeUtility.getInstance().generateEmployeeCode())
+				.firstNameKana(model.getFirstNameKana()).lastName(model.getLastName())
+				.lastNameKana(model.getLastNameKana()).gender(model.getGender()).build();
+		User user = User.builder().email(model.getEmail()).employee(emp)
+				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
+		emp.setUser(user);
+		this.employeeDao.save(emp);
+	}
+
 	/**
 	 * Sets the employee dao.
 	 *
@@ -39,16 +69,6 @@ public class M04_ServiceImpl implements M04_Service {
 	@Autowired
 	public void setEmployeeDao(EmployeeDao employeeDao) {
 		this.employeeDao = employeeDao;
-	}
-
-	/**
-	 * Sets the user dao.
-	 *
-	 * @param userDao the new user dao
-	 */
-	@Autowired
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
 	}
 
 	/**
@@ -61,31 +81,13 @@ public class M04_ServiceImpl implements M04_Service {
 		this.encoder = encoder;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.gic.ems.service.M04_EmpCreateService#save(com.gic.ems.web.model.
-	 * M04_EmpCreateModel)
+	/**
+	 * Sets the user dao.
+	 *
+	 * @param userDao the new user dao
 	 */
-	@Override
-	@Transactional
-	public void save(M04_EmpCreateModel model) {
-		Employee emp = Employee.builder().employeeId(model.getEmployeeId()).firstName(model.getFirstName())
-				.firstNameKana(model.getFirstNameKana()).lastName(model.getLastName())
-				.lastNameKana(model.getLastNameKana()).gender(model.getGender()).build();
-		User user = User.builder().email(model.getEmail()).employee(emp)
-				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
-		emp.setUser(user);
-		this.employeeDao.save(emp);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.gic.ems.service.M04_EmpCreateService#hasAccount(java.lang.String)
-	 */
-	@Override
-	public boolean hasAccount(String email) {
-		return userDao.existsByEmail(email);
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 }
