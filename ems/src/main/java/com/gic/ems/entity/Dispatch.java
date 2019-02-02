@@ -34,9 +34,10 @@ public class Dispatch extends BaseEntity {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The company id. */
-	@Column
-	private int companyId;
+	/** The company. */
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class, optional = true)
+	@JoinColumn
+	private Company company;
 
 	/** The dispatch department. */
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = DispatchDepartment.class, optional = true)
@@ -69,7 +70,7 @@ public class Dispatch extends BaseEntity {
 	 * Instantiates a new dispatch.
 	 *
 	 * @param id                 the id
-	 * @param companyId          the company id
+	 * @param company            the company
 	 * @param dispatchDepartment the dispatch department
 	 * @param dispatchEndDate    the dispatch end date
 	 * @param dispatchStartDate  the dispatch start date
@@ -78,10 +79,10 @@ public class Dispatch extends BaseEntity {
 	 * @param income             the income
 	 */
 	@Builder
-	public Dispatch(Long id, int companyId, DispatchDepartment dispatchDepartment, LocalDate dispatchEndDate,
+	public Dispatch(Long id, Company company, DispatchDepartment dispatchDepartment, LocalDate dispatchEndDate,
 			LocalDate dispatchStartDate, Employee employee, EmpGroup empGroup, Double income) {
 		super(id);
-		this.companyId = companyId;
+		this.company = company;
 		this.dispatchDepartment = dispatchDepartment;
 		this.dispatchEndDate = dispatchEndDate;
 		this.dispatchStartDate = dispatchStartDate;

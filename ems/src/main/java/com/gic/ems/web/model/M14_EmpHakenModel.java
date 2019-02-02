@@ -30,13 +30,13 @@ public class M14_EmpHakenModel extends BaseModel {
 	private String employeeId;
 
 	/** The employee name. */
-	private String employeeName;
+	//private String employeeName;
 
 	/** The group id. */
 	private String groupId;
 
 	/** The dispatch dept. */
-	private String dispatchDept;
+	private String dispatchDeptId;
 
 	/** The dispatch start date. */
 	private String dispatchStartDate;
@@ -47,6 +47,7 @@ public class M14_EmpHakenModel extends BaseModel {
 	/** The income. */
 	private String income;
 
+	
 	/**
 	 * Instantiates a new m 14 emp haken create model.
 	 *
@@ -68,16 +69,16 @@ public class M14_EmpHakenModel extends BaseModel {
 	 * @return M14_EmpHakenCreateModel
 	 */
 	@Builder
-	public M14_EmpHakenModel(Long id, String uuid, String companyId, String employeeId, String employeeName,
-			String groupId, String dispatchDept, String dispatchStartDate, String dispatchEndDate, String income) {
+	public M14_EmpHakenModel(Long id, String uuid, String companyId, String employeeId, String groupId,
+			String dispatchDeptId, String dispatchStartDate, String dispatchEndDate, String income) {
 		super(id, uuid);
 		this.companyId = companyId;
 		this.employeeId = employeeId;
-		this.employeeName = employeeName;
 		this.groupId = groupId;
-		this.dispatchDept = dispatchDept;
+		this.dispatchDeptId = dispatchDeptId;
 		this.dispatchStartDate = dispatchStartDate;
 		this.dispatchEndDate = dispatchEndDate;
 		this.income = income;
 	}
+
 }

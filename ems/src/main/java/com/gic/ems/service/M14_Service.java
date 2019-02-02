@@ -1,5 +1,10 @@
 package com.gic.ems.service;
 
+import java.util.Collection;
+
+import com.gic.ems.entity.Company;
+import com.gic.ems.entity.EmpGroup;
+import com.gic.ems.entity.Employee;
 import com.gic.ems.web.model.M14_EmpHakenModel;
 
 import lombok.NonNull;
@@ -33,4 +38,11 @@ public interface M14_Service {
 	 * @return M14_EmpHakenModel
 	 */
 	M14_EmpHakenModel findById(@NonNull Long id);
+	
+
+	Collection<Employee> findByEmployeeIdContaining(String employeeId);
+	
+	Collection<EmpGroup> findAllEmpGroups();
+	
+	Collection<Company> findAllCompanies();
 }
