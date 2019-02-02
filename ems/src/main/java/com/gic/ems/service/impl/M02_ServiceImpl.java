@@ -13,7 +13,11 @@ import com.gic.ems.web.model.M02_PasswordUpdateModel;
  * The Class M02_ServiceImpl.
  *
  * @author PhuuKhinKhin Jan 27, 2019 <BR>
- *         The Class M02_ServiceImpl.
+ * @version 1.0 </BR>
+ * @since 2019 </BR>
+ *        ems system</BR>
+ *        com.gic.ems.service.impl </BR>
+ *        M02_ServiceImpl.java </BR>
  */
 @Service
 public class M02_ServiceImpl implements M02_Service {
@@ -51,15 +55,9 @@ public class M02_ServiceImpl implements M02_Service {
 	 * M02_PasswordUpdateModel)
 	 */
 	@Override
-	public boolean update(M02_PasswordUpdateModel m02Model) {
+	public void update(M02_PasswordUpdateModel m02Model) {
 		User user = this.userDao.findByEmail(UserUtility.getInstance().getLoginUserName()).orElse(null);
-		if (null != user) {
-			// TODO
-			user.setPassword(this.encoder.encode(m02Model.getNewPassword()));
-			userDao.save(user);
-			return true;
-		} else {
-			return false;
-		}
+		user.setPassword(this.encoder.encode(m02Model.getNewPassword()));
+		userDao.save(user);
 	}
 }
