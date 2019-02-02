@@ -3,6 +3,7 @@ package com.gic.ems.entity;
 import java.time.LocalDate;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class DispatchDepartment extends BaseEntity {
 	private String address;
 
 	/** The company. */
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class, optional = true)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Company.class, optional = true)
 	@JoinColumn
 	private Company company;
 

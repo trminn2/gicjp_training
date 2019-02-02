@@ -45,14 +45,8 @@ public class M09_ServiceImpl implements M09_Service {
 	 * M05_EmpListModel)
 	 */
 	@Override
-	public Collection<M09_HakenCreateModel> findAllCompany(M09_HakenCreateModel hakenModel) {
-
-		Collection<M09_HakenCreateModel> list = new ArrayList<>();
-		Collection<Company> companyList = this.companyDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
-		for (Company comp : companyList) {
-			list.add(M09_HakenCreateModel.builder().companyName(comp.getCompanyName()).build());
-		}
-		return list;
+	public Collection<Company> findAllCompany(M09_HakenCreateModel hakenModel) {
+		return this.companyDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
 	/*
@@ -64,17 +58,24 @@ public class M09_ServiceImpl implements M09_Service {
 	@Override
 	@Transactional(noRollbackFor = Exception.class)
 	public void save(M09_HakenCreateModel m09Model) throws Exception {
+
 		Company company = this.companyDao.findByIdAndDeleteFlag(m09Model.getCompanyId(), DeleteFlag.ACTIVE);
 		if (null == company) {
-			throw new Exception();
+			System.out.println("* Null *");
 		}
+
+		// Company company =
+		// this.companyDao.findByCompanyNameAndDeleteFlag(m09Model.getCompanyName(),DeleteFlag.ACTIVE);
 		this.dispatchDepartmentDao.save(DispatchDepartment.builder()
 				.dispatchDepartmentName(m09Model.getDispatchDeptName()).postalCode(m09Model.getPostalCode())
 				.address(m09Model.getAddress()).contractPersonFirstName(m09Model.getContractPersonFirstName())
 				.contractPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
 				.contractPersonLastName(m09Model.getContractPersonLastName())
 				.contractPersonLastNameKana(m09Model.getContractPersonLastNameKana())
-				.contractPhone(m09Model.getContractPhone()).contractEmail(m09Model.getContractEmail()).company(company)
+				.contractPhone(m09Model.getContractPhone()).contractEmail(m09Model.getContractEmail())
+				.dispatchStartDate(m09Model.getDispatchStartDate())
+				.dispatchDepartmentName(m09Model.getDispatchDeptName())
+				.company(company)
 				.build());
 	}
 
@@ -86,21 +87,17 @@ public class M09_ServiceImpl implements M09_Service {
 	@Override
 	public M09_HakenCreateModel findDispatchDepartment(@NonNull Long id) {
 		DispatchDepartment department = this.dispatchDepartmentDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE);
-			M09_HakenCreateModel.builder()
-			.id(department.getId())
-			.dispatchDeptName(department.getDispatchDepartmentName())
-			.companyName(department.getCompany().getCompanyName())
-			.contractEmail(department.getContractEmail())
-			.contractPersonFirstName(department.getContractPersonFirstName())
-			.contractPersonFirstNameKana(department.getContractPersonFirstNameKana())
-			.contractPersonLastName(department.getContractPersonLastName())
-			.contractPersonLastName(department.getContractPersonLastName())
-			.contractPersonLastNameKana(department.getContractPersonLastNameKana())
-			.contractPhone(department.getContractPhone())
-			.address(department.getAddress())
-			.postalCode(department.getPostalCode())
-			.dispatchStartDate(department.getDispatchStartDate()).build();
-			
+		M09_HakenCreateModel.builder().id(department.getId()).dispatchDeptName(department.getDispatchDepartmentName())
+				.companyId(department.getCompany().getId())
+				.contractEmail(department.getContractEmail())
+				.contractPersonFirstName(department.getContractPersonFirstName())
+				.contractPersonFirstNameKana(department.getContractPersonFirstNameKana())
+				.contractPersonLastName(department.getContractPersonLastName())
+				.contractPersonLastName(department.getContractPersonLastName())
+				.contractPersonLastNameKana(department.getContractPersonLastNameKana())
+				.contractPhone(department.getContractPhone()).address(department.getAddress())
+				.postalCode(department.getPostalCode()).dispatchStartDate(department.getDispatchStartDate()).build();
+
 		return null;
 	}
 

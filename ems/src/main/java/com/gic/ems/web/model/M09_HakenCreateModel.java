@@ -14,13 +14,10 @@ public class M09_HakenCreateModel extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	/** Company Id */
-	private String companyId;
+	private Long companyId;
 
 	/** Name */
 	private String dispatchDeptName;
-
-	/** Name */
-	private String companyName;
 
 	/** Contract Email */
 	private String contractEmail;
@@ -49,33 +46,14 @@ public class M09_HakenCreateModel extends BaseModel {
 	/** Dispatch Start Date */
 	private LocalDate dispatchStartDate;
 
-	
-
-	/**
-	 * @param id
-	 * @param uuid
-	 * @param dispatchDepartmentId
-	 * @param companyId
-	 * @param name
-	 * @param contractEmail
-	 * @param contractPersonFirstName
-	 * @param contractPersonLastName
-	 * @param contractPersonFirstNameKana
-	 * @param contractPersonLastNameKana
-	 * @param contractPhone
-	 * @param address
-	 * @param postalCode
-	 * @param dispatchStartDate
-	 */
 	@Builder
-	public M09_HakenCreateModel(Long id, String uuid, String companyId, String dispatchDeptName, String companyName,
-			String contractEmail, String contractPersonFirstName, String contractPersonLastName,
-			String contractPersonFirstNameKana, String contractPersonLastNameKana, String contractPhone, String address,
-			String postalCode, LocalDate dispatchStartDate) {
+	public M09_HakenCreateModel(Long id, String uuid, Long companyId, String dispatchDeptName, String contractEmail,
+			String contractPersonFirstName, String contractPersonLastName, String contractPersonFirstNameKana,
+			String contractPersonLastNameKana, String contractPhone, String address, String postalCode,
+			LocalDate dispatchStartDate) {
 		super(id, uuid);
 		this.companyId = companyId;
 		this.dispatchDeptName = dispatchDeptName;
-		this.companyName = companyName;
 		this.contractEmail = contractEmail;
 		this.contractPersonFirstName = contractPersonFirstName;
 		this.contractPersonLastName = contractPersonLastName;

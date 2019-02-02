@@ -37,7 +37,7 @@ public class M09_HakenCreateController {
 	@GetMapping("/comp-haken-create")
 	public String init(@ModelAttribute M09_HakenCreateModel hakenModel, Model model, Locale locale) {
 		
-		model.addAttribute(ControllerConstant.M09_MODEL_LIST, this.service.findAllCompany(hakenModel));
+		model.addAttribute(ControllerConstant.COMPANIES, this.service.findAllCompany(hakenModel));
 		model.addAttribute(ControllerConstant.M09_MODEL, M09_HakenCreateModel.builder().build());
 		return ControllerConstant.M09_HAKEN_CREATE;
 	}
@@ -52,9 +52,9 @@ public class M09_HakenCreateController {
 	 * @throws Exception 
 	 */
 	@PostMapping("/comp-haken-create")
-	public String create(@Valid @ModelAttribute M09_HakenCreateModel hakenModel, BindingResult bindingResult,
+	public String create(@Valid @ModelAttribute M09_HakenCreateModel m09Model, BindingResult bindingResult,
 			Model model) throws Exception {
-		this.service.save(hakenModel);
+		this.service.save(m09Model);
 		return ControllerConstant.M09_HAKEN_CREATE;
 	}
 }

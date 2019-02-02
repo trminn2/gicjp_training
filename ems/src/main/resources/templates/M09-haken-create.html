@@ -47,7 +47,7 @@
 	<!-- menu file include -->
 	
 <form class="form-horizontal" role="form" method="post"
-					th:action="@{/create-CompanyHaken}" th:object="${m09Model}">
+					th:action="@{/comp-haken-create}" th:object="${m09Model}">
 	<!-- Start 派遣先情報登録画面 -->
 	<div class="container jumbotron"
 		style="padding-top: 15px; padding-bottom: 16px;">
@@ -61,31 +61,25 @@
 				<div class="col-sm">
 					<div class="form-group ">
 						<label for="exampleInputEmail1">会社名</label> 
-						<select class="custom-select custom-select-sm" id="" >
+						<select class="custom-select custom-select-sm" id="cboCompanyId" name="companyId" >
 							<option selected>選択してください...</option>
-							<option th:each="companyList: ${m09ModelList}"></option>
+							<option th:each="companies: ${company}" th:text="${companyCode}" th:value="${company.id}"></option>
 						</select>
 					</div>
 				</div>
 
 				<div class="col-sm">
 					<div class="form-group">
-						<label for="exampleInputEmail1">部門名</label> <input type="email"
+						<label for="exampleInputEmail1">部門名</label> <input type="text"
 							class="form-control form-control-sm" placeholder="部門名">
 					</div>
 				</div>
 
 				<div class="col-sm">
 					<div class="form-group">
-						<label for="exampleInputEmail1">契約開始日</label> <select
-							class="custom-select custom-select-sm" id="">
-							<option selected>選択してください...</option>
-							<option value="1">お客様先 1</option>
-							<option value="1">お客様先 2</option>
-							<option value="1">お客様先 3</option>
-							<option value="1">お客様先 4</option>
-							<option value="1">お客様先 5</option>
-						</select>
+						<label for="exampleInputEmail1">契約開始日</label> 
+						<input type="date" name = "contractStartDate" class="form-control form-control-sm" id="startDate"
+					placeholder="契約開始日">
 					</div>
 				</div>
 			</div>
@@ -167,4 +161,5 @@
 		</div>
 	</div>
 	</form>
+	
 </body>

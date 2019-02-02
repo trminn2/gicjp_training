@@ -92,4 +92,6 @@ public interface ControllerConstant {
 	/** The Constant M15_CUSTOMER_INFO_SEARCH. */
 	static final String M15_CUSTOMER_INFO_SEARCH = "M15-customer-list";
 
+	static final String COMPANIES = "companies";
+
 }

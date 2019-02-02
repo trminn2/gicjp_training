@@ -23,5 +23,5 @@ public interface CompanyDao extends JpaRepository<Company, Long> {
 
 	Collection<Company> findAllByDeleteFlag(DeleteFlag deleteFlag);
 
-	Company findByIdAndDeleteFlag(String companyId, DeleteFlag active);
+	Company findByIdAndDeleteFlag(Long id, DeleteFlag deleteFlag);
 }
