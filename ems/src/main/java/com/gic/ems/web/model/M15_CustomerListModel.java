@@ -1,9 +1,3 @@
-/*
-   * 作成日 : 2019/01/26
-   * 作成者 : 
-   * 画面名 : M15_お客様一覧画面
- */
-
 package com.gic.ems.web.model;
 
 import java.time.LocalDate;
@@ -22,7 +16,7 @@ public class M15_CustomerListModel extends BaseModel {
 
 	/** Id */
 	private String companyId;
-	
+
 	/** Company Name */
 	private String companyName;
 
@@ -69,10 +63,10 @@ public class M15_CustomerListModel extends BaseModel {
 	 * @param contactPhone
 	 */
 	@Builder
-	public M15_CustomerListModel(Long id, String uuid,String companyId, String companyName, LocalDate contractStartDate,
-			String address, String postalCode, String contactPersonFirstName, String contactPersonLastName,
-			String contactPersonFirstNameKana, String contactPersonLastNameKana, String contactEmail,
-			String contactPhone) {
+	public M15_CustomerListModel(Long id, String uuid, String companyId, String companyName,
+			LocalDate contractStartDate, String address, String postalCode, String contactPersonFirstName,
+			String contactPersonLastName, String contactPersonFirstNameKana, String contactPersonLastNameKana,
+			String contactEmail, String contactPhone) {
 		super(id, uuid);
 		this.companyId = companyId;
 		this.companyName = companyName;

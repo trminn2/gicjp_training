@@ -8,7 +8,7 @@ import com.gic.ems.web.model.M15_CustomerListModel;
 /**
  * The Class M15_Service.
  *
- * @author THAEMYATNOELWIN Jan , 2019 </BR>
+ * @author THAEMYATNOELWIN Jan 02 , 2019 </BR>
  * @version 1.0 </BR>
  * @since 2019 </BR>
  *        ems system</BR>

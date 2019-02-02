@@ -1,0 +1,189 @@
+<!-- 
+ 作成日：　2018年12月29日
+  作成者：　テーミャツノールイン
+  更新日：
+  更新者：
+  説明　：　お客様一覧画面
+ -->
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Customer List</title>
+<link rel="icon" href="https://getbootstrap.com/favicon.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<!-- Bootstrap Datatable CSS -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+	crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js"
+	type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- Bootstrap Datatable JS -->
+<script
+	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
+	charset="utf-8"></script>
+<script
+	src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"
+	charset="utf-8"></script>
+<script
+	src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"
+	charset="utf-8"></script>
+<script
+	src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"
+	charset="utf-8"></script>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var t = $('#example').DataTable({
+			responsive : {
+				details : {
+					display : $.fn.dataTable.Responsive.display.modal({
+						header : function(row) {
+							var data = row.data();
+							return 'Details for ' + data[0] + ' ' + data[1];
+						}
+					}),
+					renderer : $.fn.dataTable.Responsive.renderer.tableAll({
+						tableClass : 'table'
+					})
+				}
+			}
+		});
+		
+		t.on('order.dt search.dt', function() {
+			t.column(0, {
+				search : 'applied',
+				order : 'applied'
+			}).nodes().each(function(cell, i) {
+				cell.innerHTML = i + 1;
+			});
+		}).draw();
+	});
+</script>
+</head>
+<body>
+	<!-- menu file include -->
+	<div th:include="/common/navbar-home.html::navbar-home"></div>
+	<!-- menu file include -->
+	<div class="container jumbotron">
+		<div class="row justify-content-center">
+			<div class="col-lg-12 col-md-12 col-xs-10">
+				<form name="search" class="form-horizontal" role="form" method="get"
+					th:action="@{/cust-list}" th:object="${m15Model}">
+					<div class="row col">
+						<h5>お客様一覧</h5>
+						<br>
+					</div>
+					<div class="row">
+						<div class="col-md-3 col-sm-3">
+							<div class="form-group">
+								<label for="companyName">会社名 </label> <input type="text"
+									class="form-control form-control-sms" id="search" size="40px"
+									placeholder="会社名で検索してください">
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-3">
+							<div class="form-group">
+								<label for="search">&nbsp;</label>
+								<button type="submit" class="btn btn-sm btn-primary btn-block">
+									<i class="fas fa-search"></i>検索
+								</button>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-3">
+							<div class="form-group">
+								<label for="search">&nbsp;</label>
+								<button type="submit" class="btn btn-sm btn-primary btn-block">
+									<i class="fas fa-file-export"></i>出力
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<!-- <table class="custList"> -->
+		<table id="customerList"
+			class="table table-sm table-striped table-bordered nowrap bg-white"
+			style="width: 100%">
+			<thead>
+				<tr>
+					<!-- <th></th> -->
+					<th>番号</th>
+					<th>会社名</th>
+					<th>契約開始日</th>
+					<th>郵便番号</th>
+					<th>住所</th>
+					<th>責任者姓</th>
+					<th>責任者姓かな</th>
+					<th>責任者名</th>
+					<th>責任者名かな</th>
+					<th>責任者メール</th>
+					<th>責任者電話番号</th>
+				</tr>
+			</thead>
+			<tbody class="bg-white">
+				<tr th:each="custList: ${m15ModelList}">
+					<!-- <td><input type="checkbox"></td> -->
+					<!-- <td><input type="checkbox" th:field="${custList}"/></td> -->
+					<td></td>
+					<td th:text="${custList.companyName}"></td>
+					<td th:text="${custList.contractStartDate}"></td>
+					<td th:text="${custList.postalCode}"></td>
+					<td th:text="${custList.address}"></td>
+					<td th:text="${custList.contactPersonFirstName}"></td>
+					<td th:text="${custList.contactPersonFirstNameKana}"></td>
+					<td th:text="${custList.contactPersonLastName}"></td>
+					<td th:text="${custList.contactPersonLastNameKana}"></td>
+					<td th:text="${custList.contactEmail}"></td>
+					<td th:text="${custList.contactPhone}"></td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<br>
+		<div class="row col">
+			<a href="MG013-customer-update.html"
+				class="btn btn-sm btn-primary col-md-1" role="button"><i
+				class="fas fa-edit"></i>更新</a>&nbsp;&nbsp; <a
+				href="MG013-customer-register.html"
+				class="btn btn-sm btn-primary col-md-1" role="button"><i
+				class="fas fa-plus"></i>新規</a>
+		</div>
+	</div>
+<body>
+</html>

@@ -38,13 +38,16 @@ public class M13_ServiceImpl implements M13_Service {
 	 */
 	@Override
 	public void save(M13_CustCreateModel custCreateModel) {
-		Company company = Company.builder().companyId(custCreateModel.getCompanyId())
-				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
+		Company company = Company.builder()
+				.companyId(GenerateCompanyID.getInstance().generateID())
+				.companyName(custCreateModel.getCompanyName())
+				.contactEmail(custCreateModel.getContactEmail())
 				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
 				.address(custCreateModel.getAddress())
 				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
 				.contactPersonLastName(custCreateModel.getContactPersonLastName())
 				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
+				.contractStartDate(custCreateModel.getContractStartDate())
 				.postalCode(custCreateModel.getPostalCode()).contactPhone(custCreateModel.getContactPhone()).build();
 		this.companyDao.save(company);
 	}

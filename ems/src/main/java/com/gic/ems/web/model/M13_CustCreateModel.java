@@ -1,6 +1,6 @@
 package com.gic.ems.web.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,7 +49,7 @@ public class M13_CustCreateModel extends BaseModel {
 	private String contactPhone;
 	
 	/** The contractStartDate. */
-	private Date contractStartDate;;
+	private LocalDate contractStartDate;
 	
 	/** The address. */
 	private String address;
@@ -77,7 +77,7 @@ public class M13_CustCreateModel extends BaseModel {
 	@Builder
 	public M13_CustCreateModel(Long id, String uuid, String companyId, String companyName, String contactEmail,
 			String contactPersonFirstName, String contactPersonFirstNameKana, String contactPersonLastName,
-			String contactPersonLastNameKana, String contactPhone, Date contractStartDate, String address, String postalCode) {
+			String contactPersonLastNameKana, String contactPhone, LocalDate contractStartDate, String address, String postalCode) {
 		super(id, uuid);
 		this.companyId = companyId;
 		this.companyName = companyName;
