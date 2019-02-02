@@ -37,13 +37,13 @@
 </head>
 <body>
 	<!-- menu file include -->
-	<div th:include="/CG011_main-menu.html::menu"></div>
+	<div th:include="/common/navbar-home.html::navbar-home"></div>
 	<!-- menu file include -->
 	<div class="container jumbotron">
 		<div class="row justify-content-center">
 			<div class="col-lg-10 col-md-12 col-xs-10">
 				<form class="form-horizontal" role="form" method="post"
-					th:action="@{/createEmpHaken}" th:object="${m14Model}">
+					th:action="@{/emp-haken-create}" th:object="${m14Model}">
 					<div class="row col">
 						<h5>社員派遣先情報更新</h5>
 					</div>

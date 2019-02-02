@@ -3,6 +3,8 @@ package com.gic.ems.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gic.ems.common.utility.UserUtility;
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.User;
@@ -55,9 +57,10 @@ public class M02_ServiceImpl implements M02_Service {
 	 * M02_PasswordUpdateModel)
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void update(M02_PasswordUpdateModel m02Model) {
 		User user = this.userDao.findByEmail(UserUtility.getInstance().getLoginUserName()).orElse(null);
 		user.setPassword(this.encoder.encode(m02Model.getNewPassword()));
-		userDao.save(user);
+		this.userDao.save(user);
 	}
 }
