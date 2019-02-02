@@ -23,6 +23,16 @@ public class M13_ServiceImpl implements M13_Service {
 	/** The company dao. */
 	private CompanyDao companyDao;
 
+	/**
+	 * Sets the company dao.
+	 *
+	 * @param companyDao the new company dao
+	 */
+	@Autowired
+	public void setCompanyDao(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -32,26 +42,17 @@ public class M13_ServiceImpl implements M13_Service {
 	@Override
 	@Transactional
 	public void save(M13_CustCreateModel custCreateModel) {
-//		Company company = Company.builder().companyCode(CodeUtility.getInstance().generateCompanyCode())
-//				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
-//				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
-//				.address(custCreateModel.getAddress())
-//				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
-//				.contactPersonLastName(custCreateModel.getContactPersonLastName())
-//				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
-//				.contractStartDate(custCreateModel.getContractStartDate()).postalCode(custCreateModel.getPostalCode())
-//				.contactPhone(custCreateModel.getContactPhone()).build();
-//		this.companyDao.save(company);
-	}
-
-	/**
-	 * Sets the company dao.
-	 *
-	 * @param companyDao the new company dao
-	 */
-	@Autowired
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
+		Company company = Company.builder()
+				.companyCode(CodeUtility.getInstance().generateCompanyCode(this.companyDao.count()))
+				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
+				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
+				.address(custCreateModel.getAddress())
+				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
+				.contactPersonLastName(custCreateModel.getContactPersonLastName())
+				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
+				.contractStartDate(custCreateModel.getContractStartDate()).postalCode(custCreateModel.getPostalCode())
+				.contactPhone(custCreateModel.getContactPhone()).build();
+		this.companyDao.save(company);
 	}
 
 	/*
