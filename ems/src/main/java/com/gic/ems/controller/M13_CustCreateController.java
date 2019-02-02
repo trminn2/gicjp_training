@@ -62,12 +62,7 @@ public class M13_CustCreateController {
 	@PostMapping("/cust-create")
 	public String create(@Valid @ModelAttribute M13_CustCreateModel customerModel, BindingResult bindingResult,
 			Model model) {
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("companyName", customerModel.getCompanyName());
-			model.addAttribute(ControllerConstant.M13_MODEL, customerModel);
-		} else {
-			this.service.save(customerModel);
-		}
+		this.service.save(customerModel);
 		return ControllerConstant.M13_CUSTOMER_CREATE;
 	}
 }
