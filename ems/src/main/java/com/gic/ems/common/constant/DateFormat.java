@@ -14,9 +14,9 @@ public interface DateFormat {
 	/** The Constant YYYY_MM_DD. */
 	static final String YYYY_MM_DD = "yyyy-MM-dd";
 
-	/** The Constant YYYYMMDDHHSS. */
-	static final String YYYYMMDDHHSS = "yyyy/MM/dd HH:ss";
+	/** The Constant YYYYMMDDHHMMSS. */
+	static final String YYYYMMDDHHmmSS = "yyyy/MM/dd HH:mm:ss";
 
-	/** The Constant YYYY_MM_DD_HHSS. */
-	static final String YYYY_MM_DD_HHSS = "yyyy-MM-dd HH:ss";
+	/** The Constant YYYY_MM_DD_HHMMSS. */
+	static final String YYYY_MM_DD_HHmmSS = "yyyy-MM-dd HH:mm:ss";
 }
