@@ -76,8 +76,9 @@ public class CodeUtility {
 	 * @return String
 	 */
 	private String getCode(@NonNull final Long companyId) {
-		int id = companyId.intValue();
-		return (id < 10) ? CODE_0000
-				: (id < 100) ? CODE_000 : (id < 1000) ? CODE_00 : (id < 10000) ? CODE_0 : companyId.toString();
+		int id = companyId.intValue() + 1;
+		return new StringBuilder((id < 10) ? CODE_0000
+				: (id < 100) ? CODE_000 : (id < 1000) ? CODE_00 : (id < 10000) ? CODE_0 : companyId.toString())
+						.append(String.valueOf(id)).toString();
 	}
 }
