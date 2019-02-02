@@ -8,7 +8,11 @@ import lombok.NonNull;
  * The Interface M02_Service.
  *
  * @author PhuuKhinKhin Jan 26, 2019 <BR>
- *         The Interface M02_Service.
+ * @version 1.0 </BR>
+ * @since 2019 </BR>
+ *        ems system</BR>
+ *        com.gic.ems.service </BR>
+ *        M02_Service.java </BR>
  */
 public interface M02_Service {
 
@@ -16,7 +20,7 @@ public interface M02_Service {
 	 * Update.
 	 *
 	 * @param m02Model the m 02 model
-	 * @return true, if successful
+	 * 
 	 */
-	public boolean update(@NonNull M02_PasswordUpdateModel m02Model);
+	public void update(@NonNull M02_PasswordUpdateModel m02Model);
 }
