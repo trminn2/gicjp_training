@@ -7,6 +7,8 @@ package com.gic.ems.common.constant;
  *         The Interface DateFormat.
  */
 public interface DateFormat {
+	
+	static final String DDMMYYYY = "dd/MM/yyyy";
 
 	/** The Constant YYYYMMDD. */
 	static final String YYYYMMDD = "yyyy/MM/dd";
