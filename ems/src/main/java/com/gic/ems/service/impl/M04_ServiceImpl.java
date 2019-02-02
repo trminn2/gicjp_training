@@ -52,7 +52,8 @@ public class M04_ServiceImpl implements M04_Service {
 	@Override
 	@Transactional
 	public void save(M04_EmpCreateModel model) {
-		Employee emp = Employee.builder().employeeCode(CodeUtility.getInstance().generateEmployeeCode())
+		Employee emp = Employee.builder()
+				.employeeCode(CodeUtility.getInstance().generateEmployeeCode(this.employeeDao.count()))
 				.firstNameKana(model.getFirstNameKana()).lastName(model.getLastName())
 				.lastNameKana(model.getLastNameKana()).gender(model.getGender()).build();
 		User user = User.builder().email(model.getEmail()).employee(emp)

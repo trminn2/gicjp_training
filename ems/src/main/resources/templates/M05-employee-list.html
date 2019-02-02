@@ -111,7 +111,7 @@
 						<div class="col-md-2 col-sm-3">
 							<div class="form-group">
 								<label for="empNO">社員番号 </label> <input type="text"
-									class="form-control form-control-sm" name="employeeId"
+									class="form-control form-control-sm" name="employeeCode"
 									placeholder="検索してください">
 							</div>
 						</div>
@@ -172,8 +172,8 @@
 			<tbody class="bg-white">
 				<tr th:each="empList: ${m05ModelList}">
 					<td></td>
-					<td><a th:href="${empList.employeeId}"><span
-							th:text="${empList.employeeId}"></span></a></td>
+					<td><a th:href="${empList.employeeCode}"><span
+							th:text="${empList.employeeCode}"></span></a></td>
 					<td th:text="${empList.firstName} + ' ' + ${empList.lastName}"></td>
 					<td th:text="${empList.gender}"></td>
 					<td th:text="${empList.groupName}"></td>

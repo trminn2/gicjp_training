@@ -1,5 +1,7 @@
 package com.gic.ems.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,17 +30,18 @@ public class M13_ServiceImpl implements M13_Service {
 	 * M13_CustCreateModel)
 	 */
 	@Override
+	@Transactional
 	public void save(M13_CustCreateModel custCreateModel) {
-		Company company = Company.builder().companyCode(CodeUtility.getInstance().generateCompanyCode())
-				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
-				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
-				.address(custCreateModel.getAddress())
-				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
-				.contactPersonLastName(custCreateModel.getContactPersonLastName())
-				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
-				.contractStartDate(custCreateModel.getContractStartDate()).postalCode(custCreateModel.getPostalCode())
-				.contactPhone(custCreateModel.getContactPhone()).build();
-		this.companyDao.save(company);
+//		Company company = Company.builder().companyCode(CodeUtility.getInstance().generateCompanyCode())
+//				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
+//				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
+//				.address(custCreateModel.getAddress())
+//				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
+//				.contactPersonLastName(custCreateModel.getContactPersonLastName())
+//				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
+//				.contractStartDate(custCreateModel.getContractStartDate()).postalCode(custCreateModel.getPostalCode())
+//				.contactPhone(custCreateModel.getContactPhone()).build();
+//		this.companyDao.save(company);
 	}
 
 	/**

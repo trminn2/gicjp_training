@@ -25,7 +25,7 @@ public class M05_EmpListModel extends BaseModel {
 	private static final long serialVersionUID = 1L;
 	
 	/** The employee id. */
-	private String employeeId;
+	private String employeeCode;
 	
 	/** The first name. */
 	private String firstName;
@@ -47,7 +47,7 @@ public class M05_EmpListModel extends BaseModel {
 	 *
 	 * @param id            the id
 	 * @param uuid          the uuid
-	 * @param employeeId    the employee id
+	 * @param employeeCode  the employeeCode
 	 * @param firstName     the first name
 	 * @param lastName      the last name
 	 * @param email         the email
@@ -55,10 +55,10 @@ public class M05_EmpListModel extends BaseModel {
 	 * @param gender        the gender
 	 */
 	@Builder
-	public M05_EmpListModel(Long id, String uuid, String employeeId, String firstName,
+	public M05_EmpListModel(Long id, String uuid, String employeeCode, String firstName,
 			String lastName,  String email, String groupName, Gender gender) {
 		super(id, uuid);
-		this.employeeId = employeeId;
+		this.employeeCode = employeeCode;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

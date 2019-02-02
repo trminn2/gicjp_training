@@ -49,7 +49,7 @@ public class M05_ServiceImpl implements M05_Service {
 			}
 			EmpGroup empGroup = this.groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
 			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : Constant.EMPTY_STRING;
-			list.add(M05_EmpListModel.builder().employeeId(emp.getEmployeeCode()).firstName(emp.getFirstName())
+			list.add(M05_EmpListModel.builder().employeeCode(emp.getEmployeeCode()).firstName(emp.getFirstName())
 					.lastName(emp.getLastName()).email(email).gender(emp.getGender()).groupName(empGroup.getName())
 					.build());
 
