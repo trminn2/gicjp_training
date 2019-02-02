@@ -34,6 +34,9 @@ public interface ControllerConstant {
 
 	/** The Constant M05_MODEL_LIST. */
 	static final String M05_MODEL_LIST = "m05ModelList";
+	
+	/** The Constant M09_MODEL_LIST. */
+	static final String M09_MODEL_LIST = "m09ModelList";
 
 	/** The Constant M10_MODEL_LIST. */
 	static final String M10_MODEL_LIST = "m10ModelList";

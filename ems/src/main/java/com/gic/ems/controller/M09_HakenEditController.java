@@ -49,9 +49,9 @@ public class M09_HakenEditController {
 	 * @param locale the locale
 	 * @return String
 	 */
-	@GetMapping("/{id}/com-haken-edit")
-	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
-		model.addAttribute(ControllerConstant.M09_MODEL, M09_HakenCreateModel.builder().build());
+	@GetMapping("/{id}/comp-haken-edit")
+	public String init(@PathVariable("id") @NonNull Long id, Model model, Locale locale) {
+		model.addAttribute(ControllerConstant.M09_MODEL, this.service.findDispatchDepartment(id));
 		return ControllerConstant.M09_HAKEN_EDIT;
 	}
 
@@ -64,11 +64,12 @@ public class M09_HakenEditController {
 	 * @param bindingResult the binding result
 	 * @param locale        the locale
 	 * @return String
+	 * @throws Exception 
 	 */
-	@PostMapping("/{id}/com-haken-edit")
-	public String edit(@PathVariable("id") @NonNull String id, @Valid @ModelAttribute M09_HakenCreateModel hakenModel,
-			Model model, BindingResult bindingResult, Locale locale) {
-		service.save(hakenModel);
+	@PostMapping("/{id}/comp-haken-edit")
+	public String edit(@PathVariable("id") @NonNull Long id, @Valid @ModelAttribute M09_HakenCreateModel hakenModel,
+			Model model, BindingResult bindingResult, Locale locale) throws Exception {
+		service.update(hakenModel);
 		return ControllerConstant.M09_HAKEN_EDIT;
 	}
 }

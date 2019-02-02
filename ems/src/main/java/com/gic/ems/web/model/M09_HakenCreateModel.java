@@ -4,6 +4,9 @@
  * 画面名 : M09_派遣先情報登録画面
  */
 package com.gic.ems.web.model;
+
+import java.time.LocalDate;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,45 +15,47 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class M09_HakenCreateModel extends BaseModel{
+public class M09_HakenCreateModel extends BaseModel {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** Dispatch Department Id */
-	private String dispatchDepartmentId;
-	
+
 	/** Company Id */
 	private String companyId;
-	
+
 	/** Name */
-	private String name;
-	
+	private String dispatchDeptName;
+
+	/** Name */
+	private String companyName;
+
 	/** Contract Email */
 	private String contractEmail;
-	
+
 	/** Contract Person FirstName */
 	private String contractPersonFirstName;
-	
-	/** Contract Person LastName  */
+
+	/** Contract Person LastName */
 	private String contractPersonLastName;
-	
+
 	/** Contract Person FirstName Kana */
 	private String contractPersonFirstNameKana;
-	
+
 	/** Contract Person LastName Kana */
 	private String contractPersonLastNameKana;
-	
+
 	/** Contract Phone */
 	private String contractPhone;
-	
+
 	/** Address */
 	private String address;
-	
+
 	/** Postal Code */
 	private String postalCode;
-	
+
 	/** Dispatch Start Date */
-	private String dispatchStartDate;
+	private LocalDate dispatchStartDate;
+
+	
 
 	/**
 	 * @param id
@@ -69,14 +74,14 @@ public class M09_HakenCreateModel extends BaseModel{
 	 * @param dispatchStartDate
 	 */
 	@Builder
-	public M09_HakenCreateModel(Long id, String uuid, String dispatchDepartmentId, String companyId, String name,
+	public M09_HakenCreateModel(Long id, String uuid, String companyId, String dispatchDeptName, String companyName,
 			String contractEmail, String contractPersonFirstName, String contractPersonLastName,
 			String contractPersonFirstNameKana, String contractPersonLastNameKana, String contractPhone, String address,
-			String postalCode, String dispatchStartDate) {
+			String postalCode, LocalDate dispatchStartDate) {
 		super(id, uuid);
-		this.dispatchDepartmentId = dispatchDepartmentId;
 		this.companyId = companyId;
-		this.name = name;
+		this.dispatchDeptName = dispatchDeptName;
+		this.companyName = companyName;
 		this.contractEmail = contractEmail;
 		this.contractPersonFirstName = contractPersonFirstName;
 		this.contractPersonLastName = contractPersonLastName;
@@ -86,5 +91,5 @@ public class M09_HakenCreateModel extends BaseModel{
 		this.address = address;
 		this.postalCode = postalCode;
 		this.dispatchStartDate = dispatchStartDate;
-	}	
+	}
 }
