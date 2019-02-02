@@ -5,7 +5,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gic.ems.common.constant.DateFormat;
 import com.gic.ems.common.utility.CodeUtility;
+import com.gic.ems.common.utility.DateUtility;
 import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.entity.Company;
 import com.gic.ems.service.M13_Service;
@@ -50,7 +52,8 @@ public class M13_ServiceImpl implements M13_Service {
 				.contactPersonFirstNameKana(custCreateModel.getContactPersonFirstNameKana())
 				.contactPersonLastName(custCreateModel.getContactPersonLastName())
 				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
-				.contractStartDate(custCreateModel.getContractStartDate()).postalCode(custCreateModel.getPostalCode())
+				.contractStartDate(DateUtility.getInstance().convertStringToLocaleDate(custCreateModel.getContractStartDate(), DateFormat.DDMMYYYY))
+				.postalCode(custCreateModel.getPostalCode())
 				.contactPhone(custCreateModel.getContactPhone()).build();
 		this.companyDao.save(company);
 	}
