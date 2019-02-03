@@ -31,8 +31,38 @@ public class M04_ServiceImpl implements M04_Service {
 	/** The employee dao. */
 	private EmployeeDao employeeDao;
 
-	/** The encoder. */
-	private PasswordEncoder encoder;
+	/** The password encoder. */
+	private PasswordEncoder passwordEncoder;
+
+	/**
+	 * Sets the user dao.
+	 *
+	 * @param userDao the new user dao
+	 */
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	/**
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
+	 */
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
+	/**
+	 * Sets the password encoder.
+	 *
+	 * @param passwordEncoder the new password encoder
+	 */
+	@Autowired
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -51,45 +81,15 @@ public class M04_ServiceImpl implements M04_Service {
 	 * M04_EmpCreateModel)
 	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void save(M04_EmpCreateModel model) {
 		Employee emp = Employee.builder()
 				.employeeCode(CodeUtility.getInstance().generateEmployeeCode(this.employeeDao.count()))
 				.firstNameKana(model.getFirstNameKana()).lastName(model.getLastName())
 				.lastNameKana(model.getLastNameKana()).gender(model.getGender()).build();
 		User user = User.builder().email(model.getEmail()).employee(emp)
-				.password(this.encoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
+				.password(this.passwordEncoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
 		emp.setUser(user);
 		this.employeeDao.save(emp);
-	}
-
-	/**
-	 * Sets the employee dao.
-	 *
-	 * @param employeeDao the new employee dao
-	 */
-	@Autowired
-	public void setEmployeeDao(EmployeeDao employeeDao) {
-		this.employeeDao = employeeDao;
-	}
-
-	/**
-	 * Sets the encoder.
-	 *
-	 * @param encoder the new encoder
-	 */
-	@Autowired
-	public void setEncoder(PasswordEncoder encoder) {
-		this.encoder = encoder;
-	}
-
-	/**
-	 * Sets the user dao.
-	 *
-	 * @param userDao the new user dao
-	 */
-	@Autowired
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
 	}
 }

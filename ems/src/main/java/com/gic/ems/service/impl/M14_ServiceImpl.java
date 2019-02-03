@@ -23,35 +23,119 @@ import com.gic.ems.service.M14_Service;
 import com.gic.ems.web.model.M14_EmpHakenModel;
 
 /**
- * The Class M14ServiceImpl.
+ * The Class M14_ServiceImpl.</BR>
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Class M14ServiceImpl.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Feb 3, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.service.impl </BR>
+ *        M14_ServiceImpl.java </BR>
  */
 @Service
 public class M14_ServiceImpl implements M14_Service {
 
-	private EmpGroupDao groupDao;
+	/** The company dao. */
 	private CompanyDao companyDao;
+
+	/** The emp group dao. */
+	private EmpGroupDao empGroupDao;
+
+	/** The employee dao. */
 	private EmployeeDao employeeDao;
+
+	/** The dispatch dao. */
 	private DispatchDao dispatchDao;
+
+	/** The dispatch department dao. */
 	private DispatchDepartmentDao dispatchDepartmentDao;
 
+	/**
+	 * Sets the company dao.
+	 *
+	 * @param companyDao the new company dao
+	 */
+	@Autowired
+	public void setCompanyDao(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+
+	/**
+	 * Sets the emp group dao.
+	 *
+	 * @param empGroupDao the new emp group dao
+	 */
+	@Autowired
+	public void setEmpGroupDao(EmpGroupDao empGroupDao) {
+		this.empGroupDao = empGroupDao;
+	}
+
+	/**
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
+	 */
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
+	/**
+	 * Sets the dispatch dao.
+	 *
+	 * @param dispatchDao the new dispatch dao
+	 */
+	@Autowired
+	public void setDispatchDao(DispatchDao dispatchDao) {
+		this.dispatchDao = dispatchDao;
+	}
+
+	/**
+	 * Sets the dispatch department dao.
+	 *
+	 * @param dispatchDepartmentDao the new dispatch department dao
+	 */
+	@Autowired
+	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
+		this.dispatchDepartmentDao = dispatchDepartmentDao;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M14_Service#findAllCompanies()
+	 */
 	@Override
 	public Collection<Company> findAllCompanies() {
 		return this.companyDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M14_Service#findAllDispatchDepartments()
+	 */
 	@Override
 	public Collection<DispatchDepartment> findAllDispatchDepartments() {
 		return this.dispatchDepartmentDao.findByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gic.ems.service.M14_Service#findAllEmpGroups()
+	 */
 	@Override
 	public Collection<EmpGroup> findAllEmpGroups() {
-		return this.groupDao.findByDeleteFlag(DeleteFlag.ACTIVE);
+		return this.empGroupDao.findByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.gic.ems.service.M14_Service#findByEmployeeIdContaining(java.lang.String)
+	 */
 	@Override
 	public Collection<Employee> findByEmployeeIdContaining(String employeeCode) {
 		return this.employeeDao.findByEmployeeCodeAndDeleteFlagContaining(employeeCode, DeleteFlag.ACTIVE);
@@ -96,31 +180,6 @@ public class M14_ServiceImpl implements M14_Service {
 				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
 						DateFormat.DDMMYYYY))
 				.income(Double.valueOf(m14Model.getIncome())).build());
-	}
-
-	@Autowired
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
-	}
-
-	@Autowired
-	public void setDispatchDao(DispatchDao dispatchDao) {
-		this.dispatchDao = dispatchDao;
-	}
-
-	@Autowired
-	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
-		this.dispatchDepartmentDao = dispatchDepartmentDao;
-	}
-
-	@Autowired
-	public void setEmployeeDao(EmployeeDao employeeDao) {
-		this.employeeDao = employeeDao;
-	}
-
-	@Autowired
-	public void setGroupDao(EmpGroupDao groupDao) {
-		this.groupDao = groupDao;
 	}
 
 	/*

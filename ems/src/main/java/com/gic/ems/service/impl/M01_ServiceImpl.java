@@ -34,6 +34,16 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 	/** The user dao. */
 	private UserDao userDao;
 
+	/**
+	 * Sets the user dao.
+	 *
+	 * @param userDao the new user dao
+	 */
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -71,15 +81,4 @@ public class M01_ServiceImpl implements M01_Service, UserDetailsService {
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), true, true,
 				true, true, this.getAutority(user));
 	}
-
-	/**
-	 * Sets the user dao.
-	 *
-	 * @param userDao the new user dao
-	 */
-	@Autowired
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-
 }

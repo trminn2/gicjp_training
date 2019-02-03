@@ -19,15 +19,15 @@ import lombok.Setter;
 
 /**
  * Instantiates a new date format.
+ */
+@NoArgsConstructor
+
+/**
+ * Instantiates a new date format.
  *
  * @param format the format
  */
 @AllArgsConstructor
-
-/**
- * Instantiates a new date format.
- */
-@NoArgsConstructor
 public enum DateFormat {
 
 	/** The dd/mm/yyyy format. */
@@ -36,11 +36,17 @@ public enum DateFormat {
 	/** The dd-mm-yyyy format. */
 	DD_MM_YYYY("dd-MM-yyyy"),
 
-	/** The yyyymmdd format. */
+	/** The yyyy/mm/dd format. */
 	YYYYMMDD("yyyy/MM/dd"),
 
 	/** The yyyy-mm-dd format. */
 	YYYY_MM_DD("yyyy-MM-dd"),
+
+	/** The DD/MM/YYYY HH:mm:SS. */
+	DDMMYYYY_HHmmSS("dd/MM/yyyy HH:mm:ss"),
+
+	/** The DD-MM-YYYY HH:mm:SS. */
+	DD_MM_YYYY_HHmmSS("dd-MM-yyyy HH:mm:ss"),
 
 	/** The YYYY/MM/DD HH:mm:SS format. */
 	YYYYMMDDHHmmSS("yyyy/MM/dd HH:mm:ss"),

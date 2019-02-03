@@ -22,7 +22,9 @@ public class M07_ServiceImpl implements M07_Service {
 	private EmployeeDao employeeDao;
 
 	/**
-	 * @param employeeDao
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
 	 */
 	@Autowired
 	public void setEmployeeDao(EmployeeDao employeeDao) {
@@ -31,12 +33,12 @@ public class M07_ServiceImpl implements M07_Service {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.gic.ems.service.M07_Service#save(com.gic.ems.web.model.
 	 * M07_EmpInfoCreateModel)
 	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void save(M07_EmpInfoCreateModel model) {
 		// TODO to edit for the implementation by THET THET KHINE
 		this.employeeDao.save(Employee.builder().build());

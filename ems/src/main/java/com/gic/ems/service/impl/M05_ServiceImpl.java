@@ -25,11 +25,31 @@ import com.gic.ems.web.model.M05_EmpListModel;
 @Service
 public class M05_ServiceImpl implements M05_Service {
 
-	/** The group dao. */
-	private EmpGroupDao groupDao;
+	/** The emp group dao. */
+	private EmpGroupDao empGroupDao;
 
 	/** The employee dao. */
 	private EmployeeDao employeeDao;
+
+	/**
+	 * Sets the emp group dao.
+	 *
+	 * @param empGroupDao the new emp group dao
+	 */
+	@Autowired
+	public void setEmpGroupDao(EmpGroupDao empGroupDao) {
+		this.empGroupDao = empGroupDao;
+	}
+
+	/**
+	 * Sets the employee dao.
+	 *
+	 * @param employeeDao the new employee dao
+	 */
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -48,7 +68,7 @@ public class M05_ServiceImpl implements M05_Service {
 			if (null == emp.getEmpGroup()) {
 				continue;
 			}
-			EmpGroup empGroup = this.groupDao
+			EmpGroup empGroup = this.empGroupDao
 					.findByIdAndDeleteFlag(Long.valueOf(emp.getEmpGroup().getId()), DeleteFlag.ACTIVE).orElse(null);
 			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : Constant.EMPTY_STRING;
 			list.add(M05_EmpListModel.builder().employeeCode(emp.getEmployeeCode()).firstName(emp.getFirstName())
@@ -57,25 +77,5 @@ public class M05_ServiceImpl implements M05_Service {
 
 		}
 		return list;
-	}
-
-	/**
-	 * Sets the employee dao.
-	 *
-	 * @param employeeDao the new employee dao
-	 */
-	@Autowired
-	public void setEmployeeDao(EmployeeDao employeeDao) {
-		this.employeeDao = employeeDao;
-	}
-
-	/**
-	 * Sets the group dao.
-	 *
-	 * @param groupDao the new group dao
-	 */
-	@Autowired
-	public void setGroupDao(EmpGroupDao groupDao) {
-		this.groupDao = groupDao;
 	}
 }

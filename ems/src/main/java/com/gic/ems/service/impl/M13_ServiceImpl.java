@@ -1,9 +1,8 @@
 package com.gic.ems.service.impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gic.ems.common.type.DateFormat;
 import com.gic.ems.common.utility.CodeUtility;
@@ -25,6 +24,16 @@ public class M13_ServiceImpl implements M13_Service {
 	/** The company dao. */
 	private CompanyDao companyDao;
 
+	/**
+	 * Sets the company dao.
+	 *
+	 * @param companyDao the new company dao
+	 */
+	@Autowired
+	public void setCompanyDao(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -32,7 +41,7 @@ public class M13_ServiceImpl implements M13_Service {
 	 * M13_CustCreateModel)
 	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void save(M13_CustCreateModel custCreateModel) {
 		Company company = Company.builder()
 				.companyCode(CodeUtility.getInstance().generateCompanyCode(this.companyDao.count()))
@@ -48,16 +57,6 @@ public class M13_ServiceImpl implements M13_Service {
 		this.companyDao.save(company);
 	}
 
-	/**
-	 * Sets the company dao.
-	 *
-	 * @param companyDao the new company dao
-	 */
-	@Autowired
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -65,6 +64,7 @@ public class M13_ServiceImpl implements M13_Service {
 	 * M13_CustCreateModel)
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void update(M13_CustCreateModel custCreateModel) {
 		// TODO Auto-generated method stub
 		Company company = Company.builder().companyCode(custCreateModel.getCompanyId())

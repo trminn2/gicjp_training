@@ -27,9 +27,31 @@ import lombok.NonNull;
 @Service
 public class M09_ServiceImpl implements M09_Service {
 
+	/** The company dao. */
 	private CompanyDao companyDao;
 
+	/** The dispatch department dao. */
 	private DispatchDepartmentDao dispatchDepartmentDao;
+
+	/**
+	 * Sets the company dao.
+	 *
+	 * @param companyDao the new company dao
+	 */
+	@Autowired
+	public void setCompanyDao(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+
+	/**
+	 * Sets the dispatch department dao.
+	 *
+	 * @param dispatchDepartmentDao the new dispatch department dao
+	 */
+	@Autowired
+	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
+		this.dispatchDepartmentDao = dispatchDepartmentDao;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -90,26 +112,6 @@ public class M09_ServiceImpl implements M09_Service {
 				.dispatchDepartmentName(m09Model.getDispatchDeptName()).company(company).build());
 	}
 
-	/**
-	 * Sets the company dao.
-	 *
-	 * @param companyDao the new company dao
-	 */
-	@Autowired
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
-	}
-
-	/**
-	 * Sets the dispatch department dao.
-	 *
-	 * @param dispatchDepartmentDao the new dispatch department dao
-	 */
-	@Autowired
-	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
-		this.dispatchDepartmentDao = dispatchDepartmentDao;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -117,9 +119,9 @@ public class M09_ServiceImpl implements M09_Service {
 	 * M09_HakenCreateModel)
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void update(@Valid M09_HakenCreateModel m09Model) {
 		// TODO Auto-generated method stub
 
 	}
-
 }

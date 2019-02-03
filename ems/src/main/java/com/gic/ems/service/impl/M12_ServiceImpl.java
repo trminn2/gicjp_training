@@ -22,16 +22,6 @@ public class M12_ServiceImpl implements M12_Service {
 	/** The employee dao. */
 	private EmployeeDao employeeDao;
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see com.gic.ems.service.M12_Service#findById(java.lang.Long)
-	 */
-	@Override
-	public Optional<Employee> findById(Long id) {
-		return this.employeeDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE);
-	}
-
 	/**
 	 * Gets the employee dao.
 	 *
@@ -40,5 +30,15 @@ public class M12_ServiceImpl implements M12_Service {
 	@Autowired
 	public EmployeeDao getEmployeeDao() {
 		return this.employeeDao;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M12_Service#findById(java.lang.Long)
+	 */
+	@Override
+	public Optional<Employee> findById(Long id) {
+		return this.employeeDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE);
 	}
 }

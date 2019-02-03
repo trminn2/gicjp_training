@@ -1,6 +1,5 @@
 package com.gic.ems.dao;
 
-import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,14 +30,6 @@ public interface UserDao extends JpaRepository<User, Long> {
 	 * @return true, if successful
 	 */
 	boolean existsByEmailAndDeleteFlag(@NonNull String email, @NonNull DeleteFlag deleteFlag);
-
-	/**
-	 * Find all by email and delete flag.
-	 *
-	 * @param email the email
-	 * @return Collection
-	 */
-	Collection<User> findAllByEmailAndDeleteFlag(@NonNull String email);
 
 	/**
 	 * Find by email and delete flag.

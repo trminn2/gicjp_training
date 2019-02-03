@@ -28,18 +28,8 @@ public class M02_ServiceImpl implements M02_Service {
 	/** The user dao. */
 	private UserDao userDao;
 
-	/** The encoder. */
-	private PasswordEncoder encoder;
-
-	/**
-	 * Sets the encoder.
-	 *
-	 * @param encoder the new encoder
-	 */
-	@Autowired
-	public void setEncoder(PasswordEncoder encoder) {
-		this.encoder = encoder;
-	}
+	/** The password encoder. */
+	private PasswordEncoder passwordEncoder;
 
 	/**
 	 * Sets the user dao.
@@ -49,6 +39,16 @@ public class M02_ServiceImpl implements M02_Service {
 	@Autowired
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	/**
+	 * Sets the password encoder.
+	 *
+	 * @param passwordEncoder the new password encoder
+	 */
+	@Autowired
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	/*
@@ -62,7 +62,7 @@ public class M02_ServiceImpl implements M02_Service {
 	public void update(M02_PasswordUpdateModel m02Model) {
 		User user = this.userDao
 				.findByEmailAndDeleteFlag(UserUtility.getInstance().getLoginUserName(), DeleteFlag.ACTIVE).orElse(null);
-		user.setPassword(this.encoder.encode(m02Model.getNewPassword()));
+		user.setPassword(this.passwordEncoder.encode(m02Model.getNewPassword()));
 		this.userDao.save(user);
 	}
 }
