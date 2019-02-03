@@ -6,20 +6,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Class M10_HakenInfoSearchModel.
+ * The Class M10_HakenInfoSearchResultModel.</BR>
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Class M10_HakenInfoSearchModel.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Feb 3, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.web.model </BR>
+ *        M10_HakenInfoSearchResultModel.java </BR>
  */
 @Getter
 @Setter
 
 /**
- * Instantiates a new m 10 haken info search model.
+ * Instantiates a new m 10 haken info search result model.
  */
 @NoArgsConstructor
 public class M10_HakenInfoSearchResultModel extends BaseModel {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The destination name. */
@@ -55,6 +60,12 @@ public class M10_HakenInfoSearchResultModel extends BaseModel {
 	 * @param phone           the phone
 	 * @param email           the email
 	 * @param address         the address
+	 */
+
+	/**
+	 * Builds the.
+	 *
+	 * @return M10_HakenInfoSearchResultModel
 	 */
 	@Builder
 	public M10_HakenInfoSearchResultModel(Long id, String uuid, String destinationName, String companyName,

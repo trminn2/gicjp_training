@@ -47,7 +47,7 @@ public class Employee extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	/** The employee code. */
-	@Column
+	@Column(unique = true, nullable = false)
 	private String employeeCode;
 
 	/** The address. */
@@ -59,7 +59,7 @@ public class Employee extends BaseEntity {
 	private int band;
 
 	/** The bank account. */
-	@Column
+	@Column(unique = true)
 	private String bankAccount;
 
 	/** The birth date. */

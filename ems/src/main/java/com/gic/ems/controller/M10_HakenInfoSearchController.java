@@ -44,13 +44,13 @@ public class M10_HakenInfoSearchController {
 	 * @return String
 	 */
 	@GetMapping("/hanken-info-search")
-	public String init(@ModelAttribute M10_HakenInfoSearchModel searchModel, Model model, Locale local) {
-		if (null == searchModel) {
+	public String init(@ModelAttribute M10_HakenInfoSearchModel m10Model, Model model, Locale local) {
+		if (null == m10Model) {
 			model.addAttribute(ControllerConstant.M10_MODEL, M10_HakenInfoSearchModel.builder().build());
 			model.addAttribute(ControllerConstant.M10_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);
 		} else {
-			model.addAttribute(ControllerConstant.M10_MODEL, searchModel);
-			model.addAttribute(ControllerConstant.M10_MODEL_LIST, this.service.findAll(searchModel));
+			model.addAttribute(ControllerConstant.M10_MODEL, m10Model);
+			model.addAttribute(ControllerConstant.M10_MODEL_LIST, this.service.findAll(m10Model));
 		}
 		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
 	}

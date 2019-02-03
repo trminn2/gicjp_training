@@ -35,7 +35,7 @@ public class Company extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	/** The company code. */
-	@Column
+	@Column(unique = true, nullable = false)
 	private String companyCode;
 
 	/** The company name. */

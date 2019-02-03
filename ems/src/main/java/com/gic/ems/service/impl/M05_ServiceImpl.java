@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gic.ems.common.constant.Constant;
+import com.gic.ems.common.type.DeleteFlag;
+import com.gic.ems.dao.EmpGroupDao;
 import com.gic.ems.dao.EmployeeDao;
-import com.gic.ems.dao.GroupDao;
 import com.gic.ems.entity.EmpGroup;
 import com.gic.ems.entity.Employee;
 import com.gic.ems.service.M05_Service;
@@ -25,7 +26,7 @@ import com.gic.ems.web.model.M05_EmpListModel;
 public class M05_ServiceImpl implements M05_Service {
 
 	/** The group dao. */
-	private GroupDao groupDao;
+	private EmpGroupDao groupDao;
 
 	/** The employee dao. */
 	private EmployeeDao employeeDao;
@@ -47,7 +48,8 @@ public class M05_ServiceImpl implements M05_Service {
 			if (null == emp.getEmpGroup()) {
 				continue;
 			}
-			EmpGroup empGroup = this.groupDao.findById(Long.valueOf(emp.getEmpGroup().getId())).orElse(null);
+			EmpGroup empGroup = this.groupDao
+					.findByIdAndDeleteFlag(Long.valueOf(emp.getEmpGroup().getId()), DeleteFlag.ACTIVE).orElse(null);
 			String email = (null != emp.getUser()) ? emp.getUser().getEmail() : Constant.EMPTY_STRING;
 			list.add(M05_EmpListModel.builder().employeeCode(emp.getEmployeeCode()).firstName(emp.getFirstName())
 					.lastName(emp.getLastName()).email(email).gender(emp.getGender()).groupName(empGroup.getName())
@@ -73,7 +75,7 @@ public class M05_ServiceImpl implements M05_Service {
 	 * @param groupDao the new group dao
 	 */
 	@Autowired
-	public void setGroupDao(GroupDao groupDao) {
+	public void setGroupDao(EmpGroupDao groupDao) {
 		this.groupDao = groupDao;
 	}
 }

@@ -60,9 +60,9 @@ public class M13_CustCreateController {
 	 * @return String
 	 */
 	@PostMapping("/cust-create")
-	public String create(@Valid @ModelAttribute M13_CustCreateModel customerModel, BindingResult bindingResult,
-			Model model) {
-		this.service.save(customerModel);
+	public String create(@Valid @ModelAttribute M13_CustCreateModel m13Model, Model model,
+			BindingResult bindingResult) {
+		this.service.save(m13Model);
 		return ControllerConstant.M13_CUSTOMER_CREATE;
 	}
 }

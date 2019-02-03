@@ -3,6 +3,7 @@ package com.gic.ems.dao;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.entity.DispatchDepartment;
@@ -19,9 +20,23 @@ import lombok.NonNull;
  *        com.gic.ems.dao </BR>
  *        DispatchDepartmentDao.java </BR>
  */
+@Repository
 public interface DispatchDepartmentDao extends JpaRepository<DispatchDepartment, Long> {
 
-	DispatchDepartment findByIdAndDeleteFlag(@NonNull Long id, DeleteFlag active);
+	/**
+	 * Find by delete flag.
+	 *
+	 * @param active the active
+	 * @return Collection
+	 */
+	Collection<DispatchDepartment> findByDeleteFlag(@NonNull DeleteFlag active);
 
-	Collection<DispatchDepartment> findByDeleteFlag(DeleteFlag active);
+	/**
+	 * Find by id and delete flag.
+	 *
+	 * @param id     the id
+	 * @param active the active
+	 * @return DispatchDepartment
+	 */
+	DispatchDepartment findByIdAndDeleteFlag(@NonNull Long id, @NonNull DeleteFlag active);
 }

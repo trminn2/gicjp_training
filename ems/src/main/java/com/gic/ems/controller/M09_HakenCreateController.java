@@ -3,6 +3,7 @@ package com.gic.ems.controller;
 import java.util.Locale;
 
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M09_Service;
 import com.gic.ems.web.model.M09_HakenCreateModel;
@@ -35,13 +37,12 @@ public class M09_HakenCreateController {
 	 * @return String
 	 */
 	@GetMapping("/comp-haken-create")
-	public String init(@ModelAttribute M09_HakenCreateModel hakenModel, Model model, Locale locale) {
-		
-		model.addAttribute(ControllerConstant.COMPANIES, this.service.findAllCompany(hakenModel));
+	public String init(@ModelAttribute M09_HakenCreateModel m09Model, Model model, Locale locale) {
+		model.addAttribute(ControllerConstant.COMPANIES, this.service.findAllCompany(m09Model));
 		model.addAttribute(ControllerConstant.M09_MODEL, M09_HakenCreateModel.builder().build());
 		return ControllerConstant.M09_HAKEN_CREATE;
 	}
-	 
+
 	/**
 	 * Creates the company haken.
 	 *
@@ -49,11 +50,11 @@ public class M09_HakenCreateController {
 	 * @param bindingResult the binding result
 	 * @param model         the model
 	 * @return String
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@PostMapping("/comp-haken-create")
-	public String create(@Valid @ModelAttribute M09_HakenCreateModel m09Model, BindingResult bindingResult,
-			Model model) throws Exception {
+	public String create(@Valid @ModelAttribute M09_HakenCreateModel m09Model, BindingResult bindingResult, Model model)
+			throws Exception {
 		this.service.save(m09Model);
 		return ControllerConstant.M09_HAKEN_CREATE;
 	}

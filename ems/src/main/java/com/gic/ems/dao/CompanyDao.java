@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.entity.Company;
 
+import lombok.NonNull;
+
 /**
  * The Class EmsApplication.
  *
@@ -21,7 +23,20 @@ import com.gic.ems.entity.Company;
 @Repository
 public interface CompanyDao extends JpaRepository<Company, Long> {
 
-	Collection<Company> findAllByDeleteFlag(DeleteFlag deleteFlag);
+	/**
+	 * Find all by delete flag.
+	 *
+	 * @param deleteFlag the delete flag
+	 * @return Collection
+	 */
+	Collection<Company> findAllByDeleteFlag(@NonNull DeleteFlag deleteFlag);
 
-	Company findByIdAndDeleteFlag(Long id, DeleteFlag deleteFlag);
+	/**
+	 * Find by id and delete flag.
+	 *
+	 * @param id         the id
+	 * @param deleteFlag the delete flag
+	 * @return Company
+	 */
+	Company findByIdAndDeleteFlag(@NonNull Long id, @NonNull DeleteFlag deleteFlag);
 }

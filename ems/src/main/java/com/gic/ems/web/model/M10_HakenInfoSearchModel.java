@@ -8,10 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Class M10_HakenInfoSearchModel.
+ * The Class M10_HakenInfoSearchModel.</BR>
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Class M10_HakenInfoSearchModel.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Feb 3, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.web.model </BR>
+ *        M10_HakenInfoSearchModel.java </BR>
  */
 @Getter
 @Setter
@@ -50,6 +54,12 @@ public class M10_HakenInfoSearchModel extends BaseModel {
 	 * @param name            the name
 	 * @param startDate       the start date
 	 * @param endDate         the end date
+	 */
+
+	/**
+	 * Builds the.
+	 *
+	 * @return M10_HakenInfoSearchModel
 	 */
 	@Builder
 	public M10_HakenInfoSearchModel(Long id, String uuid, String companyName, String destinationName, String name,

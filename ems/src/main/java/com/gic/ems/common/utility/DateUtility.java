@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.gic.ems.common.type.DateFormat;
+
 import lombok.NonNull;
 
 /**
@@ -50,8 +52,8 @@ public final class DateUtility {
 	 * @return String
 	 */
 	public final String convertLocaleDateTimeToString(@NonNull final LocalDateTime localDateTime,
-			@NonNull final String dateFormat) {
-		return localDateTime.format(DateTimeFormatter.ofPattern(dateFormat));
+			@NonNull final DateFormat dateFormat) {
+		return localDateTime.format(DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
 
 	/**
@@ -62,13 +64,20 @@ public final class DateUtility {
 	 * @return String
 	 */
 	public final String convertLocaleDateToString(@NonNull final LocalDate localDate,
-			@NonNull final String dateFormat) {
-		return localDate.format(DateTimeFormatter.ofPattern(dateFormat));
+			@NonNull final DateFormat dateFormat) {
+		return localDate.format(DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
 
+	/**
+	 * Convert string to locale date.
+	 *
+	 * @param stringDate the string date
+	 * @param dateFormat the date format
+	 * @return LocalDate
+	 */
 	public final LocalDate convertStringToLocaleDate(@NonNull final String stringDate,
-			@NonNull final String dateFormat) {
-		return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat));
+			@NonNull final DateFormat dateFormat) {
+		return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
 
 	/**
@@ -79,7 +88,7 @@ public final class DateUtility {
 	 * @return LocalDate
 	 */
 	public final LocalDateTime convertStringToLocaleDateTime(@NonNull final String stringDate,
-			@NonNull final String dateFormat) {
-		return LocalDateTime.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat));
+			@NonNull final DateFormat dateFormat) {
+		return LocalDateTime.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
 }

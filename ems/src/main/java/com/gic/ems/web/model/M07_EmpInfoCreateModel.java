@@ -1,190 +1,209 @@
-/*
- * 作成日 : 2019/01/26
- * 作成者 : テッ　テッ　カイン
- * 画面名 : M07_個人情報登録画面
- */
 package com.gic.ems.web.model;
 
 import java.util.Date;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The Class M07_EmpInfoCreateModel.</BR>
+ *
+ * @author THETTHETKHINE </BR>
+ * @version 1.0 </BR>
+ * @since Feb 3, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.web.model </BR>
+ *        M07_EmpInfoCreateModel.java </BR>
+ */
+
 @Getter
 @Setter
+
+/**
+ * Instantiates a new m 07 emp info create model.
+ */
 @NoArgsConstructor
-public class M07_EmpInfoCreateModel extends BaseModel{
+public class M07_EmpInfoCreateModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** Employee Id */
+
+	/** Employee Id. */
 	private String employeeId;
-	
-	/** First Name */
+
+	/** First Name. */
 	private String firstName;
-	
-	/** Last Name */
+
+	/** Last Name. */
 	private String lastName;
-	
-	/** First Name Kana */
+
+	/** First Name Kana. */
 	private String firstNameKana;
-	
-	/** Last Name Kana  */
+
+	/** Last Name Kana. */
 	private String lastNameKana;
-	
-	/** Postal Code */
+
+	/** Postal Code. */
 	private String postalCode;
-	
-	/** Address */
+
+	/** Address. */
 	private String address;
-	
-	/** Gender */
+
+	/** Gender. */
 	private String gender;
-	
-	/** Nationality  */
+
+	/** Nationality. */
 	private String nationality;
-	
-	/** Phone */
+
+	/** Phone. */
 	private String phone;
-	
-	/** Email */
+
+	/** Email. */
 	private String email;
-	
-	/** Residence Number */
+
+	/** Residence Number. */
 	private String residenceNo;
-	
-	/** Residence Status */
+
+	/** Residence Status. */
 	private String residenceStatus;
-	
-	/** Residence Period */
+
+	/** Residence Period. */
 	private String residencePeriod;
-	
-	/** Passport Type */
+
+	/** Passport Type. */
 	private String passportType;
-	
-	/** Passport Number */
+
+	/** Passport Number. */
 	private String passportNum;
-	
-	/** Passport Country Code */
+
+	/** Passport Country Code. */
 	private String passportCountryCode;
-	
-	/** Passport Authority */
+
+	/** Passport Authority. */
 	private String passportAuthority;
-	
-	/** Bank Account */
+
+	/** Bank Account. */
 	private String bankAccount;
-	
-	/** Insurance Type */
+
+	/** Insurance Type. */
 	private String insuranceType;
-	
-	/** Insured Number */
+
+	/** Insured Number. */
 	private String insuredNum;
-	
-	/** Insured Name */
+
+	/** Insured Name. */
 	private String insurerName;
-	
-	/** My Number */
+
+	/** My Number. */
 	private String myNumber;
-	
-	/** Start Station */
+
+	/** Start Station. */
 	private String startStation;
-	
-	/** End Station */
+
+	/** End Station. */
 	private String endStation;
-	
-	/** The Way of Thinking */
+
+	/** The Way of Thinking. */
 	private String wayOfThinking;
-	
-	/** Confidence Skill */
+
+	/** Confidence Skill. */
 	private String confidenceSkill;
-	
-	/** The special */
+
+	/** The special. */
 	private String speciality;
-	
-	/** Group Id */
+
+	/** Group Id. */
 	private int groupId;
-	
-	/** Band */
+
+	/** Band. */
 	private int band;
-	
-	/** Department Id */
+
+	/** Department Id. */
 	private int departmentId;
-	
-	/** Certificate Id */
+
+	/** Certificate Id. */
 	private int certificateId;
-	
-	/** Birth Date */
+
+	/** Birth Date. */
 	private Date birthDate;
-	
-	/** Hired Date */
+
+	/** Hired Date. */
 	private Date hiredDate;
-	
-	/** Passport Issued Date */
+
+	/** Passport Issued Date. */
 	private Date passportIssuedDate;
-	
-	/** Passport Expired Date */
+
+	/** Passport Expired Date. */
 	private Date passportExpiredDate;
-	
-	/** Insured Qualified Date */
+
+	/** Insured Qualified Date. */
 	private Date insuredQualifiedDate;
-	
-	/** Commuter Pass Expired Date */
+
+	/** Commuter Pass Expired Date. */
 	private Date commuterPassExpiredDate;
 
 	/**
-	 * @param id
-	 * @param uuid
-	 * @param employeeId
-	 * @param firstName
-	 * @param lastName
-	 * @param firstNameKana
-	 * @param lastNameKana
-	 * @param postalCode
-	 * @param address
-	 * @param gender
-	 * @param nationality
-	 * @param phone
-	 * @param email
-	 * @param residenceNo
-	 * @param residenceStatus
-	 * @param residencePeriod
-	 * @param passportType
-	 * @param passportNum
-	 * @param passportCountryCode
-	 * @param passportAuthority
-	 * @param bankAccount
-	 * @param insuranceType
-	 * @param insuredNum
-	 * @param insurerName
-	 * @param myNumber
-	 * @param startStation
-	 * @param endStation
-	 * @param wayOfThinking
-	 * @param confidenceSkill
-	 * @param speciality
-	 * @param groupId
-	 * @param band
-	 * @param departmentId
-	 * @param certificateId
-	 * @param birthDate
-	 * @param hiredDate
-	 * @param passportIssuedDate
-	 * @param passportExpiredDate
-	 * @param insuredQualifiedDate
-	 * @param commuterPassExpiredDate
+	 * Instantiates a new m 07 emp info create model.
+	 *
+	 * @param id                      the id
+	 * @param uuid                    the uuid
+	 * @param employeeId              the employee id
+	 * @param firstName               the first name
+	 * @param lastName                the last name
+	 * @param firstNameKana           the first name kana
+	 * @param lastNameKana            the last name kana
+	 * @param postalCode              the postal code
+	 * @param address                 the address
+	 * @param gender                  the gender
+	 * @param nationality             the nationality
+	 * @param phone                   the phone
+	 * @param email                   the email
+	 * @param residenceNo             the residence no
+	 * @param residenceStatus         the residence status
+	 * @param residencePeriod         the residence period
+	 * @param passportType            the passport type
+	 * @param passportNum             the passport num
+	 * @param passportCountryCode     the passport country code
+	 * @param passportAuthority       the passport authority
+	 * @param bankAccount             the bank account
+	 * @param insuranceType           the insurance type
+	 * @param insuredNum              the insured num
+	 * @param insurerName             the insurer name
+	 * @param myNumber                the my number
+	 * @param startStation            the start station
+	 * @param endStation              the end station
+	 * @param wayOfThinking           the way of thinking
+	 * @param confidenceSkill         the confidence skill
+	 * @param speciality              the speciality
+	 * @param groupId                 the group id
+	 * @param band                    the band
+	 * @param departmentId            the department id
+	 * @param certificateId           the certificate id
+	 * @param birthDate               the birth date
+	 * @param hiredDate               the hired date
+	 * @param passportIssuedDate      the passport issued date
+	 * @param passportExpiredDate     the passport expired date
+	 * @param insuredQualifiedDate    the insured qualified date
+	 * @param commuterPassExpiredDate the commuter pass expired date
+	 */
+
+	/**
+	 * Builds the.
+	 *
+	 * @return M07_EmpInfoCreateModel
 	 */
 	@Builder
 	public M07_EmpInfoCreateModel(Long id, String uuid, String employeeId, String firstName, String lastName,
 			String firstNameKana, String lastNameKana, String postalCode, String address, String gender,
 			String nationality, String phone, String email, String residenceNo, String residenceStatus,
 			String residencePeriod, String passportType, String passportNum, String passportCountryCode,
-			String passportAuthority, String bankAccount, String insuranceType, String insuredNum, 
-			String insurerName, String myNumber, String startStation, String endStation, String wayOfThinking,
-			String confidenceSkill, String speciality, int groupId, int band, int departmentId, int certificateId,
-			Date birthDate, Date hiredDate, Date passportIssuedDate, Date passportExpiredDate,
-			Date insuredQualifiedDate, Date commuterPassExpiredDate) {
+			String passportAuthority, String bankAccount, String insuranceType, String insuredNum, String insurerName,
+			String myNumber, String startStation, String endStation, String wayOfThinking, String confidenceSkill,
+			String speciality, int groupId, int band, int departmentId, int certificateId, Date birthDate,
+			Date hiredDate, Date passportIssuedDate, Date passportExpiredDate, Date insuredQualifiedDate,
+			Date commuterPassExpiredDate) {
 		super(id, uuid);
 		this.employeeId = employeeId;
 		this.firstName = firstName;

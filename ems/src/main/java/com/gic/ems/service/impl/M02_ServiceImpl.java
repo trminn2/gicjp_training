@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.utility.UserUtility;
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.User;
@@ -31,16 +32,6 @@ public class M02_ServiceImpl implements M02_Service {
 	private PasswordEncoder encoder;
 
 	/**
-	 * Sets the user dao.
-	 *
-	 * @param userDao the new user dao
-	 */
-	@Autowired
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-
-	/**
 	 * Sets the encoder.
 	 *
 	 * @param encoder the new encoder
@@ -50,16 +41,27 @@ public class M02_ServiceImpl implements M02_Service {
 		this.encoder = encoder;
 	}
 
+	/**
+	 * Sets the user dao.
+	 *
+	 * @param userDao the new user dao
+	 */
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.gic.ems.service.M02_Service#update(com.gic.ems.web.model.
 	 * M02_PasswordUpdateModel)
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void update(M02_PasswordUpdateModel m02Model) {
-		User user = this.userDao.findByEmail(UserUtility.getInstance().getLoginUserName()).orElse(null);
+		User user = this.userDao
+				.findByEmailAndDeleteFlag(UserUtility.getInstance().getLoginUserName(), DeleteFlag.ACTIVE).orElse(null);
 		user.setPassword(this.encoder.encode(m02Model.getNewPassword()));
 		this.userDao.save(user);
 	}

@@ -8,6 +8,17 @@ import lombok.Setter;
 
 /**
  * Instantiates a new gender.
+ *
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Feb 3, 2019 </BR>
+ * ems system </BR>
+ * com.gic.ems.common.type </BR>
+ * Gender.java </BR>
+ */
+
+/**
+ * Instantiates a new gender.
  */
 @NoArgsConstructor
 

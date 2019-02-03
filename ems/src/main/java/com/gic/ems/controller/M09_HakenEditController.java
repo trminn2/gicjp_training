@@ -64,12 +64,12 @@ public class M09_HakenEditController {
 	 * @param bindingResult the binding result
 	 * @param locale        the locale
 	 * @return String
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@PostMapping("/{id}/comp-haken-edit")
-	public String edit(@PathVariable("id") @NonNull Long id, @Valid @ModelAttribute M09_HakenCreateModel hakenModel,
+	public String edit(@PathVariable("id") @NonNull Long id, @Valid @ModelAttribute M09_HakenCreateModel m09Model,
 			Model model, BindingResult bindingResult, Locale locale) throws Exception {
-		service.update(hakenModel);
+		this.service.update(m09Model);
 		return ControllerConstant.M09_HAKEN_EDIT;
 	}
 }

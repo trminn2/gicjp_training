@@ -9,8 +9,12 @@ import lombok.Setter;
 /**
  * Instantiates a new role.
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- * The Enum Role.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Jan 5, 2019 </BR>
+ * ems system </BR>
+ * com.gic.ems.common.type </BR>
+ * Role.java </BR>
  */
 
 /**
@@ -29,10 +33,13 @@ public enum Role {
 
 	/** The user. */
 	USER(0, "User"),
+
 	/** The leader. */
 	LEADER(0, "Leader"),
+
 	/** The manager. */
 	MANAGER(0, "Manager"),
+
 	/** The admin. */
 	ADMIN(0, "Admin");
 

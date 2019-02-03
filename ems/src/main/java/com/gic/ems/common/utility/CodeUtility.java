@@ -1,6 +1,6 @@
 package com.gic.ems.common.utility;
 
-import io.micrometer.core.lang.NonNull;
+import lombok.NonNull;
 
 /**
  * The Class CodeUtility.</BR>

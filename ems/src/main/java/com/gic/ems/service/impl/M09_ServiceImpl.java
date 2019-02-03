@@ -1,11 +1,13 @@
 package com.gic.ems.service.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.dao.DispatchDepartmentDao;
@@ -13,6 +15,7 @@ import com.gic.ems.entity.Company;
 import com.gic.ems.entity.DispatchDepartment;
 import com.gic.ems.service.M09_Service;
 import com.gic.ems.web.model.M09_HakenCreateModel;
+
 import lombok.NonNull;
 
 /**
@@ -28,19 +31,9 @@ public class M09_ServiceImpl implements M09_Service {
 
 	private DispatchDepartmentDao dispatchDepartmentDao;
 
-	@Autowired
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
-	}
-
-	@Autowired
-	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
-		this.dispatchDepartmentDao = dispatchDepartmentDao;
-	}
-
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.gic.ems.service.M05_Service#findAll(com.gic.ems.web.model.
 	 * M05_EmpListModel)
 	 */
@@ -51,45 +44,14 @@ public class M09_ServiceImpl implements M09_Service {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see com.gic.ems.service.M09_Service#save(com.gic.ems.web.model.
-	 * M09_HakenCreateModel)
-	 */
-	@Override
-	@Transactional(noRollbackFor = Exception.class)
-	public void save(M09_HakenCreateModel m09Model) throws Exception {
-
-		Company company = this.companyDao.findByIdAndDeleteFlag(m09Model.getCompanyId(), DeleteFlag.ACTIVE);
-		if (null == company) {
-			System.out.println("* Null *");
-		}
-
-		// Company company =
-		// this.companyDao.findByCompanyNameAndDeleteFlag(m09Model.getCompanyName(),DeleteFlag.ACTIVE);
-		this.dispatchDepartmentDao.save(DispatchDepartment.builder()
-				.dispatchDepartmentName(m09Model.getDispatchDeptName()).postalCode(m09Model.getPostalCode())
-				.address(m09Model.getAddress()).contractPersonFirstName(m09Model.getContractPersonFirstName())
-				.contractPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
-				.contractPersonLastName(m09Model.getContractPersonLastName())
-				.contractPersonLastNameKana(m09Model.getContractPersonLastNameKana())
-				.contractPhone(m09Model.getContractPhone()).contractEmail(m09Model.getContractEmail())
-				.dispatchStartDate(m09Model.getDispatchStartDate())
-				.dispatchDepartmentName(m09Model.getDispatchDeptName())
-				.company(company)
-				.build());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.gic.ems.service.M09_Service#findDispatchDepartment(java.lang.String)
 	 */
 	@Override
 	public M09_HakenCreateModel findDispatchDepartment(@NonNull Long id) {
 		DispatchDepartment department = this.dispatchDepartmentDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE);
 		M09_HakenCreateModel.builder().id(department.getId()).dispatchDeptName(department.getDispatchDepartmentName())
-				.companyId(department.getCompany().getId())
-				.contractEmail(department.getContractEmail())
+				.companyId(department.getCompany().getId()).contractEmail(department.getContractEmail())
 				.contractPersonFirstName(department.getContractPersonFirstName())
 				.contractPersonFirstNameKana(department.getContractPersonFirstNameKana())
 				.contractPersonLastName(department.getContractPersonLastName())
@@ -103,13 +65,61 @@ public class M09_ServiceImpl implements M09_Service {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
+	 * @see com.gic.ems.service.M09_Service#save(com.gic.ems.web.model.
+	 * M09_HakenCreateModel)
+	 */
+	@Override
+	@Transactional(noRollbackFor = Exception.class)
+	public void save(M09_HakenCreateModel m09Model) throws Exception {
+
+		Company company = this.companyDao.findByIdAndDeleteFlag(m09Model.getCompanyId(), DeleteFlag.ACTIVE);
+		if (null == company) {
+			System.out.println("* Null *");
+		}
+		// Company company =
+		// this.companyDao.findByCompanyNameAndDeleteFlag(m09Model.getCompanyName(),DeleteFlag.ACTIVE);
+		this.dispatchDepartmentDao.save(DispatchDepartment.builder()
+				.dispatchDepartmentName(m09Model.getDispatchDeptName()).postalCode(m09Model.getPostalCode())
+				.address(m09Model.getAddress()).contractPersonFirstName(m09Model.getContractPersonFirstName())
+				.contractPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
+				.contractPersonLastName(m09Model.getContractPersonLastName())
+				.contractPersonLastNameKana(m09Model.getContractPersonLastNameKana())
+				.contractPhone(m09Model.getContractPhone()).contractEmail(m09Model.getContractEmail())
+				.dispatchStartDate(m09Model.getDispatchStartDate())
+				.dispatchDepartmentName(m09Model.getDispatchDeptName()).company(company).build());
+	}
+
+	/**
+	 * Sets the company dao.
+	 *
+	 * @param companyDao the new company dao
+	 */
+	@Autowired
+	public void setCompanyDao(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+
+	/**
+	 * Sets the dispatch department dao.
+	 *
+	 * @param dispatchDepartmentDao the new dispatch department dao
+	 */
+	@Autowired
+	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
+		this.dispatchDepartmentDao = dispatchDepartmentDao;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see com.gic.ems.service.M09_Service#update(com.gic.ems.web.model.
 	 * M09_HakenCreateModel)
 	 */
 	@Override
-	public void update(@Valid M09_HakenCreateModel hakenModel) {
+	public void update(@Valid M09_HakenCreateModel m09Model) {
 		// TODO Auto-generated method stub
 
 	}
+
 }

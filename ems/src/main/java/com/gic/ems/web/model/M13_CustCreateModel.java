@@ -1,6 +1,5 @@
 package com.gic.ems.web.model;
 
-import java.time.LocalDate;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,43 +40,44 @@ public class M13_CustCreateModel extends BaseModel {
 
 	/** The contactPersonLastName. */
 	private String contactPersonLastName;
-	
+
 	/** The contactPersonLastName. */
 	private String contactPersonLastNameKana;
 
 	/** The contactPhone. */
 	private String contactPhone;
-	
+
 	/** The contractStartDate. */
 	private String contractStartDate;
-	
+
 	/** The address. */
 	private String address;
-	
+
 	/** The postalCode. */
 	private String postalCode;
 
 	/**
 	 * Instantiates a new m 05 cust create model.
 	 *
-	 * @param id            			  the id
-	 * @param uuid          			  the uuid
-	 * @param companyId                   the companyId
-	 * @param companyName                 the companyName
-	 * @param contactEmail                the contactEmail
-	 * @param contactPersonFirstName      the contactPersonFirstName
-	 * @param contactPersonFirstNameKana  the contactPersonFirstNameKana
-	 * @param contactPersonLastName  	  the contactPersonLastName
-	 * @param contactPersonLastNameKana   the contactPersonLastNameKana
-	 * @param contactPhone         		  the contactPhone
-	 * @param contractStartDate           the contractStartDate
-	 * @param address         		      the address
-	 * @param postalCode         		  the postalCode
+	 * @param id                         the id
+	 * @param uuid                       the uuid
+	 * @param companyId                  the companyId
+	 * @param companyName                the companyName
+	 * @param contactEmail               the contactEmail
+	 * @param contactPersonFirstName     the contactPersonFirstName
+	 * @param contactPersonFirstNameKana the contactPersonFirstNameKana
+	 * @param contactPersonLastName      the contactPersonLastName
+	 * @param contactPersonLastNameKana  the contactPersonLastNameKana
+	 * @param contactPhone               the contactPhone
+	 * @param contractStartDate          the contractStartDate
+	 * @param address                    the address
+	 * @param postalCode                 the postalCode
 	 */
 	@Builder
 	public M13_CustCreateModel(Long id, String uuid, String companyId, String companyName, String contactEmail,
 			String contactPersonFirstName, String contactPersonFirstNameKana, String contactPersonLastName,
-			String contactPersonLastNameKana, String contactPhone, String contractStartDate, String address, String postalCode) {
+			String contactPersonLastNameKana, String contactPhone, String contractStartDate, String address,
+			String postalCode) {
 		super(id, uuid);
 		this.companyId = companyId;
 		this.companyName = companyName;

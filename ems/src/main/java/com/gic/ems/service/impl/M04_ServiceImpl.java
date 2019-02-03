@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gic.ems.common.constant.Constant;
+import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.type.Role;
 import com.gic.ems.common.utility.CodeUtility;
 import com.gic.ems.dao.EmployeeDao;
@@ -40,7 +41,7 @@ public class M04_ServiceImpl implements M04_Service {
 	 */
 	@Override
 	public boolean hasAccount(String email) {
-		return this.userDao.existsByEmail(email);
+		return this.userDao.existsByEmailAndDeleteFlag(email, DeleteFlag.ACTIVE);
 	}
 
 	/*

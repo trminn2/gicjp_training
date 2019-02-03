@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gic.ems.common.constant.DateFormat;
+import com.gic.ems.common.type.DateFormat;
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.utility.DateUtility;
 import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.dao.DispatchDao;
 import com.gic.ems.dao.DispatchDepartmentDao;
+import com.gic.ems.dao.EmpGroupDao;
 import com.gic.ems.dao.EmployeeDao;
-import com.gic.ems.dao.GroupDao;
 import com.gic.ems.entity.Company;
 import com.gic.ems.entity.Dispatch;
 import com.gic.ems.entity.DispatchDepartment;
@@ -31,40 +31,20 @@ import com.gic.ems.web.model.M14_EmpHakenModel;
 @Service
 public class M14_ServiceImpl implements M14_Service {
 
-	private GroupDao groupDao;
+	private EmpGroupDao groupDao;
 	private CompanyDao companyDao;
 	private EmployeeDao employeeDao;
 	private DispatchDao dispatchDao;
 	private DispatchDepartmentDao dispatchDepartmentDao;
 
-	@Autowired
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
-	}
-
-	@Autowired
-	public void setDispatchDao(DispatchDao dispatchDao) {
-		this.dispatchDao = dispatchDao;
-	}
-
-	@Autowired
-	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
-		this.dispatchDepartmentDao = dispatchDepartmentDao;
-	}
-
-	@Autowired
-	public void setEmployeeDao(EmployeeDao employeeDao) {
-		this.employeeDao = employeeDao;
-	}
-
-	@Autowired
-	public void setGroupDao(GroupDao groupDao) {
-		this.groupDao = groupDao;
-	}
-
 	@Override
 	public Collection<Company> findAllCompanies() {
 		return this.companyDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
+	}
+
+	@Override
+	public Collection<DispatchDepartment> findAllDispatchDepartments() {
+		return this.dispatchDepartmentDao.findByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
 	@Override
@@ -75,11 +55,6 @@ public class M14_ServiceImpl implements M14_Service {
 	@Override
 	public Collection<Employee> findByEmployeeIdContaining(String employeeCode) {
 		return this.employeeDao.findByEmployeeCodeAndDeleteFlagContaining(employeeCode, DeleteFlag.ACTIVE);
-	}
-
-	@Override
-	public Collection<DispatchDepartment> findAllDispatchDepartments() {
-		return this.dispatchDepartmentDao.findByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
 	/*
@@ -121,6 +96,31 @@ public class M14_ServiceImpl implements M14_Service {
 				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
 						DateFormat.DDMMYYYY))
 				.income(Double.valueOf(m14Model.getIncome())).build());
+	}
+
+	@Autowired
+	public void setCompanyDao(CompanyDao companyDao) {
+		this.companyDao = companyDao;
+	}
+
+	@Autowired
+	public void setDispatchDao(DispatchDao dispatchDao) {
+		this.dispatchDao = dispatchDao;
+	}
+
+	@Autowired
+	public void setDispatchDepartmentDao(DispatchDepartmentDao dispatchDepartmentDao) {
+		this.dispatchDepartmentDao = dispatchDepartmentDao;
+	}
+
+	@Autowired
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
+	@Autowired
+	public void setGroupDao(EmpGroupDao groupDao) {
+		this.groupDao = groupDao;
 	}
 
 	/*
