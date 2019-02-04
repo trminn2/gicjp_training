@@ -7,6 +7,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.gic.ems.common.type.Role;
 
@@ -15,7 +18,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * The Class User.
@@ -25,7 +27,6 @@ import lombok.ToString;
  */
 @Getter
 @Setter
-@ToString
 /**
  * Instantiates a new user.
  */
@@ -38,19 +39,27 @@ public class User extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	/** The employee. */
-	@OneToOne(fetch = FetchType.EAGER, targetEntity = Employee.class, optional = true)
+	@NotNull
 	@MapsId
+	@OneToOne(fetch = FetchType.EAGER, targetEntity = Employee.class, optional = true)
 	private Employee employee;
 
 	/** The password. */
-	@Column
+	@NotNull
+	@NotEmpty
+	@NotBlank
+	@Column(nullable = false)
 	private String password;
 
 	/** The email. */
+	@NotNull
+	@NotEmpty
+	@NotBlank
 	@Column(unique = true, nullable = false)
 	private String email;
 
 	/** The role. */
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column
 	private Role role;
