@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head th:include="/common/cdn/header.html::header(title=#{m01Title})">
@@ -17,23 +17,29 @@
 	</div>
 	<form th:action="@{/login}" method="post">
 		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 mb-0">
-			<label class="mb-0" for="txtEmail" th:text="#{lblEmail}"></label> <input
-				type="text" class="form-control form-control-sm rounded-0"
+			<label class="mb-0" for="txtEmail"><i
+				class="fas fa-envelope pr-2"></i><span th:text="#{lblEmail}"></span></label>
+			<input type="text" class="form-control form-control-sm rounded-0"
 				id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
 				th:placeholder="#{placeHolder(#{lblEmail})}"> <small
 				id="txtEmail" class="form-text text-muted text-right mt-0"
 				th:text="#{lblEmailSecurity}"></small>
 		</div>
 		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2">
-			<label class="mb-0" for="txtPassword" th:text="#{lblPassword}"></label>
-			<input type="password" name="password"
+			<label class="mb-0" for="txtPassword"><i
+				class="fas fa-unlock pr-2"></i><span th:text="#{lblPassword}"></span>
+			</label> <input type="password" name="password"
 				class="form-control form-control-sm rounded-0" id="txtPassword"
-				th:placeholder="#{placeHolder(#{lblPassword})}">
+				th:placeholder="#{placeHolder(#{lblPassword})}"> <a
+				class="text-decoration-none " href="#"><small id="txtEmail"
+				class="form-text text-right mt-0" th:text="#{lblForgotPassword}"></small></a>
 		</div>
-		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 pt-4">
-			<input type="submit" class="btn btn-sm btn-color btn-block rounded-0"
-				th:value="#{btnLogin}" onclick="this.form.submit();"
-				ondblclick="this.form.submit();" />
+		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 pt-2">
+			<button type="submit"
+				class="btn btn-sm btn-color btn-block rounded-0"
+				onclick="this.form.submit();" ondblclick="this.form.submit();">
+				<i class="fas fa-sign-in-alt pr-2"></i> <span th:text="#{btnLogin}"></span>
+			</button>
 		</div>
 	</form>
 </body>
