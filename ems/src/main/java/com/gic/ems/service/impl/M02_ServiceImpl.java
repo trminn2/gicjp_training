@@ -10,7 +10,7 @@ import com.gic.ems.common.utility.UserUtility;
 import com.gic.ems.dao.UserDao;
 import com.gic.ems.entity.User;
 import com.gic.ems.service.M02_Service;
-import com.gic.ems.web.model.M02_PasswordUpdateModel;
+import com.gic.ems.web.model.M02_PwdChngeModel;
 
 /**
  * The Class M02_ServiceImpl.
@@ -59,7 +59,7 @@ public class M02_ServiceImpl implements M02_Service {
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void update(M02_PasswordUpdateModel m02Model) {
+	public void update(M02_PwdChngeModel m02Model) {
 		User user = this.userDao
 				.findByEmailAndDeleteFlag(UserUtility.getInstance().getLoginUserName(), DeleteFlag.ACTIVE).orElse(null);
 		user.setPassword(this.passwordEncoder.encode(m02Model.getNewPassword()));
