@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.gic.ems.common.type.DeleteFlag;
+import com.gic.ems.entity.Company;
 import com.gic.ems.entity.EmpGroup;
 
 import lombok.NonNull;
@@ -40,4 +41,14 @@ public interface EmpGroupDao extends JpaRepository<EmpGroup, Long> {
 	 * @return Optional
 	 */
 	Optional<EmpGroup> findByIdAndDeleteFlag(@NonNull Long id, @NonNull DeleteFlag deleteFlag);
+
+	
+
+	/**
+	 * Find all by delete flag.
+	 *
+	 * @param deleteFlag the delete flag
+	 * @return Collection
+	 */
+	Collection<EmpGroup> findAllByDeleteFlag(@NonNull DeleteFlag active);
 }

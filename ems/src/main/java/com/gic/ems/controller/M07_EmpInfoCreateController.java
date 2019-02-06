@@ -1,9 +1,7 @@
 package com.gic.ems.controller;
 
 import java.util.Locale;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M07_Service;
 import com.gic.ems.web.model.M07_EmpInfoCreateModel;
@@ -46,7 +43,9 @@ public class M07_EmpInfoCreateController {
 	 * @return String
 	 */
 	@GetMapping("/emp-info-create")
-	public String init(Model model, Locale locale) {
+	public String init(@ModelAttribute M07_EmpInfoCreateModel m07Model, Model model, Locale locale) {
+		model.addAttribute(ControllerConstant.EMP_GROUPS, this.service.findAllGroup(m07Model));
+		model.addAttribute(ControllerConstant.M07_MODEL, M07_EmpInfoCreateModel.builder().build());
 		return ControllerConstant.M07_EMP_INFO_CREATE;
 	}
 
