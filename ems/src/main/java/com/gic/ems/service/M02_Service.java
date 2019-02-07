@@ -1,6 +1,6 @@
 package com.gic.ems.service;
 
-import com.gic.ems.web.model.M02_PwdChngeModel;
+import com.gic.ems.web.model.M02_PwdChangeModel;
 
 import lombok.NonNull;
 
@@ -22,5 +22,5 @@ public interface M02_Service {
 	 * @param m02Model the m 02 model
 	 * 
 	 */
-	public void update(@NonNull M02_PwdChngeModel m02Model);
+	public void update(@NonNull M02_PwdChangeModel m02Model);
 }

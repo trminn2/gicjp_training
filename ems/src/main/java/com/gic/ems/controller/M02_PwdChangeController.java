@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M02_Service;
-import com.gic.ems.web.model.M02_PwdChngeModel;
+import com.gic.ems.web.model.M02_PwdChangeModel;
 
 /**
  * The Class M02_PwdChangeController.
@@ -44,7 +44,7 @@ public class M02_PwdChangeController {
 	 */
 	@GetMapping("/password-change")
 	public String init(Model model, Locale locale) {
-		model.addAttribute(ControllerConstant.M02_MODEL, M02_PwdChngeModel.builder().build());
+		model.addAttribute(ControllerConstant.M02_MODEL, M02_PwdChangeModel.builder().build());
 		return ControllerConstant.M02_PASSWORD_CHANGE;
 	}
 
@@ -57,7 +57,7 @@ public class M02_PwdChangeController {
 	 * @return String
 	 */
 	@PostMapping("/password-change")
-	public String change(@ModelAttribute M02_PwdChngeModel m02Model, Model model, BindingResult bindingResult,
+	public String change(@ModelAttribute M02_PwdChangeModel m02Model, Model model, BindingResult bindingResult,
 			Locale locale) {
 
 		if (bindingResult.hasErrors()) {
