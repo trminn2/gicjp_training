@@ -1,9 +1,5 @@
 package com.gic.ems.web.model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,21 +24,12 @@ public class M02_PwdChngeModel extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	/** The current password. */
-	@NotNull(message = "Current Password is required")
-	@NotBlank(message = "Current Password is required")
-	@NotEmpty(message = "Current Password is required")
 	private String currentPassword;
 
 	/** The new password. */
-	@NotNull(message = "New Password is required")
-	@NotBlank(message = "New Password is required")
-	@NotEmpty(message = "New Password is required")
 	private String newPassword;
 
 	/** The confirm password. */
-	@NotNull(message = "Confirm Password is required")
-	@NotBlank(message = "Confirm Password is required")
-	@NotEmpty(message = "Confirm Password is required")
 	private String confirmPassword;
 
 	/**
