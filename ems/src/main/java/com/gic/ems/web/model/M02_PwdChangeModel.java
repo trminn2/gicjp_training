@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Class M02_PasswordUpdateModel.
+ * The Class M02_PwdChangeModel.
  *
  * @author GIC-JP Jan 26, 2019 <BR>
- *         The Class M02_PasswordUpdateModel.
+ *         The Class M02_PwdChangeModel.
  */
 @Getter
 @Setter
@@ -18,7 +18,7 @@ import lombok.Setter;
  * Instantiates a new m 02 password update model.
  */
 @NoArgsConstructor
-public class M02_PwdChngeModel extends BaseModel {
+public class M02_PwdChangeModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -45,10 +45,11 @@ public class M02_PwdChngeModel extends BaseModel {
 	/**
 	 * Builds the.
 	 *
-	 * @return M02_PasswordUpdateModel
+	 * @return M02_PwdChangeModel
 	 */
 	@Builder
-	public M02_PwdChngeModel(Long id, String uuid, String currentPassword, String newPassword, String confirmPassword) {
+	public M02_PwdChangeModel(Long id, String uuid, String currentPassword, String newPassword,
+			String confirmPassword) {
 		super(id, uuid);
 		this.currentPassword = currentPassword;
 		this.newPassword = newPassword;
