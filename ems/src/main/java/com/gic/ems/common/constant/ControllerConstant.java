@@ -113,6 +113,14 @@ public interface ControllerConstant {
 	/** The DispatchDepartment Name. */
 	static final String DISPATCH_DEPARTMENTS = "dispatchDepartments";
 
+	static final String REDIRECT = "redirect:/";
+
+	/** The Constant MESSAGES. */
+	static final String MESSAGE = "message";
+
+	/** The Constant ERRORS. */
+	static final String ERRORS = "errors";
+
 	/** The Constant SUCCESSFULLY_SAVE. */
 	static final String SUCCESSFULLY_SAVE = "successflly.save";
 
