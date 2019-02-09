@@ -17,9 +17,14 @@ import com.gic.ems.web.model.M14_EmpHakenModel;
 /**
  * The Class M14_EmployeeHakenCreateController.
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Class M14_EmployeeHakenCreateController.
+ * @author PHUKHINKHIN Jan 26, 2019 <BR>
+ * @version 1.0 </BR>
+ * @since 2019 </BR>
+ *        ems system</BR>
+ *        com.gic.ems.controller </BR>
+ *        M14_EmpHakenCreateController.java </BR>
  */
+ 
 @Controller
 public class M14_EmpHakenCreateController {
 

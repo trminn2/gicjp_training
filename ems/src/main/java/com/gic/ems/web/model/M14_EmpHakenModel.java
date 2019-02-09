@@ -23,8 +23,8 @@ public class M14_EmpHakenModel extends BaseModel {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The company id. */
-	private Long companyId;
+	/** The company code. */
+	private Long companyCode;
 
 	/** The employee code. */
 	private String employeeCode;
@@ -48,10 +48,10 @@ public class M14_EmpHakenModel extends BaseModel {
 	private String income;
 
 	@Builder
-	public M14_EmpHakenModel(Long id, String uuid, Long companyId, String employeeCode, Long groupId,
+	public M14_EmpHakenModel(Long id, String uuid, Long companyCode, String employeeCode, Long groupId,
 			Long dispatchDeptId, String dispatchStartDate, String dispatchEndDate, String income) {
 		super(id, uuid);
-		this.companyId = companyId;
+		this.companyCode = companyCode;
 		this.employeeCode = employeeCode;
 		this.groupId = groupId;
 		this.dispatchDeptId = dispatchDeptId;
@@ -60,3 +60,4 @@ public class M14_EmpHakenModel extends BaseModel {
 		this.income = income;
 	}
 }
+	

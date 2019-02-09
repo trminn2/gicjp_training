@@ -150,7 +150,7 @@ public class M14_ServiceImpl implements M14_Service {
 	public M14_EmpHakenModel findById(Long id) {
 		Dispatch dispatch = this.dispatchDao.findById(id).orElse(null);
 
-		return M14_EmpHakenModel.builder().id(dispatch.getId()).companyId(dispatch.getCompany().getId())
+		return M14_EmpHakenModel.builder().id(dispatch.getId()).companyCode(dispatch.getCompany().getId())
 				.dispatchDeptId(dispatch.getDispatchDepartment().getId()).groupId(dispatch.getEmpGroup().getId())
 				.employeeCode(dispatch.getEmployee().getEmployeeCode())
 				.dispatchStartDate(DateUtility.getInstance().convertLocaleDateToString(dispatch.getDispatchStartDate(),
@@ -174,7 +174,7 @@ public class M14_ServiceImpl implements M14_Service {
 						this.employeeDao.findByEmployeeCodeAndDeleteFlag(m14Model.getEmployeeCode(), DeleteFlag.ACTIVE))
 				.empGroup(EmpGroup.builder().id(Long.valueOf(m14Model.getGroupId())).build())
 				.dispatchDepartment(DispatchDepartment.builder().id(Long.valueOf(m14Model.getDispatchDeptId())).build())
-				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyId())).build())
+				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyCode())).build())
 				.dispatchStartDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchStartDate(),
 						DateFormat.DDMMYYYY))
 				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
@@ -196,7 +196,7 @@ public class M14_ServiceImpl implements M14_Service {
 						this.employeeDao.findByEmployeeCodeAndDeleteFlag(m14Model.getEmployeeCode(), DeleteFlag.ACTIVE))
 				.empGroup(EmpGroup.builder().id(Long.valueOf(m14Model.getGroupId())).build())
 				.dispatchDepartment(DispatchDepartment.builder().id(Long.valueOf(m14Model.getDispatchDeptId())).build())
-				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyId())).build())
+				.company(Company.builder().id(Long.valueOf(m14Model.getCompanyCode())).build())
 				.dispatchStartDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchStartDate(),
 						DateFormat.DDMMYYYY))
 				.dispatchEndDate(DateUtility.getInstance().convertStringToLocaleDate(m14Model.getDispatchEndDate(),
