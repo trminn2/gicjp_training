@@ -19,6 +19,9 @@ public interface ControllerConstant {
 
 	/** The Constant M02_MODEL. */
 	static final String M02_MODEL = "m02Model";
+	
+	/** The Constant M04_MODEL. */
+	static final String M04_MODEL = "m04Model";
 
 	/** The Constant M05_MODEL. */
 	static final String M05_MODEL = "m05Model";
@@ -31,6 +34,9 @@ public interface ControllerConstant {
 
 	/** The Constant M09_MODEL. */
 	static final String M09_MODEL = "m09Model";
+	
+	/** The Constant M12_MODEL. */
+	static final String M12_MODEL = "m12Model";
 
 	/** The Constant M05_MODEL_LIST. */
 	static final String M05_MODEL_LIST = "m05ModelList";
@@ -58,6 +64,9 @@ public interface ControllerConstant {
 
 	/** The Constant M04_EMPLOYEE_INTIAL_INFO. */
 	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
+	
+	/** The Constant M04_EMPLOYEE_EDIT_INFO. */
+	static final String M04_EMPLOYEE_EDIT_INFO = "M04-employee-edit-info";
 
 	/** The Constant MG005_EMPLOYEE_LIST_SEARCH. */
 	static final String MG005_EMPLOYEE_LIST_SEARCH = "M05-employee-list";
