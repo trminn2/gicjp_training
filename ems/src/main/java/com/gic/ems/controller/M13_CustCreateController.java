@@ -23,7 +23,7 @@ import com.gic.ems.web.model.M13_CustCreateModel;
  *         The Class M13_CustCreateController.
  */
 @Controller
-public class M13_CustCreateController {
+public class M13_CustCreateController extends BaseController {
 
 	/** The service. */
 	private M13_Service service;
@@ -46,7 +46,7 @@ public class M13_CustCreateController {
 	 * @return String
 	 */
 	@GetMapping("/cust-create")
-	public String init(Model model, Locale locale) {
+	public String init(Model model) {
 		model.addAttribute(ControllerConstant.M13_MODEL, M13_CustCreateModel.builder().build());
 		return ControllerConstant.M13_CUSTOMER_CREATE;
 	}
@@ -63,6 +63,7 @@ public class M13_CustCreateController {
 	public String create(@Valid @ModelAttribute M13_CustCreateModel m13Model, Model model,
 			BindingResult bindingResult) {
 		this.service.save(m13Model);
-		return ControllerConstant.M13_CUSTOMER_CREATE;
+		model.addAttribute(ControllerConstant.MESSAGE,ControllerConstant.SUCCESSFULLY_SAVE);
+		return super.redirectURL(ControllerConstant.M13_CUSTOMER_CREATE);
 	}
 }

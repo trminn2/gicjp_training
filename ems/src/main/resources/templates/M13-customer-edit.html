@@ -45,27 +45,26 @@
 				<hr>
 			</div>
 		</div>
-		
+		<input type="hidden" th:field="*{id}"/>
 			<div class="form-group">
 				<label for="InputCompany">会社名<span class="text-danger">*</span></label>
-				<input type ="text" name = "companyName" class="form-control form-control-sm" placeholder="会社名">
+				<input type ="text" id="txtCompanyName" th:field="*{companyName}" class="form-control form-control-sm" placeholder="会社名">
 			</div>
 			<div class="form-group">
 				<label for="InputDate">契約開始日<span class="text-danger">*</span></label> 
-				<input type="text" name = "contractStartDate" class="form-control form-control-sm" id="startDate"
-					placeholder="契約開始日">
+				<input type="text" id = "txtcontractStartDate" th:field="*{contractStartDate}" class="form-control form-control-sm" placeholder="契約開始日">
 			</div>
 			<div class="row">
 						<div class="col-sm">
 							<div class="form-group">
 								<label for="InputCode">郵便番号<span class="text-danger">*</span></label>
-								<input type="text" class="form-control form-control-sm" name = "postalCode" placeholder="郵便番号　">
+								<input type="text"  id = "txtpostalCode" th:field="*{postalCode}" class="form-control form-control-sm" placeholder="郵便番号　">
 							</div>
 						</div>
 						<div class="col-sm">
 							<div class="form-group">
 								<label for="InputAddress">住所<span class="text-danger">*</span></label>
-								<textarea class="form-control form-control-sm" rows="3" name = "address" placeholder="住所"></textarea>
+								<textarea id = "txtaddress" th:field="*{address}" class="form-control form-control-sm" rows="3" placeholder="住所"></textarea>
 							</div>
 						</div>
 					</div>

@@ -3,8 +3,11 @@ package com.gic.ems.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.gic.ems.common.constant.Constant;
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.common.utility.MessageUtility;
+
+import lombok.NonNull;
 
 /**
  * The Class BaseController.</BR>
@@ -50,5 +53,9 @@ public abstract class BaseController {
 	 */
 	protected String redirectURL(String url) {
 		return new StringBuilder(ControllerConstant.REDIRECT).append(url).toString();
+	}
+
+	protected  String redirectURL(@NonNull String param, String url) {
+		return new StringBuilder(ControllerConstant.REDIRECT).append(param).append(Constant.SLASH).append(url).toString();
 	}
 }

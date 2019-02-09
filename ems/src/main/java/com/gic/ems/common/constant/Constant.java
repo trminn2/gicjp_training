@@ -22,4 +22,6 @@ public interface Constant {
 
 	/** The Constant SYSTEM. */
 	static final String SYSTEM = "SYSTEM";
+
+	static final Object SLASH = "/";
 }

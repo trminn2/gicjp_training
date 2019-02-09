@@ -1,17 +1,18 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M15_Service;
 import com.gic.ems.web.model.M15_CustomerListModel;
+
+import lombok.NonNull;
 
 /**
  * The Class M15_CustListController.</BR>
@@ -24,7 +25,7 @@ import com.gic.ems.web.model.M15_CustomerListModel;
  *        M15_CustListController.java </BR>
  */
 @Controller
-public class M15_CustListController {
+public class M15_CustListController extends BaseController {
 
 	/** The service. */
 	private M15_Service service;
@@ -48,7 +49,7 @@ public class M15_CustListController {
 	 * @return String
 	 */
 	@GetMapping("/cust-list")
-	public String init(@ModelAttribute M15_CustomerListModel m15Model, Model model, Locale local) {
+	public String init(@ModelAttribute M15_CustomerListModel m15Model, Model model) {
 		if (null == m15Model) {
 			model.addAttribute(ControllerConstant.M15_MODEL, M15_CustomerListModel.builder().build());
 			model.addAttribute(ControllerConstant.M15_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);
@@ -57,5 +58,10 @@ public class M15_CustListController {
 			model.addAttribute(ControllerConstant.M15_MODEL_LIST, this.service.findAll(m15Model));
 		}
 		return ControllerConstant.M15_CUSTOMER_INFO_SEARCH;
+	}
+	
+	@GetMapping("/{id}/cust-list")
+	public String edit(@PathVariable("id") @NonNull String id, Model model) {
+		return super.redirectURL(id,ControllerConstant.M13_CUSTOMER_EDIT);
 	}
 }

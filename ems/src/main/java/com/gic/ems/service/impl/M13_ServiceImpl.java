@@ -3,7 +3,6 @@ package com.gic.ems.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.gic.ems.common.type.DateFormat;
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.utility.CodeUtility;
@@ -12,7 +11,6 @@ import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.entity.Company;
 import com.gic.ems.service.M13_Service;
 import com.gic.ems.web.model.M13_CustCreateModel;
-import com.gic.ems.web.model.M15_CustomerListModel;
 
 import lombok.NonNull;
 
@@ -71,7 +69,8 @@ public class M13_ServiceImpl implements M13_Service {
 	@Transactional(rollbackFor = Exception.class)
 	public void update(M13_CustCreateModel custCreateModel) {
 		// TODO Auto-generated method stub
-		Company company = Company.builder().companyCode(custCreateModel.getCompanyId())
+		Company company = Company.builder()
+				.companyCode(CodeUtility.getInstance().generateCompanyCode(this.companyDao.count()))
 				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
 				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
 				.address(custCreateModel.getAddress())
@@ -85,7 +84,7 @@ public class M13_ServiceImpl implements M13_Service {
 	@Override
 	public M13_CustCreateModel findById(@NonNull Long id) {
 		Company company =  this.companyDao.save(this.companyDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE));
-		return M13_CustCreateModel.builder()
+		M13_CustCreateModel m13_CustCreateModel= M13_CustCreateModel.builder()
 		.id(company.getId())
 		.companyName(company.getCompanyName())
 		.address(company.getAddress())
@@ -96,5 +95,6 @@ public class M13_ServiceImpl implements M13_Service {
 		.contactPersonLastName(company.getContactPersonLastName())
 		.contactPersonLastNameKana(company.getContactPersonLastNameKana())
 		.contactPhone(company.getContactPhone()).build();
+		return m13_CustCreateModel;
 	}
 }
