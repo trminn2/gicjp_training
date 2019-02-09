@@ -92,10 +92,16 @@ public interface ControllerConstant {
 	/** The Constant M15_CUSTOMER_INFO_SEARCH. */
 	static final String M15_CUSTOMER_INFO_SEARCH = "M15-customer-list";
 
+	/** The Compaines Name. */
 	static final String COMPANIES = "companies";
 
+	/** The Groups Name. */
 	static final String EMP_GROUPS = "empGroups";
+	
+	/** The Departments Name. */
+	static final String DEPARTMENTS = "departments";
 
+	/** The DispatchDepartment Name. */
 	static final String DISPATCH_DEPARTMENTS = "dispatchDepartments";
 
 }

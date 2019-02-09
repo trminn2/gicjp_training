@@ -45,6 +45,7 @@ public class M07_EmpInfoCreateController {
 	@GetMapping("/emp-info-create")
 	public String init(@ModelAttribute M07_EmpInfoCreateModel m07Model, Model model, Locale locale) {
 		model.addAttribute(ControllerConstant.EMP_GROUPS, this.service.findAllGroup(m07Model));
+		model.addAttribute(ControllerConstant.DEPARTMENTS, this.service.findAllDepartment(m07Model));
 		model.addAttribute(ControllerConstant.M07_MODEL, M07_EmpInfoCreateModel.builder().build());
 		return ControllerConstant.M07_EMP_INFO_CREATE;
 	}
