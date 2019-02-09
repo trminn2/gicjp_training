@@ -59,9 +59,9 @@ public class M15_CustListController extends BaseController {
 		}
 		return ControllerConstant.M15_CUSTOMER_INFO_SEARCH;
 	}
-	
+
 	@GetMapping("/{id}/cust-list")
 	public String edit(@PathVariable("id") @NonNull String id, Model model) {
-		return super.redirectURL(id,ControllerConstant.M13_CUSTOMER_EDIT);
+		return super.redirectURL(id, ControllerConstant.CUST_EDIT);
 	}
 }

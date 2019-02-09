@@ -55,7 +55,15 @@ public abstract class BaseController {
 		return new StringBuilder(ControllerConstant.REDIRECT).append(url).toString();
 	}
 
-	protected  String redirectURL(@NonNull String param, String url) {
-		return new StringBuilder(ControllerConstant.REDIRECT).append(param).append(Constant.SLASH).append(url).toString();
+	/**
+	 * Redirect URL.
+	 *
+	 * @param param the param
+	 * @param url   the url
+	 * @return String
+	 */
+	protected String redirectURL(@NonNull String param, String url) {
+		return new StringBuilder(ControllerConstant.REDIRECT).append(param).append(Constant.SLASH).append(url)
+				.toString();
 	}
 }

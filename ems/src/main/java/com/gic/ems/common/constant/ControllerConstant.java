@@ -8,6 +8,9 @@ package com.gic.ems.common.constant;
  */
 public interface ControllerConstant {
 
+	/** The Constant CUST_EDIT. */
+	static final String CUST_EDIT = "cust-edit";
+
 	/** The Constant HOME. */
 	static final String HOME = "M00-home";
 
