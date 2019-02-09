@@ -13,6 +13,9 @@ public interface ControllerConstant {
 	
 	/** The Constant CUST_EDIT. */
 	static final String CUST_EDIT = "cust-edit";
+	
+	/** The Constant EMP_INFO_CREATE. */
+	static final String EMP_INFO_CREATE = "emp-info-create";
 
 	/** The Constant HOME. */
 	static final String HOME = "M00-home";
