@@ -20,7 +20,7 @@ import lombok.Setter;
  * Instantiates a new m 12 emp dispatch model.
  */
 @NoArgsConstructor
-public class M12_EmpDispatchModel extends BaseModel {
+public class M12_EmpDispatchSubModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -77,7 +77,7 @@ public class M12_EmpDispatchModel extends BaseModel {
 	 * @param address                     the address
 	 */
 	@Builder
-	public M12_EmpDispatchModel(Long id, String uuid, String companyId, String companyName, LocalDate dispatchStartDate,
+	public M12_EmpDispatchSubModel(Long id, String uuid, String companyId, String companyName, LocalDate dispatchStartDate,
 			String contractPersonFirstName, String contractPersonFirstNameKana, String contractPersonLastName,
 			String contractPersonLastNameKana, String contractPhone, String contractEmail, String postalCode,
 			String address) {

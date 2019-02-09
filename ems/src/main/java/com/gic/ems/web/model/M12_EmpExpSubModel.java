@@ -20,7 +20,7 @@ import lombok.Setter;
  * Instantiates a new m 12 emp exp model.
  */
 @NoArgsConstructor
-public class M12_EmpExpModel extends BaseModel {
+public class M12_EmpExpSubModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -65,7 +65,7 @@ public class M12_EmpExpModel extends BaseModel {
 	 */
 
 	@Builder
-	public M12_EmpExpModel(Long id, String uuid, String jobRole, int numOfMember, String position, String projectName,
+	public M12_EmpExpSubModel(Long id, String uuid, String jobRole, int numOfMember, String position, String projectName,
 			String responsibilities, LocalDate startDate, LocalDate endDate, String technologies) {
 		super(id, uuid);
 		this.jobRole = jobRole;

@@ -20,13 +20,13 @@ import lombok.Setter;
  * Instantiates a new m 12 emp info model.
  */
 @NoArgsConstructor
-public class M12_EmplnfoModel extends BaseModel {
+public class M12_EmplnfoSubModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** Employee Id */
-	private String employeeId;
+	/** Employee Code */
+	private String employeeCode;
 
 	/** First Name */
 	private String firstName;
@@ -142,7 +142,7 @@ public class M12_EmplnfoModel extends BaseModel {
 	/**
 	 * @param id
 	 * @param uuid
-	 * @param employeeId
+	 * @param employeeCode
 	 * @param firstName
 	 * @param lastName
 	 * @param firstNameKana
@@ -182,7 +182,7 @@ public class M12_EmplnfoModel extends BaseModel {
 	 * @param commuterPassExpiredDate
 	 */
 	@Builder
-	public M12_EmplnfoModel(Long id, String uuid, String employeeId, String firstName, String lastName,
+	public M12_EmplnfoSubModel(Long id, String uuid, String employeeCode, String firstName, String lastName,
 			String firstNameKana, String lastNameKana, String postalCode, String address, String gender,
 			String nationality, String phone, String email, String residenceNo, String residenceStatus,
 			String residencePeriod, String passportType, String passportNum, String passportCountryCode,
@@ -192,7 +192,7 @@ public class M12_EmplnfoModel extends BaseModel {
 			Date hiredDate, Date passportIssuedDate, Date passportExpiredDate, Date insuredQualifiedDate,
 			Date commuterPassExpiredDate) {
 		super(id, uuid);
-		this.employeeId = employeeId;
+		this.employeeCode = employeeCode;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.firstNameKana = firstNameKana;

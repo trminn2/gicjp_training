@@ -22,7 +22,7 @@ import lombok.Setter;
  * Instantiates a new m 12 emp skill model.
  */
 @NoArgsConstructor
-public class M12_EmpSkillModel extends BaseModel {
+public class M12_EmpSkillSubModel extends BaseModel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -55,7 +55,7 @@ public class M12_EmpSkillModel extends BaseModel {
 	 */
 
 	@Builder
-	public M12_EmpSkillModel(Long id, String uuid, int levelCode, Skill skill, String skillName, String type,
+	public M12_EmpSkillSubModel(Long id, String uuid, int levelCode, Skill skill, String skillName, String type,
 			Collection<EmployeeSkill> employeeskills) {
 		super(id, uuid);
 		this.levelCode = levelCode;

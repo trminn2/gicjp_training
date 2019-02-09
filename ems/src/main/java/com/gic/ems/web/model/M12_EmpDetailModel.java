@@ -24,16 +24,17 @@ public class M12_EmpDetailModel extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	/** The emp info create model. */
-	private M12_EmplnfoModel empInfoCreateModel;
+	private M12_EmplnfoSubModel m12_EmplnfoSubModel;
 
 	/** The emp experience create model. */
-	private M12_EmpExpModel empExpModel;
+	private M12_EmpExpSubModel m12_EmpExpSubModel;
 
 	/** The emp skill create model. */
-	private M12_EmpSkillModel empSkillModel;
+	private M12_EmpSkillSubModel m12_EmpSkillSubModel;
 
 	/** The emp dispatch create model. */
-	private M12_EmpDispatchModel empExpDispatchModel;
+	private M12_EmpDispatchSubModel m12_EmpDispatchSubModel;
+
 
 	/**
 	 * Instantiates a new experience.
@@ -46,12 +47,14 @@ public class M12_EmpDetailModel extends BaseModel {
 	 * @param empExpDispatchModel the empExpDispatchModel
 	 */
 	@Builder
-	public M12_EmpDetailModel(Long id, String uuid, M12_EmplnfoModel empInfoCreateModel, M12_EmpExpModel empExpModel,
-			M12_EmpSkillModel empSkillModel, M12_EmpDispatchModel empExpDispatchModel){
+	public M12_EmpDetailModel(Long id, String uuid, M12_EmplnfoSubModel m12_EmplnfoSubModel,
+			M12_EmpExpSubModel m12_EmpExpSubModel, M12_EmpSkillSubModel m12_EmpSkillSubModel,
+			M12_EmpDispatchSubModel m12_EmpDispatchSubModel) {
 		super(id, uuid);
-		this.empInfoCreateModel = empInfoCreateModel;
-		this.empExpModel = empExpModel;
-		this.empSkillModel = empSkillModel;
-		this.empExpDispatchModel = empExpDispatchModel;
+		this.m12_EmplnfoSubModel = m12_EmplnfoSubModel;
+		this.m12_EmpExpSubModel = m12_EmpExpSubModel;
+		this.m12_EmpSkillSubModel = m12_EmpSkillSubModel;
+		this.m12_EmpDispatchSubModel = m12_EmpDispatchSubModel;
 	}
+	
 }
