@@ -20,7 +20,7 @@
 			<label class="mb-0" for="txtEmail"><i
 				class="fas fa-envelope pr-2"></i><span th:text="#{lblEmail}"></span></label>
 			<input type="text" class="form-control form-control-sm rounded-0"
-				id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+				id="txtEmail" name="email" aria-describedby="emailHelp"
 				th:placeholder="#{placeHolder(#{lblEmail})}"> <small
 				id="txtEmail" class="form-text text-muted text-right mt-0"
 				th:text="#{lblEmailSecurity}"></small>
@@ -35,7 +35,7 @@
 				class="form-text text-right mt-0" th:text="#{lblForgotPassword}"></small></a>
 		</div>
 		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 pt-2">
-			<button type="submit"
+			<button type="submit" id="btnLogin"
 				class="btn btn-sm btn-color btn-block rounded-0"
 				onclick="this.form.submit();" ondblclick="this.form.submit();">
 				<i class="fas fa-sign-in-alt pr-2"></i> <span th:text="#{btnLogin}"></span>
