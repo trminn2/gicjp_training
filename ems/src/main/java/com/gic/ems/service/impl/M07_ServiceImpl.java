@@ -24,8 +24,7 @@ public class M07_ServiceImpl implements M07_Service {
 	/** The employee dao. */
 	private EmployeeDao employeeDao;
 	
-	/** The group dao. */
-	private EmpGroupDao groupDao;
+	private EmpGroupDao empGroupDao;
 
 	/**
 	 * Sets the employee dao.
@@ -37,6 +36,12 @@ public class M07_ServiceImpl implements M07_Service {
 		this.employeeDao = employeeDao;
 	}
 	
+	
+	@Autowired
+	public void setEmpGroupDao(EmpGroupDao empGroupDao) {
+		this.empGroupDao = empGroupDao;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -45,7 +50,7 @@ public class M07_ServiceImpl implements M07_Service {
 	 */
 	@Override
 	public Collection<EmpGroup> findAllGroup(M07_EmpInfoCreateModel hakenModel) {
-		return this.groupDao.findAllByDeleteFlag(DeleteFlag.ACTIVE);
+		return this.empGroupDao.findByDeleteFlag(DeleteFlag.ACTIVE);
 	}
 
 	/*

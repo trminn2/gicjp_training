@@ -143,6 +143,9 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 
 	/** Commuter Pass Expired Date. */
 	private Date commuterPassExpiredDate;
+	
+	/** Group Name. */
+	private String name;
 
 	/**
 	 * Instantiates a new m 07 emp info create model.
@@ -203,7 +206,7 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 			String myNumber, String startStation, String endStation, String wayOfThinking, String confidenceSkill,
 			String speciality, int groupId, int band, int departmentId, int certificateId, Date birthDate,
 			Date hiredDate, Date passportIssuedDate, Date passportExpiredDate, Date insuredQualifiedDate,
-			Date commuterPassExpiredDate) {
+			Date commuterPassExpiredDate, String name) {
 		super(id, uuid);
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -243,5 +246,6 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 		this.passportExpiredDate = passportExpiredDate;
 		this.insuredQualifiedDate = insuredQualifiedDate;
 		this.commuterPassExpiredDate = commuterPassExpiredDate;
+		this.name = name;
 	}
 }

@@ -231,13 +231,9 @@
 						<div class="col-sm">
 							<div class="form-group">
 								<label for="exampleInputEmail1">グループ名</label> <select
-									class="custom-select custom-select-lg" id="inputGroupSelect01">
+									class="custom-select custom-select-lg" id="cboGroupId" name="groupId">
 									<option selected>選択してください...</option>
-									<option value="1">お客様先 1</option>
-									<option value="1">お客様先 2</option>
-									<option value="1">お客様先 3</option>
-									<option value="1">お客様先 4</option>
-									<option value="1">お客様先 5</option>
+									<option th:each="group:${empGroups}" th:utext="${group.name}" th:value="${group.id}"></option>
 								</select>
 							</div>
 						</div>
