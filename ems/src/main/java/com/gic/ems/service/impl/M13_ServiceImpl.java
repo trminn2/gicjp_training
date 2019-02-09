@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gic.ems.common.type.DateFormat;
+import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.utility.CodeUtility;
 import com.gic.ems.common.utility.DateUtility;
 import com.gic.ems.dao.CompanyDao;
 import com.gic.ems.entity.Company;
 import com.gic.ems.service.M13_Service;
 import com.gic.ems.web.model.M13_CustCreateModel;
+import com.gic.ems.web.model.M15_CustomerListModel;
+
+import lombok.NonNull;
 
 /**
  * The Class M13_ServiceImpl.
@@ -76,5 +80,21 @@ public class M13_ServiceImpl implements M13_Service {
 				.contactPersonLastNameKana(custCreateModel.getContactPersonLastNameKana())
 				.postalCode(custCreateModel.getPostalCode()).contactPhone(custCreateModel.getContactPhone()).build();
 		this.companyDao.save(company);
+	}
+
+	@Override
+	public M13_CustCreateModel findById(@NonNull Long id) {
+		Company company =  this.companyDao.save(this.companyDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE));
+		return M13_CustCreateModel.builder()
+		.id(company.getId())
+		.companyName(company.getCompanyName())
+		.address(company.getAddress())
+		.postalCode(company.getPostalCode())
+		.contactEmail(company.getContactEmail())
+		.contactPersonFirstName(company.getContactPersonFirstName())
+		.contactPersonFirstNameKana(company.getContactPersonFirstNameKana())
+		.contactPersonLastName(company.getContactPersonLastName())
+		.contactPersonLastNameKana(company.getContactPersonLastNameKana())
+		.contactPhone(company.getContactPhone()).build();
 	}
 }

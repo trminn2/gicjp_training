@@ -64,7 +64,8 @@
 	charset="utf-8"></script>
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css" />
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var t = $('#example').DataTable({
@@ -98,7 +99,7 @@
 	<!-- menu file include -->
 	<div th:include="/common/navbar-home.html::navbar-home"></div>
 	<!-- menu file include -->
-	<div class="container jumbotron">
+	<div>
 		<div class="row justify-content-center">
 			<div class="col-lg-12 col-md-12 col-xs-10">
 				<form name="search" class="form-horizontal" role="form" method="get"
@@ -137,12 +138,11 @@
 		</div>
 		
 		<!-- <table class="custList"> -->
-		<table id="customerList"
+		<table id="example"
 			class="table table-sm table-striped table-bordered nowrap bg-white"
 			style="width: 100%">
 			<thead>
 				<tr>
-					<!-- <th></th> -->
 					<th>番号</th>
 					<th>会社名</th>
 					<th>契約開始日</th>
@@ -154,33 +154,31 @@
 					<th>責任者名かな</th>
 					<th>責任者メール</th>
 					<th>責任者電話番号</th>
+					<th>更新</th>
 				</tr>
 			</thead>
 			<tbody class="bg-white">
-				<tr th:each="custList: ${m15ModelList}">
-					<!-- <td><input type="checkbox"></td> -->
-					<!-- <td><input type="checkbox" th:field="${custList}"/></td> -->
+				<tr th:each="cust: ${m15ModelList}">
 					<td></td>
-					<td th:text="${custList.companyName}"></td>
-					<td th:text="${custList.contractStartDate}"></td>
-					<td th:text="${custList.postalCode}"></td>
-					<td th:text="${custList.address}"></td>
-					<td th:text="${custList.contactPersonFirstName}"></td>
-					<td th:text="${custList.contactPersonFirstNameKana}"></td>
-					<td th:text="${custList.contactPersonLastName}"></td>
-					<td th:text="${custList.contactPersonLastNameKana}"></td>
-					<td th:text="${custList.contactEmail}"></td>
-					<td th:text="${custList.contactPhone}"></td>
+					<td th:text="${cust.companyName}"></td>
+					<td th:text="${cust.contractStartDate}"></td>
+					<td th:text="${cust.postalCode}"></td>
+					<td th:text="${cust.address}"></td>
+					<td th:text="${cust.contactPersonFirstName}"></td>
+					<td th:text="${cust.contactPersonFirstNameKana}"></td>
+					<td th:text="${cust.contactPersonLastName}"></td>
+					<td th:text="${cust.contactPersonLastNameKana}"></td>
+					<td th:text="${cust.contactEmail}"></td>
+					<td th:text="${cust.contactPhone}"></td>
+					<td><a th:href="@{'/'+${cust.id}+'/cust-edit'}"><i
+								class="fas fa-edit"></i></a></td>
 				</tr>
 				
 			</tbody>
 		</table>
 		<br>
 		<div class="row col">
-			<a href="MG013-customer-update.html"
-				class="btn btn-sm btn-primary col-md-1" role="button"><i
-				class="fas fa-edit"></i>更新</a>&nbsp;&nbsp; <a
-				href="MG013-customer-register.html"
+			<a th:href="@{/cust-create}"
 				class="btn btn-sm btn-primary col-md-1" role="button"><i
 				class="fas fa-plus"></i>新規</a>
 		</div>

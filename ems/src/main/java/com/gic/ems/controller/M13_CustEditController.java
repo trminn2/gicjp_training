@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M13_Service;
+import com.gic.ems.web.model.M13_CustCreateModel;
 
 import lombok.NonNull;
 
@@ -24,7 +25,7 @@ import lombok.NonNull;
 public class M13_CustEditController {
 
 	/** The service. */
-	M13_Service service;
+	private M13_Service service;
 
 	/**
 	 * Sets the service.
@@ -46,6 +47,7 @@ public class M13_CustEditController {
 	 */
 	@GetMapping("/{id}/cust-edit")
 	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
+		model.addAttribute(ControllerConstant.M13_MODEL, this.service.findById(Long.valueOf(id)));
 		return ControllerConstant.M13_CUSTOMER_EDIT;
 	}
 

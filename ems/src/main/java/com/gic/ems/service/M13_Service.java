@@ -25,4 +25,6 @@ public interface M13_Service {
 	 * @param custCreateModel the cust create model
 	 */
 	void update(@NonNull M13_CustCreateModel custCreateModel);
+
+	M13_CustCreateModel findById(@NonNull Long id);
 }

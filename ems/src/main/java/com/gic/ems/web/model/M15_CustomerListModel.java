@@ -29,8 +29,8 @@ public class M15_CustomerListModel extends BaseModel {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** Id. */
-	private String companyId;
+	/** Company Code. */
+	private String companyCode;
 
 	/** Company Name. */
 	private String companyName;
@@ -86,12 +86,12 @@ public class M15_CustomerListModel extends BaseModel {
 	 * @return M15_CustomerListModel
 	 */
 	@Builder
-	public M15_CustomerListModel(Long id, String uuid, String companyId, String companyName,
+	public M15_CustomerListModel(Long id, String uuid, String companyCode, String companyName,
 			LocalDate contractStartDate, String address, String postalCode, String contactPersonFirstName,
 			String contactPersonLastName, String contactPersonFirstNameKana, String contactPersonLastNameKana,
 			String contactEmail, String contactPhone) {
 		super(id, uuid);
-		this.companyId = companyId;
+		this.companyCode = companyCode;
 		this.companyName = companyName;
 		this.contractStartDate = contractStartDate;
 		this.address = address;
