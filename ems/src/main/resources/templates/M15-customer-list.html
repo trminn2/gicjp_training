@@ -99,7 +99,7 @@
 	<!-- menu file include -->
 	<div th:include="/common/navbar-home.html::navbar-home"></div>
 	<!-- menu file include -->
-	<div>
+	<div class="container jumbotron">
 		<div class="row justify-content-center">
 			<div class="col-lg-12 col-md-12 col-xs-10">
 				<form name="search" class="form-horizontal" role="form" method="get"
@@ -143,7 +143,7 @@
 			style="width: 100%">
 			<thead>
 				<tr>
-					<th>番号</th>
+					<!-- <th>番号</th> -->
 					<th>会社名</th>
 					<th>契約開始日</th>
 					<th>郵便番号</th>
@@ -159,7 +159,7 @@
 			</thead>
 			<tbody class="bg-white">
 				<tr th:each="cust: ${m15ModelList}">
-					<td></td>
+					<!-- <td></td> -->
 					<td th:text="${cust.companyName}"></td>
 					<td th:text="${cust.contractStartDate}"></td>
 					<td th:text="${cust.postalCode}"></td>

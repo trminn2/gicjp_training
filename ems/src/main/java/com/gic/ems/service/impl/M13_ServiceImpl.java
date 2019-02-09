@@ -70,6 +70,7 @@ public class M13_ServiceImpl implements M13_Service {
 	public void update(M13_CustCreateModel custCreateModel) {
 		// TODO Auto-generated method stub
 		Company company = Company.builder()
+				.id(custCreateModel.getId())
 				.companyCode(CodeUtility.getInstance().generateCompanyCode(this.companyDao.count()))
 				.companyName(custCreateModel.getCompanyName()).contactEmail(custCreateModel.getContactEmail())
 				.contactPersonFirstName(custCreateModel.getContactPersonFirstName())
