@@ -21,7 +21,7 @@ import com.gic.ems.web.model.M02_PwdChangeModel;
  *         The Class M02_PwdChangeController.
  */
 @Controller
-public class M02_PwdChangeController {
+public class M02_PwdChangeController extends BaseController {
 
 	/** The service. */
 	private M02_Service service;

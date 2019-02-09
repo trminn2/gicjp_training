@@ -15,32 +15,36 @@
 			</button>
 		</div>
 	</div>
-	<form th:action="@{/login}" method="post">
-		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 mb-0">
-			<label class="mb-0" for="txtEmail"><i
-				class="fas fa-envelope pr-2"></i><span th:text="#{lblEmail}"></span></label>
-			<input type="text" class="form-control form-control-sm rounded-0"
-				id="txtEmail" name="email" aria-describedby="emailHelp"
-				th:placeholder="#{placeHolder(#{lblEmail})}"> <small
-				id="txtEmail" class="form-text text-muted text-right mt-0"
-				th:text="#{lblEmailSecurity}"></small>
-		</div>
-		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2">
-			<label class="mb-0" for="txtPassword"><i
-				class="fas fa-unlock pr-2"></i><span th:text="#{lblPassword}"></span>
-			</label> <input type="password" name="password"
-				class="form-control form-control-sm rounded-0" id="txtPassword"
-				th:placeholder="#{placeHolder(#{lblPassword})}"> <a
-				class="text-decoration-none " href="#"><small id="txtEmail"
-				class="form-text text-right mt-0" th:text="#{lblForgotPassword}"></small></a>
-		</div>
-		<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 pt-2">
-			<button type="submit" id="btnLogin"
-				class="btn btn-sm btn-color btn-block rounded-0"
-				onclick="this.form.submit();" ondblclick="this.form.submit();">
-				<i class="fas fa-sign-in-alt pr-2"></i> <span th:text="#{btnLogin}"></span>
-			</button>
-		</div>
-	</form>
+	<div class="container">
+		<form th:action="@{/login}" method="post">
+			<div
+				class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 mb-0">
+				<label class="mb-0" for="txtEmail"><i
+					class="fas fa-envelope pr-2"></i><span th:text="#{lblEmail}"></span></label>
+				<input type="text" class="form-control form-control-sm rounded-0"
+					id="txtEmail" name="email" aria-describedby="emailHelp"
+					th:placeholder="#{placeHolder(#{lblEmail})}"> <small
+					id="txtEmail" class="form-text text-muted text-right mt-0"
+					th:text="#{lblEmailSecurity}"></small>
+			</div>
+			<div class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2">
+				<label class="mb-0" for="txtPassword"><i
+					class="fas fa-unlock pr-2"></i><span th:text="#{lblPassword}"></span>
+				</label> <input type="password" name="password"
+					class="form-control form-control-sm rounded-0" id="txtPassword"
+					th:placeholder="#{placeHolder(#{lblPassword})}"> <a
+					class="text-decoration-none " href="#"><small id="txtEmail"
+					class="form-text text-right mt-0" th:text="#{lblForgotPassword}"></small></a>
+			</div>
+			<div
+				class="form-group col-md-4 offset-md-4 col-sm-8 offset-sm-2 pt-2">
+				<button type="submit" id="btnLogin"
+					class="btn btn-sm btn-color btn-block rounded-0"
+					onclick="this.form.submit();" ondblclick="this.form.submit();">
+					<i class="fas fa-sign-in-alt pr-2"></i> <span th:text="#{btnLogin}"></span>
+				</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

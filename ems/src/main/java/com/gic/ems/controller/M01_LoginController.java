@@ -1,7 +1,5 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,7 @@ import com.gic.ems.common.constant.ControllerConstant;
  *         The Class M01_LoginController.
  */
 @Controller
-public class M01_LoginController {
+public class M01_LoginController extends BaseController {
 
 	/**
 	 * Login.
@@ -24,7 +22,7 @@ public class M01_LoginController {
 	 * @return String
 	 */
 	@GetMapping("/login")
-	public String login(Model model, Locale locle) {
+	public String login(Model model) {
 		return ControllerConstant.M01_LOGIN;
 	}
 
@@ -35,7 +33,7 @@ public class M01_LoginController {
 	 * @return String
 	 */
 	@GetMapping("/access-denied")
-	public String accessDenied(Model model, Locale locle) {
+	public String accessDenied(Model model) {
 		return ControllerConstant.ACCESS_DENIED;
 	}
 
@@ -46,7 +44,7 @@ public class M01_LoginController {
 	 * @return String
 	 */
 	@GetMapping("/logout")
-	public String logout(Model model, Locale locle) {
+	public String logout(Model model) {
 		return ControllerConstant.M01_LOGIN;
 	}
 }

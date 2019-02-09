@@ -19,7 +19,7 @@ public interface ControllerConstant {
 
 	/** The Constant M02_MODEL. */
 	static final String M02_MODEL = "m02Model";
-	
+
 	/** The Constant M04_MODEL. */
 	static final String M04_MODEL = "m04Model";
 
@@ -34,13 +34,13 @@ public interface ControllerConstant {
 
 	/** The Constant M09_MODEL. */
 	static final String M09_MODEL = "m09Model";
-	
+
 	/** The Constant M12_MODEL. */
 	static final String M12_MODEL = "m12Model";
 
 	/** The Constant M05_MODEL_LIST. */
 	static final String M05_MODEL_LIST = "m05ModelList";
-	
+
 	/** The Constant M09_MODEL_LIST. */
 	static final String M09_MODEL_LIST = "m09ModelList";
 
@@ -64,7 +64,7 @@ public interface ControllerConstant {
 
 	/** The Constant M04_EMPLOYEE_INTIAL_INFO. */
 	static final String M04_EMPLOYEE_INTIAL_INFO = "M04-employee-intial-info";
-	
+
 	/** The Constant M04_EMPLOYEE_EDIT_INFO. */
 	static final String M04_EMPLOYEE_EDIT_INFO = "M04-employee-edit-info";
 
@@ -106,11 +106,17 @@ public interface ControllerConstant {
 
 	/** The Groups Name. */
 	static final String EMP_GROUPS = "empGroups";
-	
+
 	/** The Departments Name. */
 	static final String DEPARTMENTS = "departments";
 
 	/** The DispatchDepartment Name. */
 	static final String DISPATCH_DEPARTMENTS = "dispatchDepartments";
+
+	/** The Constant SUCCESSFULLY_SAVE. */
+	static final String SUCCESSFULLY_SAVE = "successflly.save";
+
+	/** The Constant SUCCESSFULLY_EDIT. */
+	static final String SUCCESSFULLY_EDIT = "successflly.edit";
 
 }
