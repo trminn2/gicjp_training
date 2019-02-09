@@ -1,7 +1,5 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gic.ems.common.constant.ControllerConstant;
+import com.gic.ems.common.constant.MessageConstant;
 import com.gic.ems.service.M13_Service;
 import com.gic.ems.web.model.M13_CustCreateModel;
 
@@ -61,9 +61,10 @@ public class M13_CustCreateController extends BaseController {
 	 */
 	@PostMapping("/cust-create")
 	public String create(@Valid @ModelAttribute M13_CustCreateModel m13Model, Model model,
-			BindingResult bindingResult) {
+			RedirectAttributes redirectAttributes, BindingResult bindingResult) {
 		this.service.save(m13Model);
-		model.addAttribute(ControllerConstant.MESSAGE,ControllerConstant.SUCCESSFULLY_SAVE);
+		redirectAttributes.getFlashAttributes().clear();
+		redirectAttributes.addFlashAttribute(MessageConstant.MESSAGE, MessageConstant.SUCCESSFULLY_SAVE);
 		return super.redirectURL(ControllerConstant.M13_CUSTOMER_CREATE);
 	}
 }
