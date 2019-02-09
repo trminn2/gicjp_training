@@ -36,9 +36,19 @@
 	<div th:include="/common/navbar-home.html::navbar-home"></div>
 	<!-- menu file include -->
 	<div class="container jumbotron">
+	<div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2"
+			th:if="${message}">
+			<div class="alert alert-success rounded-0">
+				<small th:text="${message}"></small>
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg-8 col-md-12 col-xs-10">
-		<form class="form-horizontal" role="form" method="post" th:action="@{/edit-customer}" th:object="${m13Model}">
+		<form class="form-horizontal" role="form" method="post" th:action="@{'/'+${cust.id}+'/cust-edit'}" th:object="${m13Model}">
 		<div class="row col">
 			<div class="col-md-4">
 				<h3>お客様登録</h3>
@@ -72,13 +82,13 @@
 				<div class="col-sm">
 					<div class="form-group">
 						<label for="InputContactPerson">責任者姓<span class="text-danger">*</span></label> 
-						<input type="text" class="form-control form-control-sm" name="contactPersonFirstName" placeholder="責任者姓">
+						<input type="text" id ="txtcontactPersonFirstName" th:field="*{contactPersonFirstName}" class="form-control form-control-sm"  placeholder="責任者姓">
 					</div>
 				</div>
 				<div class="col-sm">
 					<div class="form-group">
 						<label for="InputContactPerson">責任者姓かな<span class="text-danger">*</span></label> 
-						<input type="text" class="form-control form-control-sm" name="contactPersonFirstNameKana" placeholder="責任者姓かな">
+						<input type="text" id = "txtcontactPersonFirstNameKana" class="form-control form-control-sm" th:field="*{contactPersonFirstNameKana}" placeholder="責任者姓かな">
 					</div>
 				</div>
 			</div>
@@ -86,13 +96,14 @@
 				<div class="col-sm">
 					<div class="form-group">
 						<label for="InputContactPerson">責任者名<span class="text-danger">*</span></label> 
-						<input type="text" class="form-control form-control-sm" name ="contactPersonLastName" placeholder="責任者名">
+						<input type="text" id ="txtcontactPersonLastName" th:field="*{contactPersonLastName}" class="form-control form-control-sm" placeholder="責任者名">
 					</div>
 				</div>
 				<div class="col-sm">
 					<div class="form-group">
 						<label for="InputContactPerson">責任者名かな<span class="text-danger">*</span></label>
-						 <input type="text"	class="form-control form-control-sm" name="contactPersonLastNameKana" placeholder="責任者名かな">
+						 <input type="text"	id ="txtcontactPersonLastNameKana" class="form-control form-control-sm" 
+						     th:field="*{contactPersonLastNameKana}" placeholder="責任者名かな">
 					</div>
 				</div>
 			</div>
@@ -100,13 +111,13 @@
 				<div class="col-sm">
 					<div class="form-group">
 						<label for="exampleInputEmail1">責任者メール<span class="text-danger">*</span></label> 
-						<input type="email" class="form-control form-control-sm" name="contactEmail" placeholder="責任者メール"> 
+						<input type="email" class="form-control form-control-sm" th:field="*{contactEmail}" placeholder="責任者メール"> 
 					</div>
 				</div>
 				<div class="col-sm">
 					<div class="form-group">
 						<label for="InputCode">責任者電話番号<span class="text-danger">*</span></label> 
-						<input type="text" class="form-control form-control-sm" name ="contactPhone" placeholder="責任者電話番号">
+						<input type="text" th:field="*{contactPhone}" class="form-control form-control-sm" id ="txtcontactPhone" placeholder="責任者電話番号">
 					</div>
 				</div>
 				</div>

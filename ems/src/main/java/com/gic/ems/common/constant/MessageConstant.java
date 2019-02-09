@@ -19,8 +19,8 @@ public interface MessageConstant {
 	static final String ERRORS = "errors";
 
 	/** The Constant SUCCESSFULLY_SAVE. */
-	static final String SUCCESSFULLY_SAVE = "successflly.save";
+	static final String SUCCESSFULLY_SAVE = "successfully.save";
 
 	/** The Constant SUCCESSFULLY_EDIT. */
-	static final String SUCCESSFULLY_EDIT = "successflly.edit";
+	static final String SUCCESSFULLY_EDIT = "successfully.edit";
 }

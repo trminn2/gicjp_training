@@ -5,10 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.gic.ems.common.constant.ControllerConstant;
+import com.gic.ems.common.constant.MessageConstant;
 import com.gic.ems.service.M13_Service;
+import com.gic.ems.web.model.M13_CustCreateModel;
+
 import lombok.NonNull;
 
 /**
@@ -18,7 +24,7 @@ import lombok.NonNull;
  *         The Class M13_CustEditController.
  */
 @Controller
-public class M13_CustEditController {
+public class M13_CustEditController extends BaseController{
 
 	/** The service. */
 	private M13_Service service;
@@ -42,7 +48,7 @@ public class M13_CustEditController {
 	 * @return String
 	 */
 	@GetMapping("/{id}/cust-edit")
-	public String init(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
+	public String init(@PathVariable("id") @NonNull String id, Model model) {
 		model.addAttribute(ControllerConstant.M13_MODEL, this.service.findById(Long.valueOf(id)));
 		return ControllerConstant.M13_CUSTOMER_EDIT;
 	}
@@ -56,7 +62,10 @@ public class M13_CustEditController {
 	 * @return String
 	 */
 	@PostMapping("/{id}/cust-edit")
-	public String edit(@PathVariable("id") @NonNull String id, Model model, Locale locale) {
-		return ControllerConstant.M13_CUSTOMER_EDIT;
+	public String edit(@PathVariable("id") @NonNull String id,@ModelAttribute M13_CustCreateModel m13Model, Model model, RedirectAttributes redirectAttributes) {
+		this.service.update(m13Model);
+		redirectAttributes.getFlashAttributes().clear();
+		redirectAttributes.addFlashAttribute(MessageConstant.MESSAGE,this.getMessage( MessageConstant.SUCCESSFULLY_EDIT));
+		return super.redirectURL(id,ControllerConstant.CUST_EDIT);
 	}
 }

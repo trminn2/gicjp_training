@@ -64,7 +64,7 @@ public class M13_CustCreateController extends BaseController {
 			RedirectAttributes redirectAttributes, BindingResult bindingResult) {
 		this.service.save(m13Model);
 		redirectAttributes.getFlashAttributes().clear();
-		redirectAttributes.addFlashAttribute(MessageConstant.MESSAGE, MessageConstant.SUCCESSFULLY_SAVE);
-		return super.redirectURL(ControllerConstant.M13_CUSTOMER_CREATE);
+		redirectAttributes.addFlashAttribute(MessageConstant.MESSAGE,this.getMessage( MessageConstant.SUCCESSFULLY_SAVE));
+		return super.redirectURL(ControllerConstant.CUST_CREATE);
 	}
 }
