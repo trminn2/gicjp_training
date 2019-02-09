@@ -1,6 +1,9 @@
 package com.gic.ems.web.model;
 
+import java.time.LocalDate;
 import java.util.Date;
+
+import com.gic.ems.common.type.Gender;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -52,7 +55,7 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 	private String address;
 
 	/** Gender. */
-	private String gender;
+	private Gender gender;
 
 	/** Nationality. */
 	private String nationality;
@@ -70,7 +73,10 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 	private String residenceStatus;
 
 	/** Residence Period. */
-	private String residencePeriod;
+	private short residencePeriod;
+	
+	/** Residence Period. */
+	private LocalDate residenceExpire;
 
 	/** Passport Type. */
 	private String passportType;
@@ -127,22 +133,22 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 	private int certificateId;
 
 	/** Birth Date. */
-	private Date birthDate;
+	private LocalDate birthDate;
 
 	/** Hired Date. */
-	private Date hiredDate;
+	private LocalDate hiredDate;
 
 	/** Passport Issued Date. */
-	private Date passportIssuedDate;
+	private LocalDate passportIssuedDate;
 
 	/** Passport Expired Date. */
-	private Date passportExpiredDate;
+	private LocalDate passportExpiredDate;
 
 	/** Insured Qualified Date. */
-	private Date insuredQualifiedDate;
+	private LocalDate insuredQualifiedDate;
 
 	/** Commuter Pass Expired Date. */
-	private Date commuterPassExpiredDate;
+	private LocalDate commuterPassExpiredDate;
 	
 	/** Group Name. */
 	private String name;
@@ -199,14 +205,15 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 	 */
 	@Builder
 	public M07_EmpInfoCreateModel(Long id, String uuid, String employeeId, String firstName, String lastName,
-			String firstNameKana, String lastNameKana, String postalCode, String address, String gender,
+			String firstNameKana, String lastNameKana, String postalCode, String address, Gender gender,
 			String nationality, String phone, String email, String residenceNo, String residenceStatus,
-			String residencePeriod, String passportType, String passportNum, String passportCountryCode,
-			String passportAuthority, String bankAccount, String insuranceType, String insuredNum, String insurerName,
-			String myNumber, String startStation, String endStation, String wayOfThinking, String confidenceSkill,
-			String speciality, int groupId, int band, int departmentId, int certificateId, Date birthDate,
-			Date hiredDate, Date passportIssuedDate, Date passportExpiredDate, Date insuredQualifiedDate,
-			Date commuterPassExpiredDate, String name) {
+			short residencePeriod, LocalDate residenceExpire, String passportType, String passportNum,
+			String passportCountryCode, String passportAuthority, String bankAccount, String insuranceType,
+			String insuredNum, String insurerName, String myNumber, String startStation, String endStation,
+			String wayOfThinking, String confidenceSkill, String speciality, int groupId, int band, int departmentId,
+			int certificateId, LocalDate birthDate, LocalDate hiredDate, LocalDate passportIssuedDate,
+			LocalDate passportExpiredDate, LocalDate insuredQualifiedDate, LocalDate commuterPassExpiredDate,
+			String name) {
 		super(id, uuid);
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -222,6 +229,7 @@ public class M07_EmpInfoCreateModel extends BaseModel {
 		this.residenceNo = residenceNo;
 		this.residenceStatus = residenceStatus;
 		this.residencePeriod = residencePeriod;
+		this.residenceExpire = residenceExpire;
 		this.passportType = passportType;
 		this.passportNum = passportNum;
 		this.passportCountryCode = passportCountryCode;
