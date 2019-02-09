@@ -3,6 +3,7 @@ package com.gic.ems.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.common.utility.MessageUtility;
 
 /**
@@ -39,5 +40,15 @@ public abstract class BaseController {
 	 */
 	protected String getMessage(String messageCode) {
 		return this.messageUtility.getMessage(messageCode);
+	}
+
+	/**
+	 * Redirect URL.
+	 *
+	 * @param url the url
+	 * @return String
+	 */
+	protected String redirectURL(String url) {
+		return new StringBuilder(ControllerConstant.REDIRECT).append(url).toString();
 	}
 }
