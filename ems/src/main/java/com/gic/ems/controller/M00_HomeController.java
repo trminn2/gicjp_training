@@ -1,7 +1,5 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +23,7 @@ public class M00_HomeController {
 	 * @return String
 	 */
 	@GetMapping(value = { "/", "/home" })
-	public String home(Model model, Locale locale) {
+	public String home(Model model) {
 		return ControllerConstant.HOME;
 	}
 }

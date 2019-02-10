@@ -1,7 +1,5 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +41,7 @@ public class M02_PwdChangeController extends BaseController {
 	 * @return String
 	 */
 	@GetMapping("/password-change")
-	public String init(Model model, Locale locale) {
+	public String init(Model model) {
 		model.addAttribute(ControllerConstant.M02_MODEL, M02_PwdChangeModel.builder().build());
 		return ControllerConstant.M02_PASSWORD_CHANGE;
 	}
@@ -57,8 +55,7 @@ public class M02_PwdChangeController extends BaseController {
 	 * @return String
 	 */
 	@PostMapping("/password-change")
-	public String change(@ModelAttribute M02_PwdChangeModel m02Model, Model model, BindingResult bindingResult,
-			Locale locale) {
+	public String change(@ModelAttribute M02_PwdChangeModel m02Model, Model model, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("erros", "Error Messages");

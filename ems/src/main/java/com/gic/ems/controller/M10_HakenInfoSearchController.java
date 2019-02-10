@@ -1,7 +1,5 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +42,7 @@ public class M10_HakenInfoSearchController {
 	 * @return String
 	 */
 	@GetMapping("/hanken-info-search")
-	public String init(@ModelAttribute M10_HakenInfoSearchModel m10Model, Model model, Locale local) {
+	public String init(@ModelAttribute M10_HakenInfoSearchModel m10Model, Model model) {
 		if (null == m10Model) {
 			model.addAttribute(ControllerConstant.M10_MODEL, M10_HakenInfoSearchModel.builder().build());
 			model.addAttribute(ControllerConstant.M10_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);

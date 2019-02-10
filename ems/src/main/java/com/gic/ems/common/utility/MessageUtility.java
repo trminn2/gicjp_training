@@ -58,7 +58,7 @@ public class MessageUtility {
 	 *
 	 * @return the locale
 	 */
-	private Locale getLocale() {
+	private final Locale getLocale() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		if (null != requestAttributes) {
 			HttpServletRequest httpServletRequest = ((ServletRequestAttributes) requestAttributes).getRequest();
@@ -73,7 +73,7 @@ public class MessageUtility {
 	 * @param messageCode the message code
 	 * @return the message
 	 */
-	public String getMessage(@NonNull String messageCode) {
+	public final String getMessage(@NonNull final String messageCode) {
 		return this.messageSource.getMessage(messageCode, null, this.getLocale());
 	}
 
@@ -84,7 +84,7 @@ public class MessageUtility {
 	 * @param messageParameter the message parameter
 	 * @return the message
 	 */
-	public String getMessage(@NonNull String messageCode, String messageParameter) {
+	public final String getMessage(@NonNull final String messageCode, @NonNull final String messageParameter) {
 		return this.messageSource.getMessage(messageCode, new String[] { this.getMessage(messageParameter) },
 				this.getLocale());
 	}
