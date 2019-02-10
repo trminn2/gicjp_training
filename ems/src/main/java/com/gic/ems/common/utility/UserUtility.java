@@ -26,13 +26,13 @@ public final class UserUtility {
 	 *
 	 * @return single instance of UserUtility
 	 */
-	public static final UserUtility getInstance() {
-		if (null == userUtility) {
+	public static UserUtility getInstance() {
+		if (null == UserUtility.userUtility) {
 			synchronized (UserUtility.class) {
-				userUtility = new UserUtility();
+				UserUtility.userUtility = new UserUtility();
 			}
 		}
-		return userUtility;
+		return UserUtility.userUtility;
 	}
 
 	/**
@@ -47,7 +47,7 @@ public final class UserUtility {
 	 *
 	 * @return the login user
 	 */
-	public final User getLoginUser() {
+	public User getLoginUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User userDetail = null;
 		if (null != auth) {
@@ -64,7 +64,7 @@ public final class UserUtility {
 	 *
 	 * @return the login user name
 	 */
-	public final String getLoginUserName() {
+	public String getLoginUserName() {
 		return (null != this.getLoginUser()) ? this.getLoginUser().getUsername() : Constant.SYSTEM;
 	}
 
@@ -73,7 +73,7 @@ public final class UserUtility {
 	 *
 	 * @return the login use role
 	 */
-	public final String getLoginUseRole() {
+	public String getLoginUseRole() {
 		return null;
 	}
 }

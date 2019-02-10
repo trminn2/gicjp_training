@@ -1,10 +1,14 @@
 package com.gic.ems.common.constant;
 
 /**
- * The Interface ControllerConstant.
+ * The Interface ControllerConstant.</BR>
  *
- * @author GIC-JP Jan 26, 2019 <BR>
- *         The Interface ControllerConstant.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Jan 26, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.common.constant </BR>
+ *        ControllerConstant.java </BR>
  */
 public interface ControllerConstant {
 

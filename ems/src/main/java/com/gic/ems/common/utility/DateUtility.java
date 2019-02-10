@@ -28,13 +28,13 @@ public final class DateUtility {
 	 *
 	 * @return single instance of DateUtility
 	 */
-	public static final DateUtility getInstance() {
-		if (null == dateUtils) {
+	public static DateUtility getInstance() {
+		if (null == DateUtility.dateUtils) {
 			synchronized (DateUtility.class) {
-				dateUtils = new DateUtility();
+				DateUtility.dateUtils = new DateUtility();
 			}
 		}
-		return dateUtils;
+		return DateUtility.dateUtils;
 	}
 
 	/**
@@ -51,7 +51,7 @@ public final class DateUtility {
 	 * @param dateFormat    the date format
 	 * @return String
 	 */
-	public final String convertLocaleDateTimeToString(@NonNull final LocalDateTime localDateTime,
+	public String convertLocaleDateTimeToString(@NonNull final LocalDateTime localDateTime,
 			@NonNull final DateFormat dateFormat) {
 		return localDateTime.format(DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
@@ -63,8 +63,7 @@ public final class DateUtility {
 	 * @param dateFormat the date format
 	 * @return String
 	 */
-	public final String convertLocaleDateToString(@NonNull final LocalDate localDate,
-			@NonNull final DateFormat dateFormat) {
+	public String convertLocaleDateToString(@NonNull final LocalDate localDate, @NonNull final DateFormat dateFormat) {
 		return localDate.format(DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
 
@@ -75,8 +74,7 @@ public final class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public final LocalDate convertStringToLocaleDate(@NonNull final String stringDate,
-			@NonNull final DateFormat dateFormat) {
+	public LocalDate convertStringToLocaleDate(@NonNull final String stringDate, @NonNull final DateFormat dateFormat) {
 		return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}
 
@@ -87,7 +85,7 @@ public final class DateUtility {
 	 * @param dateFormat the date format
 	 * @return LocalDate
 	 */
-	public final LocalDateTime convertStringToLocaleDateTime(@NonNull final String stringDate,
+	public LocalDateTime convertStringToLocaleDateTime(@NonNull final String stringDate,
 			@NonNull final DateFormat dateFormat) {
 		return LocalDateTime.parse(stringDate, DateTimeFormatter.ofPattern(dateFormat.getFormat()));
 	}

@@ -1,5 +1,7 @@
 package com.gic.ems.common.utility;
 
+import com.gic.ems.common.constant.Constant;
+
 import lombok.NonNull;
 
 /**
@@ -13,24 +15,6 @@ import lombok.NonNull;
  *        CodeUtility.java </BR>
  */
 public class CodeUtility {
-
-	/** The Constant COMPANY_CODE. */
-	private static final String COMPANY_CODE = "COM";
-
-	/** The Constant EMPLOYEE_CODE. */
-	private static final String EMPLOYEE_CODE = "EMP";
-
-	/** The Constant CODE_0. */
-	private static final String CODE_0 = "0";
-
-	/** The Constant CODE_00. */
-	private static final String CODE_00 = "00";
-
-	/** The Constant CODE_000. */
-	private static final String CODE_000 = "000";
-
-	/** The Constant CODE_0000. */
-	private static final String CODE_0000 = "0000";
 
 	/** The code utility. */
 	private volatile static CodeUtility codeUtility;
@@ -56,7 +40,7 @@ public class CodeUtility {
 	 * @return String
 	 */
 	public String generateCompanyCode(@NonNull final Long companyId) {
-		return new StringBuilder(CodeUtility.COMPANY_CODE).append(this.getCode(companyId)).toString();
+		return new StringBuilder(Constant.COMPANY_CODE).append(this.getCode(companyId)).toString();
 	}
 
 	/**
@@ -66,7 +50,7 @@ public class CodeUtility {
 	 * @return String
 	 */
 	public String generateEmployeeCode(@NonNull final Long employeeId) {
-		return new StringBuilder(CodeUtility.EMPLOYEE_CODE).append(this.getCode(employeeId)).toString();
+		return new StringBuilder(Constant.EMPLOYEE_CODE).append(this.getCode(employeeId)).toString();
 	}
 
 	/**
@@ -77,9 +61,9 @@ public class CodeUtility {
 	 */
 	private String getCode(@NonNull final Long companyId) {
 		int id = companyId.intValue() + 1;
-		return new StringBuilder((id < 10) ? CodeUtility.CODE_0000
-				: (id < 100) ? CodeUtility.CODE_000
-						: (id < 1000) ? CodeUtility.CODE_00 : (id < 10000) ? CodeUtility.CODE_0 : companyId.toString())
+		return new StringBuilder((id < 10) ? Constant.CODE_0000
+				: (id < 100) ? Constant.CODE_000
+						: (id < 1000) ? Constant.CODE_00 : (id < 10000) ? Constant.CODE_0 : companyId.toString())
 								.append(String.valueOf(id)).toString();
 	}
 }
