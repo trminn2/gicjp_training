@@ -73,13 +73,13 @@ public class M09_ServiceImpl implements M09_Service {
 	public M09_HakenCreateModel findDispatchDepartment(@NonNull Long id) {
 		DispatchDepartment department = this.dispatchDepartmentDao.findByIdAndDeleteFlag(id, DeleteFlag.ACTIVE);
 		M09_HakenCreateModel.builder().id(department.getId()).dispatchDeptName(department.getDispatchDepartmentName())
-				.companyId(department.getCompany().getId()).contractEmail(department.getContractEmail())
-				.contractPersonFirstName(department.getContractPersonFirstName())
-				.contractPersonFirstNameKana(department.getContractPersonFirstNameKana())
-				.contractPersonLastName(department.getContractPersonLastName())
-				.contractPersonLastName(department.getContractPersonLastName())
-				.contractPersonLastNameKana(department.getContractPersonLastNameKana())
-				.contractPhone(department.getContractPhone()).address(department.getAddress())
+				.companyId(department.getCompany().getId()).contractEmail(department.getContactEmail())
+				.contractPersonFirstName(department.getContactPersonFirstName())
+				.contractPersonFirstNameKana(department.getContactPersonFirstNameKana())
+				.contractPersonLastName(department.getContactPersonLastName())
+				.contractPersonLastName(department.getContactPersonLastName())
+				.contractPersonLastNameKana(department.getContactPersonLastNameKana())
+				.contractPhone(department.getContactPhone()).address(department.getAddress())
 				.postalCode(department.getPostalCode()).dispatchStartDate(department.getDispatchStartDate()).build();
 
 		return null;
@@ -103,11 +103,11 @@ public class M09_ServiceImpl implements M09_Service {
 		// this.companyDao.findByCompanyNameAndDeleteFlag(m09Model.getCompanyName(),DeleteFlag.ACTIVE);
 		this.dispatchDepartmentDao.save(DispatchDepartment.builder()
 				.dispatchDepartmentName(m09Model.getDispatchDeptName()).postalCode(m09Model.getPostalCode())
-				.address(m09Model.getAddress()).contractPersonFirstName(m09Model.getContractPersonFirstName())
-				.contractPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
-				.contractPersonLastName(m09Model.getContractPersonLastName())
-				.contractPersonLastNameKana(m09Model.getContractPersonLastNameKana())
-				.contractPhone(m09Model.getContractPhone()).contractEmail(m09Model.getContractEmail())
+				.address(m09Model.getAddress()).contactPersonFirstName(m09Model.getContractPersonFirstName())
+				.contactPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
+				.contactPersonLastName(m09Model.getContractPersonLastName())
+				.contactPersonLastNameKana(m09Model.getContractPersonLastNameKana())
+				.contactPhone(m09Model.getContractPhone()).contactEmail(m09Model.getContractEmail())
 				.dispatchStartDate(m09Model.getDispatchStartDate())
 				.dispatchDepartmentName(m09Model.getDispatchDeptName()).company(company).build());
 	}

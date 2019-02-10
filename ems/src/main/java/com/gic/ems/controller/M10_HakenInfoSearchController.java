@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M10_Service;
@@ -52,4 +53,22 @@ public class M10_HakenInfoSearchController {
 		}
 		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
 	}
+
+	@GetMapping("/hanken-info-search-create")
+	public String create(@ModelAttribute M10_HakenInfoSearchModel m10Model, Model model) {
+		if (null == m10Model) {
+			model.addAttribute(ControllerConstant.M10_MODEL, M10_HakenInfoSearchModel.builder().build());
+			model.addAttribute(ControllerConstant.M10_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);
+		} else {
+			model.addAttribute(ControllerConstant.M10_MODEL, m10Model);
+			model.addAttribute(ControllerConstant.M10_MODEL_LIST, this.service.findAll(m10Model));
+		}
+		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
+	}
+
+	@GetMapping("/{id}/hanken-info-search-eidt")
+	public String eidt(@PathVariable("id") String id, Model model) {
+		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
+	}
+
 }

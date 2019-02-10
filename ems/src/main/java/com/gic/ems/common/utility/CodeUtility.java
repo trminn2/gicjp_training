@@ -41,12 +41,12 @@ public class CodeUtility {
 	 * @return CodeUtility
 	 */
 	public static final CodeUtility getInstance() {
-		if (null == codeUtility) {
-			synchronized (DateUtility.class) {
-				codeUtility = new CodeUtility();
+		if (null == CodeUtility.codeUtility) {
+			synchronized (CodeUtility.class) {
+				CodeUtility.codeUtility = new CodeUtility();
 			}
 		}
-		return codeUtility;
+		return CodeUtility.codeUtility;
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class CodeUtility {
 	 * @return String
 	 */
 	public String generateCompanyCode(@NonNull final Long companyId) {
-		return new StringBuilder(COMPANY_CODE).append(this.getCode(companyId)).toString();
+		return new StringBuilder(CodeUtility.COMPANY_CODE).append(this.getCode(companyId)).toString();
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class CodeUtility {
 	 * @return String
 	 */
 	public String generateEmployeeCode(@NonNull final Long employeeId) {
-		return new StringBuilder(EMPLOYEE_CODE).append(this.getCode(employeeId)).toString();
+		return new StringBuilder(CodeUtility.EMPLOYEE_CODE).append(this.getCode(employeeId)).toString();
 	}
 
 	/**
@@ -77,8 +77,9 @@ public class CodeUtility {
 	 */
 	private String getCode(@NonNull final Long companyId) {
 		int id = companyId.intValue() + 1;
-		return new StringBuilder((id < 10) ? CODE_0000
-				: (id < 100) ? CODE_000 : (id < 1000) ? CODE_00 : (id < 10000) ? CODE_0 : companyId.toString())
-						.append(String.valueOf(id)).toString();
+		return new StringBuilder((id < 10) ? CodeUtility.CODE_0000
+				: (id < 100) ? CodeUtility.CODE_000
+						: (id < 1000) ? CodeUtility.CODE_00 : (id < 10000) ? CodeUtility.CODE_0 : companyId.toString())
+								.append(String.valueOf(id)).toString();
 	}
 }

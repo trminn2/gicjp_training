@@ -115,8 +115,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			 */
 			@Override
 			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-				String userName = authentication.getName();
-				if (StringUtils.isBlank(userName)) {
+				if (StringUtils.isBlank(authentication.getName())) {
 					String requiredMessage = SecurityConfig.this.messageUtility.getMessage(MessageConstant.REQUIRED,
 							MessageConstant.EMAIL);
 					throw new UsernameNotFoundException(requiredMessage);
@@ -150,7 +149,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		};
 		provider.setUserDetailsService((@NonNull String email) -> {
 			User user = SecurityConfig.this.service.findByEmail(email);
-			if (null == user) {
+			if (!ObjectUtils.anyNotNull(user)) {
 				throw new UsernameNotFoundException(MessageConstant.USER_NOT_FOUND);
 			}
 			return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), true,

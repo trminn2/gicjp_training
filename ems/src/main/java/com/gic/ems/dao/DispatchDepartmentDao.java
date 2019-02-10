@@ -2,7 +2,9 @@ package com.gic.ems.dao;
 
 import java.util.Collection;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.gic.ems.common.type.DeleteFlag;
@@ -21,7 +23,8 @@ import lombok.NonNull;
  *        DispatchDepartmentDao.java </BR>
  */
 @Repository
-public interface DispatchDepartmentDao extends JpaRepository<DispatchDepartment, Long> {
+public interface DispatchDepartmentDao
+		extends JpaRepository<DispatchDepartment, Long>, JpaSpecificationExecutor<DispatchDepartment> {
 
 	/**
 	 * Find by delete flag.
@@ -39,4 +42,21 @@ public interface DispatchDepartmentDao extends JpaRepository<DispatchDepartment,
 	 * @return DispatchDepartment
 	 */
 	DispatchDepartment findByIdAndDeleteFlag(@NonNull Long id, @NonNull DeleteFlag active);
+
+	/**
+	 * Find all by delete flag.
+	 *
+	 * @param active the active
+	 * @return Collection
+	 */
+	Collection<DispatchDepartment> findAllByDeleteFlag(@NonNull DeleteFlag active);
+
+	/**
+	 * Find all custom search.
+	 *
+	 * @param specification the specification
+	 * @return Collection
+	 */
+	Collection<DispatchDepartment> findAllCustomSearch(Specification<DispatchDepartment> specification);
+
 }

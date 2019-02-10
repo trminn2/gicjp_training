@@ -1,7 +1,5 @@
 package com.gic.ems.web.model;
 
-import java.time.LocalDate;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,10 +37,10 @@ public class M10_HakenInfoSearchModel extends BaseModel {
 	private String name;
 
 	/** The start date. */
-	private LocalDate startDate;
+	private String startDate;
 
 	/** The end date. */
-	private LocalDate endDate;
+	private String endDate;
 
 	/**
 	 * Instantiates a new m 10 haken info search model.
@@ -55,15 +53,9 @@ public class M10_HakenInfoSearchModel extends BaseModel {
 	 * @param startDate       the start date
 	 * @param endDate         the end date
 	 */
-
-	/**
-	 * Builds the.
-	 *
-	 * @return M10_HakenInfoSearchModel
-	 */
 	@Builder
 	public M10_HakenInfoSearchModel(Long id, String uuid, String companyName, String destinationName, String name,
-			LocalDate startDate, LocalDate endDate) {
+			String startDate, String endDate) {
 		super(id, uuid);
 		this.companyName = companyName;
 		this.destinationName = destinationName;

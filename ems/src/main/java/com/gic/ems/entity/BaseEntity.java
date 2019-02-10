@@ -1,8 +1,3 @@
-/**
- * Self.
- *
- * @return B
- */
 package com.gic.ems.entity;
 
 import java.io.Serializable;

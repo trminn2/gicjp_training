@@ -39,7 +39,7 @@ public class DispatchDepartment extends BaseEntity {
 
 	/** The Dispatch department name. */
 	@Column
-	private String DispatchDepartmentName;
+	private String dispatchDepartmentName;
 
 	/** The postal code. */
 	@Column
@@ -54,29 +54,29 @@ public class DispatchDepartment extends BaseEntity {
 	@JoinColumn
 	private Company company;
 
-	/** The contract email. */
+	/** The contact email. */
 	@Column
-	private String contractEmail;
+	private String contactEmail;
 
-	/** The contract person first name. */
+	/** The contact person first name. */
 	@Column
-	private String contractPersonFirstName;
+	private String contactPersonFirstName;
 
-	/** The contract person first name kana. */
+	/** The contact person first name kana. */
 	@Column
-	private String contractPersonFirstNameKana;
+	private String contactPersonFirstNameKana;
 
-	/** The contract person last name. */
+	/** The contact person last name. */
 	@Column
-	private String contractPersonLastName;
+	private String contactPersonLastName;
 
-	/** The contract person last name kana. */
+	/** The contact person last name kana. */
 	@Column
-	private String contractPersonLastNameKana;
+	private String contactPersonLastNameKana;
 
-	/** The contract phone. */
+	/** The contact phone. */
 	@Column
-	private String contractPhone;
+	private String contactPhone;
 
 	/** The dispatch department id. */
 	@Column
@@ -93,37 +93,37 @@ public class DispatchDepartment extends BaseEntity {
 	/**
 	 * Instantiates a new dispatch department.
 	 *
-	 * @param id                          the id
-	 * @param dispatchDepartmentName      the dispatch department name
-	 * @param postalCode                  the postal code
-	 * @param address                     the address
-	 * @param company                     the company
-	 * @param contractEmail               the contract email
-	 * @param contractPersonFirstName     the contract person first name
-	 * @param contractPersonFirstNameKana the contract person first name kana
-	 * @param contractPersonLastName      the contract person last name
-	 * @param contractPersonLastNameKana  the contract person last name kana
-	 * @param contractPhone               the contract phone
-	 * @param dispatchDepartmentId        the dispatch department id
-	 * @param dispatchStartDate           the dispatch start date
-	 * @param dispatches                  the dispatches
+	 * @param id                         the id
+	 * @param dispatchDepartmentName     the dispatch department name
+	 * @param postalCode                 the postal code
+	 * @param address                    the address
+	 * @param company                    the company
+	 * @param contactEmail               the contact email
+	 * @param contactPersonFirstName     the contact person first name
+	 * @param contactPersonFirstNameKana the contact person first name kana
+	 * @param contactPersonLastName      the contact person last name
+	 * @param contactPersonLastNameKana  the contact person last name kana
+	 * @param contactPhone               the contact phone
+	 * @param dispatchDepartmentId       the dispatch department id
+	 * @param dispatchStartDate          the dispatch start date
+	 * @param dispatches                 the dispatches
 	 */
 	@Builder
 	public DispatchDepartment(Long id, String dispatchDepartmentName, String postalCode, String address,
-			Company company, String contractEmail, String contractPersonFirstName, String contractPersonFirstNameKana,
-			String contractPersonLastName, String contractPersonLastNameKana, String contractPhone,
+			Company company, String contactEmail, String contactPersonFirstName, String contactPersonFirstNameKana,
+			String contactPersonLastName, String contactPersonLastNameKana, String contactPhone,
 			String dispatchDepartmentId, LocalDate dispatchStartDate, Collection<Dispatch> dispatches) {
 		super(id);
-		this.DispatchDepartmentName = dispatchDepartmentName;
+		this.dispatchDepartmentName = dispatchDepartmentName;
 		this.postalCode = postalCode;
 		this.address = address;
 		this.company = company;
-		this.contractEmail = contractEmail;
-		this.contractPersonFirstName = contractPersonFirstName;
-		this.contractPersonFirstNameKana = contractPersonFirstNameKana;
-		this.contractPersonLastName = contractPersonLastName;
-		this.contractPersonLastNameKana = contractPersonLastNameKana;
-		this.contractPhone = contractPhone;
+		this.contactEmail = contactEmail;
+		this.contactPersonFirstName = contactPersonFirstName;
+		this.contactPersonFirstNameKana = contactPersonFirstNameKana;
+		this.contactPersonLastName = contactPersonLastName;
+		this.contactPersonLastNameKana = contactPersonLastNameKana;
+		this.contactPhone = contactPhone;
 		this.dispatchDepartmentId = dispatchDepartmentId;
 		this.dispatchStartDate = dispatchStartDate;
 		this.dispatches = dispatches;
