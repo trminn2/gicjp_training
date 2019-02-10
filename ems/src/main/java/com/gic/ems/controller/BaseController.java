@@ -41,7 +41,7 @@ public abstract class BaseController {
 	 * @param messageCode the message code
 	 * @return the message
 	 */
-	protected String getMessage(String messageCode) {
+	protected String getMessage(@NonNull String messageCode) {
 		return this.messageUtility.getMessage(messageCode);
 	}
 
@@ -51,7 +51,7 @@ public abstract class BaseController {
 	 * @param url the url
 	 * @return String
 	 */
-	protected String redirectURL(String url) {
+	protected String redirectURL(@NonNull String url) {
 		return new StringBuilder(ControllerConstant.REDIRECT).append(url).toString();
 	}
 
@@ -62,7 +62,7 @@ public abstract class BaseController {
 	 * @param url   the url
 	 * @return String
 	 */
-	protected String redirectURL(@NonNull String param, String url) {
+	protected String redirectURL(@NonNull String param, @NonNull String url) {
 		return new StringBuilder(ControllerConstant.REDIRECT).append(param).append(Constant.SLASH).append(url)
 				.toString();
 	}

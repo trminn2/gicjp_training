@@ -23,4 +23,18 @@ public interface MessageConstant {
 
 	/** The Constant SUCCESSFULLY_EDIT. */
 	static final String SUCCESSFULLY_EDIT = "successfully.edit";
+
+	static final String REQUIRED = "required";
+
+	/** The Constant EMAIL. */
+	static final String EMAIL = "email";
+
+	/** The Constant PASSWORD. */
+	static final String PASSWORD = "password";
+
+	/** The Constant APP_BADCREDENTIAL. */
+	static final String APP_BADCREDENTIAL = "badCredentials";
+
+	/** The Constant USER_NOT_FOUND. */
+	static final String USER_NOT_FOUND = "User not found";
 }
