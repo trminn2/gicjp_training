@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.common.constant.MessageConstant;
 import com.gic.ems.common.utility.MessageUtility;
 import com.gic.ems.entity.User;
@@ -80,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	/** The Constant PERMIT_ALL. */
-	private static final String[] PERMIT_ALL = { "/static/**", "/login" };
+	private static final String[] PERMIT_ALL = { ControllerConstant.STATIC_PATHS, ControllerConstant.LOGIN_URL };
 
 	/*
 	 * (non-Javadoc)
@@ -92,8 +93,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(SecurityConfig.PERMIT_ALL).permitAll().anyRequest().authenticated();
-		http.formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/home")
-				.usernameParameter("email").passwordParameter("password").permitAll();
+		http.formLogin().loginPage(ControllerConstant.LOGIN_URL).loginProcessingUrl(ControllerConstant.LOGIN_URL)
+				.defaultSuccessUrl(ControllerConstant.M00_HOME_URL).usernameParameter(MessageConstant.EMAIL)
+				.passwordParameter(MessageConstant.PASSWORD).permitAll();
 	}
 
 	/*

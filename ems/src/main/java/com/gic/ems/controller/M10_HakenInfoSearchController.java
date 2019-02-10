@@ -12,6 +12,8 @@ import com.gic.ems.common.constant.ControllerConstant;
 import com.gic.ems.service.M10_Service;
 import com.gic.ems.web.model.M10_HakenInfoSearchModel;
 
+import lombok.NonNull;
+
 /**
  * The Class M10_HakenInfoSearchController.
  *
@@ -19,7 +21,7 @@ import com.gic.ems.web.model.M10_HakenInfoSearchModel;
  *         The Class M10_HakenInfoSearchController.
  */
 @Controller
-public class M10_HakenInfoSearchController {
+public class M10_HakenInfoSearchController extends BaseController {
 
 	/** The service. */
 	private M10_Service service;
@@ -56,19 +58,12 @@ public class M10_HakenInfoSearchController {
 
 	@GetMapping("/hanken-info-search-create")
 	public String create(@ModelAttribute M10_HakenInfoSearchModel m10Model, Model model) {
-		if (null == m10Model) {
-			model.addAttribute(ControllerConstant.M10_MODEL, M10_HakenInfoSearchModel.builder().build());
-			model.addAttribute(ControllerConstant.M10_MODEL_LIST, CollectionUtils.EMPTY_COLLECTION);
-		} else {
-			model.addAttribute(ControllerConstant.M10_MODEL, m10Model);
-			model.addAttribute(ControllerConstant.M10_MODEL_LIST, this.service.findAll(m10Model));
-		}
-		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
+		return null;
 	}
 
 	@GetMapping("/{id}/hanken-info-search-eidt")
-	public String eidt(@PathVariable("id") String id, Model model) {
-		return ControllerConstant.M10_HAKEN_INFO_SEARCH;
+	public String eidt(@PathVariable("id") @NonNull String id, Model model) {
+		return null;
 	}
 
 }

@@ -2,7 +2,6 @@ package com.gic.ems.dao;
 
 import java.util.Collection;
 
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
@@ -50,13 +49,4 @@ public interface DispatchDepartmentDao
 	 * @return Collection
 	 */
 	Collection<DispatchDepartment> findAllByDeleteFlag(@NonNull DeleteFlag active);
-
-	/**
-	 * Find all custom search.
-	 *
-	 * @param specification the specification
-	 * @return Collection
-	 */
-	Collection<DispatchDepartment> findAllCustomSearch(Specification<DispatchDepartment> specification);
-
 }

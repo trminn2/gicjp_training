@@ -2,21 +2,17 @@ package com.gic.ems.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.gic.ems.common.type.DateFormat;
 import com.gic.ems.common.utility.CommonUtility;
-import com.gic.ems.common.utility.DateUtility;
 import com.gic.ems.dao.DispatchDepartmentDao;
 import com.gic.ems.entity.DispatchDepartment;
 import com.gic.ems.service.M10_Service;
@@ -58,7 +54,7 @@ public class M10_ServiceImpl implements M10_Service {
 	@Override
 	public Collection<M10_HakenInfoSearchResultModel> findAll(M10_HakenInfoSearchModel model) {
 		Collection<DispatchDepartment> dispatchDepartments = this.dispatchDepartmentDao
-				.findAllCustomSearch(new Specification<DispatchDepartment>() {
+				.findAll(new Specification<DispatchDepartment>() {
 					/** The Constant serialVersionUID. */
 					private static final long serialVersionUID = 1L;
 
@@ -72,44 +68,7 @@ public class M10_ServiceImpl implements M10_Service {
 					@Override
 					public Predicate toPredicate(Root<DispatchDepartment> root, CriteriaQuery<?> query,
 							CriteriaBuilder cb) {
-						List<Predicate> predicates = new ArrayList<>();
-						if (StringUtils.isNotBlank(model.getCompanyName())) {
-							predicates.add(cb.like(root.get("company.companyName"), model.getCompanyName()));
-						}
-						if (StringUtils.isNotBlank(model.getDestinationName())) {
-							predicates.add(cb.like(root.get("dispatchDepartmentName"), model.getDestinationName()));
-						}
-						if (StringUtils.isNotBlank(model.getName())) {
-							predicates.add(cb.like(root.get("contactPersonFirstName"), model.getName()));
-							predicates.add(cb.like(root.get("contactPersonLastName"), model.getName()));
-							predicates.add(cb.like(root.get("contactPersonFirstNameKana"), model.getName()));
-							predicates.add(cb.like(root.get("contactPersonLastNameKana"), model.getName()));
-						}
-						// TODO edit date format after the UI calendar change
-						if (StringUtils.isNotBlank(model.getStartDate())
-								&& StringUtils.isNotBlank(model.getEndDate())) {
-							predicates.add(cb.between(root.get("dispatches.dispatchStartDate"),
-									DateUtility.getInstance().convertStringToLocaleDate(model.getStartDate(),
-											DateFormat.DDMMYYYY),
-									DateUtility.getInstance().convertStringToLocaleDate(model.getEndDate(),
-											DateFormat.DDMMYYYY)));
-							predicates.add(cb.between(root.get("dispatches.dispatchEndDate"),
-									DateUtility.getInstance().convertStringToLocaleDate(model.getStartDate(),
-											DateFormat.DDMMYYYY),
-									DateUtility.getInstance().convertStringToLocaleDate(model.getEndDate(),
-											DateFormat.DDMMYYYY)));
-
-							// TODO edit date format after the UI calendar change
-						} else if (StringUtils.isNotBlank(model.getStartDate())) {
-							predicates.add(
-									cb.greaterThan(root.get("dispatches.dispatchStartDate"), DateUtility.getInstance()
-											.convertStringToLocaleDate(model.getStartDate(), DateFormat.DDMMYYYY)));
-							// TODO edit date format after the UI calendar change
-						} else if (StringUtils.isNotBlank(model.getEndDate())) {
-							predicates.add(cb.lessThan(root.get("dispatches.dispatchEndDate"), DateUtility.getInstance()
-									.convertStringToLocaleDate(model.getEndDate(), DateFormat.DDMMYYYY)));
-						}
-						return cb.or(predicates.toArray(new Predicate[0]));
+						return M10_ServiceImpl.this.createCustomFilter(root, query, cb, model);
 					}
 				});
 		Collection<M10_HakenInfoSearchResultModel> m10_HakenInfoSearchResultModels = new ArrayList<>();

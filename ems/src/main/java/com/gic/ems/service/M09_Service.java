@@ -23,7 +23,7 @@ public interface M09_Service {
 	 * @param searchModel the search model
 	 * @return Collection
 	 */
-	public Collection<Company> findAllCompany(@NonNull M09_HakenCreateModel m09Model);
+	Collection<Company> findAllCompany(@NonNull M09_HakenCreateModel m09Model);
 
 	/**
 	 * Save.
@@ -32,7 +32,18 @@ public interface M09_Service {
 	 */
 	void save(@NonNull M09_HakenCreateModel m09Model) throws Exception;
 
+	/**
+	 * Find dispatch department.
+	 *
+	 * @param id the id
+	 * @return M09_HakenCreateModel
+	 */
 	M09_HakenCreateModel findDispatchDepartment(@NonNull Long id);
 
+	/**
+	 * Update.
+	 *
+	 * @param m09Model the m 09 model
+	 */
 	void update(@Valid M09_HakenCreateModel m09Model);
 }

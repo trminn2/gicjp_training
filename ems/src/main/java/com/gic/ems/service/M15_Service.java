@@ -2,7 +2,6 @@ package com.gic.ems.service;
 
 import java.util.Collection;
 
-
 import com.gic.ems.web.model.M15_CustomerListModel;
 
 /**
@@ -16,5 +15,12 @@ import com.gic.ems.web.model.M15_CustomerListModel;
  *        EmsApplication.java </BR>
  */
 public interface M15_Service {
-	public Collection<M15_CustomerListModel> findAll(M15_CustomerListModel searchModel);
+
+	/**
+	 * Find all.
+	 *
+	 * @param searchModel the search model
+	 * @return Collection
+	 */
+	Collection<M15_CustomerListModel> findAll(M15_CustomerListModel searchModel);
 }

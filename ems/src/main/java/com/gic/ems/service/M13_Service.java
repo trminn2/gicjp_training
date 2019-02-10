@@ -26,5 +26,11 @@ public interface M13_Service {
 	 */
 	void update(@NonNull M13_CustCreateModel custCreateModel);
 
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return M13_CustCreateModel
+	 */
 	M13_CustCreateModel findById(@NonNull Long id);
 }

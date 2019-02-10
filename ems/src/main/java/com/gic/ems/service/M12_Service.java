@@ -1,6 +1,7 @@
 package com.gic.ems.service;
 
 import java.util.Optional;
+
 import com.gic.ems.entity.Employee;
 
 import lombok.NonNull;
@@ -19,5 +20,5 @@ public interface M12_Service {
 	 * @param id the id
 	 * @return Optional
 	 */
-	public Optional<Employee> findById(@NonNull Long id);
+	Optional<Employee> findById(@NonNull Long id);
 }

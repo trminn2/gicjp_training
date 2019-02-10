@@ -20,5 +20,5 @@ public interface M05_Service {
 	 * @param searchModel the search model
 	 * @return Collection
 	 */
-	public Collection<M05_EmpListModel> findAll(@NonNull M05_EmpListModel searchModel);
+	Collection<M05_EmpListModel> findAll(@NonNull M05_EmpListModel searchModel);
 }

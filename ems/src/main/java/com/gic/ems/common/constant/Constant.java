@@ -9,19 +9,19 @@ package com.gic.ems.common.constant;
 public interface Constant {
 
 	/** The Constant SPACE. */
-	static final String SPACE = " ";
+	String SPACE = " ";
 
 	/** The Constant EMPTY_STRING. */
-	static final String EMPTY_STRING = "";
+	String EMPTY_STRING = "";
 
 	/** The Constant HYPHEN. */
-	static final String HYPHEN = "-";
+	String HYPHEN = "-";
 
 	/** The Constant DEFAULT_PASSWORD. */
-	static final String DEFAULT_PASSWORD = "admin";
+	String DEFAULT_PASSWORD = "admin";
 
 	/** The Constant SYSTEM. */
-	static final String SYSTEM = "SYSTEM";
+	String SYSTEM = "SYSTEM";
 
-	static final Object SLASH = "/";
+	String SLASH = "/";
 }

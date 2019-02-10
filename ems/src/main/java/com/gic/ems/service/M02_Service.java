@@ -20,7 +20,7 @@ public interface M02_Service {
 	 * Update.
 	 *
 	 * @param m02Model the m 02 model
-	 * 
+	 *
 	 */
-	public void update(@NonNull M02_PwdChangeModel m02Model);
+	void update(@NonNull M02_PwdChangeModel m02Model);
 }

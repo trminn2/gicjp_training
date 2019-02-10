@@ -11,10 +11,14 @@ import com.gic.ems.web.model.M14_EmpHakenModel;
 import lombok.NonNull;
 
 /**
- * The Interface M14Service.
+ * The Interface M14_Service.</BR>
  *
- * @author KYIMINHAN Jan 26, 2019 <BR>
- *         The Interface M14Service.
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Jan 26, 2019 </BR>
+ *        ems system </BR>
+ *        com.gic.ems.service </BR>
+ *        M14_Service.java </BR>
  */
 public interface M14_Service {
 
@@ -40,11 +44,32 @@ public interface M14_Service {
 	 */
 	M14_EmpHakenModel findById(@NonNull Long id);
 
+	/**
+	 * Find by employee id containing.
+	 *
+	 * @param employeeId the employee id
+	 * @return Collection
+	 */
 	Collection<Employee> findByEmployeeIdContaining(String employeeId);
 
+	/**
+	 * Find all emp groups.
+	 *
+	 * @return Collection
+	 */
 	Collection<EmpGroup> findAllEmpGroups();
 
+	/**
+	 * Find all companies.
+	 *
+	 * @return Collection
+	 */
 	Collection<Company> findAllCompanies();
 
+	/**
+	 * Find all dispatch departments.
+	 *
+	 * @return Collection
+	 */
 	Collection<DispatchDepartment> findAllDispatchDepartments();
 }
