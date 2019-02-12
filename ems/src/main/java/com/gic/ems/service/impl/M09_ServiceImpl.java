@@ -102,6 +102,7 @@ public class M09_ServiceImpl implements M09_Service {
 		// Company company =
 		// this.companyDao.findByCompanyNameAndDeleteFlag(m09Model.getCompanyName(),DeleteFlag.ACTIVE);
 		this.dispatchDepartmentDao.save(DispatchDepartment.builder()
+				.id(m09Model.getId())
 				.dispatchDepartmentName(m09Model.getDispatchDeptName()).postalCode(m09Model.getPostalCode())
 				.address(m09Model.getAddress()).contactPersonFirstName(m09Model.getContractPersonFirstName())
 				.contactPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
@@ -115,13 +116,24 @@ public class M09_ServiceImpl implements M09_Service {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.gic.ems.service.M09_Service#update(com.gic.ems.web.model.
-	 * M09_HakenCreateModel)
+	 * @see com.gic.ems.service.M13_Service#edit(com.gic.ems.web.model.
+	 * M13_CustCreateModel)
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void update(@Valid M09_HakenCreateModel m09Model) {
+	public void update(M09_HakenCreateModel m09Model) {
+		
+		Company company = this.companyDao.findByIdAndDeleteFlag(m09Model.getCompanyId(), DeleteFlag.ACTIVE);
 		// TODO Auto-generated method stub
-
+		this.dispatchDepartmentDao.save(DispatchDepartment.builder()
+				.id(m09Model.getId())
+				.dispatchDepartmentName(m09Model.getDispatchDeptName()).postalCode(m09Model.getPostalCode())
+				.address(m09Model.getAddress()).contactPersonFirstName(m09Model.getContractPersonFirstName())
+				.contactPersonFirstNameKana(m09Model.getContractPersonFirstNameKana())
+				.contactPersonLastName(m09Model.getContractPersonLastName())
+				.contactPersonLastNameKana(m09Model.getContractPersonLastNameKana())
+				.contactPhone(m09Model.getContractPhone()).contactEmail(m09Model.getContractEmail())
+				.dispatchStartDate(m09Model.getDispatchStartDate())
+				.dispatchDepartmentName(m09Model.getDispatchDeptName()).company(company).build());
 	}
 }

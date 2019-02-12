@@ -1,0 +1,190 @@
+<!-- 
+ 作成日：　2019年01月02日
+  作成者：　テッ　テッ　カイン
+  更新日：
+  更新者：
+  説明　：　派遣先情報登録画面
+ -->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>派遣先情報登録画面</title>
+<link rel="icon" href="https://getbootstrap.com/favicon.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+	crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js"
+	type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css"
+	rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<!-- Start Menu Bar -->
+	<!-- menu file include -->
+
+	<form class="form-horizontal" role="form" method="post"
+		th:action="@{'/'+${m09Model.id}+'/comp-haken-edit'}"
+		th:object="${m09Model}">
+		<!-- Start 派遣先情報登録画面 -->
+		<div class="container jumbotron"
+			style="padding-top: 15px; padding-bottom: 16px;">
+			<div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2"
+				th:if="${message}">
+				<div class="alert alert-success rounded-0">
+					<small th:text="${message}"></small>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+			<h4>派遣先情報登録</h4>
+			<label class="mt-2"> <strong>派遣先情報</strong></label>
+
+			<div class="border border-primary rounded">
+
+				<div class="row mx-auto mt-2">
+					<div class="col-sm">
+						<div class="form-group ">
+							<label for="exampleInputEmail1">会社名</label> <select
+								class="custom-select custom-select-sm" id="cboCompanyId"
+								name="companyId">
+								<option>選択してください...</option>
+								<option th:each="company:${companies}"
+									th:utext="${company.companyName}" th:value="${company.id}"></option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-sm">
+						<div class="form-group">
+							<label for="exampleInputEmail1">部門名</label> <input type="text"
+								id="txtdispatchDepartmentName"
+								class="form-control form-control-sm"
+								th:field="*{dispatchDepartmentName}" placeholder="部門名">
+						</div>
+					</div>
+
+					<div class="col-sm">
+						<div class="form-group">
+							<label for="exampleInputEmail1">契約開始日</label> <input type="date"
+								class="form-control form-control-sm" id="txtstartDate"
+								placeholder="契約開始日" th:field="*{dispatchStartDate}">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-4">
+				<label for="exampleInputEmail1"> <strong>責任者情報</strong></label>
+				<div class="border border-primary rounded">
+					<div class="row justify-content-center mt-2">
+						<div class="col-6 col-sm-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">性(漢字)</label> <input type="text"
+									class="form-control form-control-sm" placeholder="性(漢字)"
+									id="txtcontactPersonFirstName"
+									th:field="*{contactPersonFirstName}">
+							</div>
+						</div>
+
+						<div class="col-6 col-sm-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">名(漢字)</label> <input type="text"
+									placeholder="性(漢字)" class="form-control form-control-sm"
+									id="txtcontactPersonLastName"
+									th:field="*{contactPersonLastName}">
+							</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center">
+						<div class="col-6 col-sm-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">性(カナ)</label> <input type="text"
+									class="form-control form-control-sm" placeholder="性(漢字)"
+									id="txtcontactPersonFirstNameKana"
+									th:field="*{contactPersonFirstNameKana}">
+							</div>
+						</div>
+
+						<div class="col-6 col-sm-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">名(カナ)</label> <input type="text"
+									placeholder="名(カナ)" class="form-control form-control-sm"
+									id="txtcontactPersonLastNameKana"
+									th:field="*{contactPersonLastNameKana}">
+							</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center">
+						<div class="col-6 col-sm-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">メール<span
+									class="text-danger">*</span></label> <input type="email"
+									placeholder="メール" class="form-control form-control-sm"
+									id="txtcontactEmail" th:field="*{contactEmail}">
+							</div>
+						</div>
+
+						<div class="col-6 col-sm-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">電話番号<span
+									class="text-danger">*</span></label> <input type="text"
+									placeholder="電話番号" class="form-control form-control-sm"
+									id="txtcontactPhone" th:field="*{contactPhone}">
+							</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center ml-1 mr-1">
+						<div class="col-auto ">
+							<div class="form-group">
+								<label for="exampleInputEmail1">郵便番号</label> <input type="text"
+									class="form-control form-control-sm" placeholder="郵便番号"
+									id="txtpostalCode" th:field="*{postalCode}">
+							</div>
+						</div>
+
+						<div class="col-6">
+							<div class="form-group">
+								<label for="exampleInputEmail1">住所</label> <input type="text"
+									class="form-control form-control-sm" placeholder="住所"
+									id="txtaddress" th:field="*{address}">
+							</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-center mb-2">
+						<button type="submit" class="btn btn-primary">登録</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>

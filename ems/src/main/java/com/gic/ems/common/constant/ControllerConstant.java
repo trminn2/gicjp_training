@@ -26,6 +26,9 @@ public interface ControllerConstant {
 
 	/** The Constant CUST_EDIT. */
 	String CUST_EDIT = "cust-edit";
+	
+	/** The Constant HAKEN_EDIT. */
+	String HAKEN_EDIT = "comp-haken-edit";
 
 	/** The Constant EMP_INFO_CREATE. */
 	String EMP_INFO_CREATE = "emp-info-create";
