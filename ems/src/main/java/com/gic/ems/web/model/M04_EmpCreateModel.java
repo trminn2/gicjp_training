@@ -24,8 +24,8 @@ public class M04_EmpCreateModel extends BaseModel {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The employee id. */
-	private String employeeId;
+	/** The employee code. */
+	private String employeeCode;
 
 	/** The first name. */
 	private String firstName;
@@ -50,7 +50,7 @@ public class M04_EmpCreateModel extends BaseModel {
 	 *
 	 * @param id            the id
 	 * @param uuid          the uuid
-	 * @param employeeId    the employee id
+	 * @param employeeId    the employee code
 	 * @param firstName     the first name
 	 * @param firstNameKana the first name kana
 	 * @param lastName      the last name
@@ -59,10 +59,10 @@ public class M04_EmpCreateModel extends BaseModel {
 	 * @param email         the email
 	 */
 	@Builder
-	public M04_EmpCreateModel(Long id, String uuid, String employeeId, String firstName, String firstNameKana,
+	public M04_EmpCreateModel(Long id, String uuid, String employeeCode, String firstName, String firstNameKana,
 			String lastName, String lastNameKana, Gender gender, String email) {
 		super(id, uuid);
-		this.employeeId = employeeId;
+		this.employeeCode = employeeCode;
 		this.firstName = firstName;
 		this.firstNameKana = firstNameKana;
 		this.lastName = lastName;

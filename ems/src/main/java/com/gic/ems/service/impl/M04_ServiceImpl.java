@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.gic.ems.common.constant.Constant;
 import com.gic.ems.common.type.DeleteFlag;
 import com.gic.ems.common.type.Role;
@@ -81,7 +80,7 @@ public class M04_ServiceImpl implements M04_Service {
 	 * M04_EmpCreateModel)
 	 */
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional
 	public void save(M04_EmpCreateModel model) {
 		Employee emp = Employee.builder()
 				.employeeCode(CodeUtility.getInstance().generateEmployeeCode(this.employeeDao.count()))
@@ -91,5 +90,17 @@ public class M04_ServiceImpl implements M04_Service {
 				.password(this.passwordEncoder.encode(Constant.DEFAULT_PASSWORD)).role(Role.USER).build();
 		emp.setUser(user);
 		this.employeeDao.save(emp);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.gic.ems.service.M04Service#eidt(com.gic.ems.web.model.
+	 * M04_EmpCreateModel)
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void update(M04_EmpCreateModel model) {
+		// TODO Auto-generated method stub
 	}
 }

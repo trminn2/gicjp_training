@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- Required meta tags -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>社員初期情報登録</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="icon" href="https://getbootstrap.com/favicon.ico">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-	crossorigin="anonymous"></script>
+<head th:include="/common/cdn/header.html::header(title=#{m04Title})">
 </head>
 <body>
 	<!-- menu file include -->
-	<div th:insert="/common/navbar-home.html::navbar-home"> </div>
+	<div th:include="/common/navbar-home.html::navbar-home"></div>
 	<!-- menu file include -->
 	<div class="container jumbotron">
+		<div class="col-lg-8 col-md-12 col-xs-10" th:if="${message}">
+			<div class="alert alert-success rounded-0">
+				<small th:text="${message}"></small>
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg-8 col-md-12 col-xs-10">
-				<form class="form-horizontal" role="form" method="post" th:action="@{/createEmployee}" th:object="${m04Model}">
-					<div class="form-group">
-						<h5 th:text="${message}"></h5>
-					</div>
+				<form class="form-horizontal" role="form" method="post"
+					th:action="@{/emp-create}" th:object="${m04Model}">
 					<div class="form-group">
 						<label for="employeeId">社員ID:</label> <span class="text-danger">*</span>
 						<input type="text" class="form-control form-control-sm"
@@ -47,8 +30,8 @@
 							<div class="form-group">
 								<label for="firstName">姓:</label> <span class="text-danger">*</span>
 								<input type="text" class="form-control form-control-sm"
-									name="firstName" placeholder="姓"> <small
-									id="firstName" class="form-text text-muted"></small>
+									name="firstName" placeholder="姓"> <small id="firstName"
+									class="form-text text-muted"></small>
 							</div>
 						</div>
 						<div class="col-sm">
@@ -91,7 +74,9 @@
 							name="email" placeholder="メールアドレス"> <small id="email"
 							class="form-text text-muted"></small>
 					</div>
-					<button type="submit" class="btn btn-primary btn-sm">登録</button>
+					<div class="row justify-content-center sb-2">
+						<button type="submit" class="btn btn-primary">登録</button>
+					</div>
 				</form>
 			</div>
 		</div>

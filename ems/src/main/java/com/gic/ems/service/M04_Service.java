@@ -1,7 +1,7 @@
 package com.gic.ems.service;
 
+import javax.validation.Valid;
 import com.gic.ems.web.model.M04_EmpCreateModel;
-
 import lombok.NonNull;
 
 /**
@@ -25,4 +25,6 @@ public interface M04_Service {
 	 * @return true, if successful
 	 */
 	boolean hasAccount(@NonNull String email);
+	
+	void update(@Valid M04_EmpCreateModel m04Model);
 }

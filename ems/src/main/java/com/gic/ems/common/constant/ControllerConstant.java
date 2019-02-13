@@ -20,6 +20,9 @@ public interface ControllerConstant {
 
 	/** The Constant M00_HOME_URL. */
 	String M00_HOME_URL = "/home";
+	
+	/** The Constant EMP_CREATE. */
+	String EMP_CREATE = "emp-create";
 
 	/** The Constant CUST_CREATE. */
 	String CUST_CREATE = "cust-create";

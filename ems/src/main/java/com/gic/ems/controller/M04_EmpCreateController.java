@@ -1,16 +1,16 @@
 package com.gic.ems.controller;
 
-import java.util.Locale;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.gic.ems.common.constant.ControllerConstant;
+import com.gic.ems.common.constant.MessageConstant;
 import com.gic.ems.service.M04_Service;
 import com.gic.ems.web.model.M04_EmpCreateModel;
 
@@ -21,13 +21,10 @@ import com.gic.ems.web.model.M04_EmpCreateModel;
  *         The Class M04_EmpCreateController.
  */
 @Controller
-public class M04_EmpCreateController {
+public class M04_EmpCreateController extends BaseController {
 
 	/** The service. */
 	private M04_Service service;
-
-	/** The message source. */
-	private MessageSource messageSource;
 
 	/**
 	 * Sets the service.
@@ -40,24 +37,12 @@ public class M04_EmpCreateController {
 	}
 
 	/**
-	 * Gets the message source.
-	 *
-	 * @return the message source
-	 */
-	@Autowired
-	public void setMessageSource(MessageSource messageSource) {
-		this.messageSource = messageSource;
-	}
-
-	/**
 	 * @param model
 	 * @param locale
 	 * @return
 	 */
 	@GetMapping("/emp-create")
-	public String init(Model model, Locale locale) {
-		String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
-		model.addAttribute("message", msg04);
+	public String init(Model model) {
 		model.addAttribute("m04Model", new M04_EmpCreateModel());
 		return ControllerConstant.M04_EMPLOYEE_INTIAL_INFO;
 	}
@@ -69,18 +54,15 @@ public class M04_EmpCreateController {
 	 * @param bindingResult the binding result
 	 * @param model         the model
 	 * @return String
+	 * @throws Exception
 	 */
 	@PostMapping("/emp-create")
-	public String create(@Valid @ModelAttribute M04_EmpCreateModel empModel, BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			String msg04 = messageSource.getMessage("msg04", null, Locale.JAPAN);
-			model.addAttribute("message", msg04);
-			model.addAttribute("employeeId", empModel.getEmployeeId());
-			model.addAttribute("m04Model", empModel);
-			return ControllerConstant.M04_EMPLOYEE_INTIAL_INFO;
-		} else {
-			service.save(empModel);
-		}
-		return ControllerConstant.M04_EMPLOYEE_INTIAL_INFO;
+	public String create(@Valid @ModelAttribute M04_EmpCreateModel empModel, BindingResult bindingResult, Model model,
+			RedirectAttributes redirectAttributes) {
+		this.service.save(empModel);
+		redirectAttributes.getFlashAttributes().clear();
+		redirectAttributes.addFlashAttribute(MessageConstant.MESSAGE,
+				this.getMessage(MessageConstant.SUCCESSFULLY_SAVE));
+		return super.redirectURL(ControllerConstant.EMP_CREATE);
 	}
 }
